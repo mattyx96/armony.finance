@@ -1,14 +1,14 @@
 <template>
-	<div>
-		content
-	</div>
+	<header>
+		<nav>
+			nav bar
+		</nav>
+	</header>
 </template>
 
 <script>
 export default {
-	name: "index",
-	components: {},
-	data: () => ({})
+	name: "l-head"
 }
 </script>
 

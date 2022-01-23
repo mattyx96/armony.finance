@@ -1,14 +1,12 @@
 <template>
-	<div>
-		content
-	</div>
+	<main>
+		<slot></slot>
+	</main>
 </template>
 
 <script>
 export default {
-	name: "index",
-	components: {},
-	data: () => ({})
+	name: "l-body"
 }
 </script>
 

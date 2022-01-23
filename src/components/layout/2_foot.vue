@@ -1,14 +1,12 @@
 <template>
-	<div>
-		content
-	</div>
+	<footer>
+		footer
+	</footer>
 </template>
 
 <script>
 export default {
-	name: "index",
-	components: {},
-	data: () => ({})
+	name: "l-foot"
 }
 </script>
 
