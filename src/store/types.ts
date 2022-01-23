@@ -8,12 +8,15 @@
 export enum GETTERS {
 	isConnected = "isConnected",
 	connectedAs = "connectedAs",
+	isTestnet = "isTestnet",
 }
 
 export enum MUTATIONS {
 	connectionCompleted = "connectionCompleted",
 	connectionLost = "connectionLost",
-	signerFound = "signerFound",
+	registerAddress = "registerAddress",
+	registerSigner = "registerSigner",
+	registerProvider = "registerProvider",
 }
 
 export enum ACTIONS {

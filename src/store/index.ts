@@ -17,7 +17,9 @@ export const key: InjectionKey<Store<State>> = Symbol()
 export const index = createStore<State>({
 	state: {
 		address: "",
-		connected: false
+		connected: false,
+		provider: null,
+		signer: null,
 	},
 	// computed properties (can return functions to make them parametrized)
 	getters,

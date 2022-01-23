@@ -12,8 +12,9 @@
 </template>
 <script lang="ts">
 import Layout from "components/layout";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
 	components: {Layout}
-}
+})
 </script>

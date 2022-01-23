@@ -5,11 +5,13 @@
  * Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
  */
 
-import {ethers} from "ethers";
+import {Store} from 'vuex'
+// @ts-ignore
+import {State} from "store"
 
-export interface State {
-	address: string,
-	connected: boolean,
-	provider: ethers.providers.Web3Provider|null,
-	signer: ethers.providers.JsonRpcSigner|null,
+declare module '@vue/runtime-core' {
+	// provide typings for `this.$store`
+	interface ComponentCustomProperties {
+		$store: Store<State>
+	}
 }

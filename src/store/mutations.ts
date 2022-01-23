@@ -12,5 +12,7 @@ import {MUTATIONS} from "./types";
 export const mutations: MutationTree<State> = {
 	[MUTATIONS.connectionCompleted]: (state) => state.connected = true,
 	[MUTATIONS.connectionLost]: (state) => state.connected = false,
-	[MUTATIONS.signerFound]: (state, {address}) => state.address = address
+	[MUTATIONS.registerAddress]: (state, {address}) => state.address = address,
+	[MUTATIONS.registerSigner]: (state, {signer}) => state.signer = signer,
+	[MUTATIONS.registerProvider]: (state, {provider}) => state.provider = provider,
 } as MutationTree<State>

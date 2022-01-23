@@ -11,5 +11,6 @@ import {GETTERS} from "./types";
 
 export const getters: GetterTree<State, State> = {
 	[GETTERS.isConnected]: (state) => state.connected,
-	[GETTERS.connectedAs]: (state, getters) => getters.isConnected ? state.address : null
+	[GETTERS.connectedAs]: (state, getters) => getters.isConnected ? state.address : null,
+	[GETTERS.isTestnet]: (state, getters) => import.meta.env.DEV,
 } as GetterTree<State, State>

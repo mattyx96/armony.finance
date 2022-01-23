@@ -5,12 +5,11 @@
  * Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
  */
 
-import {Store} from 'vuex'
-import {State} from "store"
+import 'vue-router';
 
-declare module '@vue/runtime-core' {
-	// provide typings for `this.$store`
-	interface ComponentCustomProperties {
-		$store: Store<State>
+declare module 'vue-router' {
+	interface RouteMeta {
+		hidden?: boolean,
+		requiresAuth?: boolean,
 	}
 }

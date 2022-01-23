@@ -43,9 +43,22 @@
 <script lang="ts">
 import {mapGetters, mapActions} from "vuex";
 import {ACTIONS, GETTERS} from "store/types";
+import routes from "~pages"
+import { defineComponent } from "vue";
+import { RouteMeta } from "vue-router";
 
-export default {
+interface navigationUrl {
+	label: string,
+	path: string,
+	active: boolean,
+	meta: RouteMeta
+}
+
+export default defineComponent({
 	name: "l-head",
+	data: () => ({
+		urls: [] as navigationUrl[]
+	}),
 	methods: {
 		...mapActions({
 			connectWallet: ACTIONS.connectWallet
@@ -56,14 +69,32 @@ export default {
 			connectedAs: GETTERS.connectedAs,
 			isConnected: GETTERS.isConnected
 		}),
-		connectionButton() {
+		connectionButton(): any {
 			return {
 				classes: !this.isConnected ? "cursor-pointer" : "",
 				method: !this.isConnected ? this.connectWallet : () => {}
 			}
 		},
+	},
+	created() {
+		routes.forEach(v => {
+			let meta = {} as RouteMeta;
+			if(v.meta) {
+				let tmp = v.meta as unknown as any[]
+				tmp.forEach(val => {
+					const [[key, value]] = Object.entries(val)
+					meta[key] = value as any
+				})
+			}
+			this.urls.push({
+				label: (v.meta?.label || v.name) as string,
+				path: v.path,
+				active: this.$route.name === v.name || this.$route.path === v.path,
+				meta
+			})
+		})
 	}
-}
+})
 </script>
 
 <style scoped>
