@@ -5,14 +5,12 @@
  * Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
  */
 
-const path = require('path');
+import {Store} from 'vuex'
+import {State} from "store"
 
-module.exports = {
-	resolve: {
-		alias: {
-			"@": path.resolve(__dirname, 'src/'),
-			"store": path.resolve(__dirname, 'src/store'),
-			"components": path.resolve(__dirname, 'src/components'),
-		},
-	},
-};
+declare module '@vue/runtime-core' {
+	// provide typings for `this.$store`
+	interface ComponentCustomProperties {
+		$store: Store<State>
+	}
+}

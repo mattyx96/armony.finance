@@ -8,8 +8,14 @@
   },
   "dependencies": {
     "@types/node": "^17.0.10",
+    "boxicons": "^2.1.1",
+    "cleave.js": "^1.6.0",
+    "ethers": "^5.5.3",
+    "toastify-js": "^1.11.2",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2",
+    "web3modal": "^1.9.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",

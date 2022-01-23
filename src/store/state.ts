@@ -5,14 +5,7 @@
  * Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
  */
 
-const path = require('path');
-
-module.exports = {
-	resolve: {
-		alias: {
-			"@": path.resolve(__dirname, 'src/'),
-			"store": path.resolve(__dirname, 'src/store'),
-			"components": path.resolve(__dirname, 'src/components'),
-		},
-	},
-};
+export interface State {
+	address: string,
+	connected: boolean
+}
