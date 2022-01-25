@@ -5,12 +5,6 @@
  * Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
  */
 
-import 'vue-router';
-
-declare module 'vue-router' {
-	interface RouteMeta {
-		hidden?: boolean,
-		requiresAuth?: boolean,
-		label?: string
-	}
+export const capitalize = (str: string) => {
+	return `${str[0].toUpperCase()}${str.substring(1)}`
 }

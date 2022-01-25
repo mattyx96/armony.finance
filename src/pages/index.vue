@@ -11,10 +11,13 @@
 	</div>
 </template>
 
-<route lang="yaml">
-meta:
-  - hidden: true
-  - requiresAuth: false
+<route>
+{
+	"meta": {
+		"hidden": true,
+        "requiresAuth": false
+	}
+}
 </route>
 <script>
 import {mapGetters, mapActions} from "vuex";

@@ -22,42 +22,32 @@ npm run build
 
 Published contract addresses:
 
-| Name                      | Address           |
-|:--------------------------|:------------------|
-| Melodity                  | NOT PUBLISHED YET |
-| Masterchef                | NOT PUBLISHED YET |
-| Melodity Governance       | NOT PUBLISHED YET |
-| PRNG                      | NOT PUBLISHED YET |
-| Stacking Panda            | NOT PUBLISHED YET |
-| Marketplace               | NOT PUBLISHED YET |
-| Melodity DAO Timelock     | NOT PUBLISHED YET |
-| Melodity DAO              | NOT PUBLISHED YET |
-| Melodity Stacking         | NOT PUBLISHED YET |
-| Melodity Stacking Receipt | NOT PUBLISHED YET |
+| Name                      | Address                                      |
+|:--------------------------|:---------------------------------------------|
+| Melodity (to wrap)        | `0x0000000000000000000000000000000000000000` |
+| Masterchef                | `0x0000000000000000000000000000000000000000` |
+| Melodity Governance       | `0x0000000000000000000000000000000000000000` |
+| PRNG                      | `0x0000000000000000000000000000000000000000` |
+| Stacking Panda            | `0x0000000000000000000000000000000000000000` |
+| Marketplace               | `0x0000000000000000000000000000000000000000` |
+| Melodity DAO Timelock     | `0x0000000000000000000000000000000000000000` |
+| Melodity DAO              | `0x0000000000000000000000000000000000000000` |
+| Melodity Stacking         | `0x0000000000000000000000000000000000000000` |
+| Melodity Stacking Receipt | `0x0000000000000000000000000000000000000000` |
 
 ### Testnet contract addresses
 
 Published contract addresses:
 
-masterchef: 0x0f88f784115C6Ffd974562ABED7d44f58131CCA8
-melodityGovernance: 0xE7809D885811A43e090c756d1AbC8528B9AA5E7a
-prng: 0xA39027215260Aa121316928E87832BA8d8342e6f
-stackingPanda: 0x002Ccd7Ec670D53798529Bf5E98E8Ce086D41441
-marketplace: 0x2085c507B8bFDfC239f8801B4236ebf907D132B9
-melodityDAOTimelock: 0xCFa6971F7227326B7De39D0d7249a6B1F40dc268
-melodityDAO: 0x98992B3C43AdbB01D16B4c5dA191f7b59A690De4
-melodityStacking: 0xE9616ee8254EB62e8e4a825bB9EEd0A67Fe587c8
-melodityStackingReceipt: 0x8D1B1794f91718d317a181F40d079207B5400dEb
-
-| Name                      | Address                                    |
-|:--------------------------|:-------------------------------------------|
-| Melodity                  | 0x5EaA8Be0ebe73C0B6AdA8946f136B86b92128c55 |
-| Masterchef                | 0x0f88f784115C6Ffd974562ABED7d44f58131CCA8 |
-| Melodity Governance       | 0xE7809D885811A43e090c756d1AbC8528B9AA5E7a |
-| PRNG                      | 0xA39027215260Aa121316928E87832BA8d8342e6f |
-| Stacking Panda            | 0x002Ccd7Ec670D53798529Bf5E98E8Ce086D41441 |
-| Marketplace               | 0x2085c507B8bFDfC239f8801B4236ebf907D132B9 |
-| Melodity DAO Timelock     | 0xCFa6971F7227326B7De39D0d7249a6B1F40dc268 |
-| Melodity DAO              | 0x98992B3C43AdbB01D16B4c5dA191f7b59A690De4 |
-| Melodity Stacking         | 0xE9616ee8254EB62e8e4a825bB9EEd0A67Fe587c8 |
-| Melodity Stacking Receipt | 0x8D1B1794f91718d317a181F40d079207B5400dEb |
+| Name                      | Address                                      |
+|:--------------------------|:---------------------------------------------|
+| Melodity (to wrap)        | `0x5EaA8Be0ebe73C0B6AdA8946f136B86b92128c55` |
+| Masterchef                | `0x5FbDB2315678afecb367f032d93F642f64180aa3` |
+| Melodity Governance       | `0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512` |
+| PRNG                      | `0xa16E02E87b7454126E5E10d957A927A7F5B5d2be` |
+| Stacking Panda            | `0xB7A5bd0345EF1Cc5E66bf61BdeC17D2461fBd968` |
+| Marketplace               | `0xeEBe00Ac0756308ac4AaBfD76c05c4F3088B8883` |
+| Melodity DAO Timelock     | `0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0` |
+| Melodity DAO              | `0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9` |
+| Melodity Stacking         | `0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9` |
+| Melodity Stacking Receipt | `0x856e4424f806D16E8CBC702B3c0F2ede5468eae5` |

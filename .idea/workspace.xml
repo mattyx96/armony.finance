@@ -2,27 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/binance.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/stacking.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/router.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/web3/Melodity.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/strings.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/armony.finance.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/armony.finance.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/0_head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/0_head.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/env.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/getters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/getters.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/mutations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/mutations.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/state.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vuex.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/vuex.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/stacking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/router.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/router.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -107,7 +96,9 @@
       <updated>1642921279162</updated>
       <workItem from="1642921281248" duration="1545000" />
       <workItem from="1642927970499" duration="19644000" />
-      <workItem from="1642952480800" duration="2593000" />
+      <workItem from="1642952480800" duration="2729000" />
+      <workItem from="1643040155300" duration="659000" />
+      <workItem from="1643106417384" duration="9216000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -130,7 +121,21 @@
       <option name="project" value="LOCAL" />
       <updated>1642938762179</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="urls extraction, types migration">
+      <created>1642955139459</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642955139459</updated>
+    </task>
+    <task id="LOCAL-00005" summary="gitignore update">
+      <created>1642955185453</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1642955185453</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +151,9 @@
     <MESSAGE value="update from template" />
     <MESSAGE value="layout integration" />
     <MESSAGE value="copyright and packages inclusion" />
-    <option name="LAST_COMMIT_MESSAGE" value="copyright and packages inclusion" />
+    <MESSAGE value="urls extraction, types migration" />
+    <MESSAGE value="gitignore update" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

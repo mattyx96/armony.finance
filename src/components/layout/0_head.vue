@@ -12,16 +12,21 @@
 				<img src="" alt="Armony.finance - logo">
 			</div>
 			<ul class="col-start-4 col-span-5 grid grid-cols-5 gap-4">
-				<li v-for="e of Array.from({length: 5}, (v, k) => k)"
-				    class="flex items-center justify-center">
-					{{ e }}
-				</li>
+				<template v-for="(e, i) of urls" :key="i">
+					<li v-if="!e.meta.hidden">
+						<a :href="e.path" class="w-full h-full flex items-center justify-center cursor-pointer transition-all
+							duration-300 hover:shadow-lg hover:shadow-pink-400 rounded"
+							:class="e.active ? 'bg-gray-800 hover:bg-gray-800' : 'hover:bg-gray-900'">
+							{{ e.label }}
+						</a>
+					</li>
+				</template>
 			</ul>
 			<div class="col-span-2 col-start-10 flex items-center justify-center">
 				<div class="border rounded-md border-gray-900 bg-gray-800 px-3 py-2 truncate transition-all duration-300
 					hover:bg-gray-700 select-none"
 				     @click="connectionButton.method"
-					:class="connectionButton.classes">
+				     :class="connectionButton.classes">
 					<template v-if="isConnected">
 						{{ connectedAs }}
 					</template>
@@ -44,14 +49,15 @@
 import {mapGetters, mapActions} from "vuex";
 import {ACTIONS, GETTERS} from "store/types";
 import routes from "~pages"
-import { defineComponent } from "vue";
-import { RouteMeta } from "vue-router";
+import {defineComponent, watch} from "vue";
+import {RouteMeta} from "vue-router";
+import {capitalize} from "../../composition/strings";
 
 interface navigationUrl {
 	label: string,
 	path: string,
 	active: boolean,
-	meta: RouteMeta
+	meta?: RouteMeta
 }
 
 export default defineComponent({
@@ -72,27 +78,35 @@ export default defineComponent({
 		connectionButton(): any {
 			return {
 				classes: !this.isConnected ? "cursor-pointer" : "",
-				method: !this.isConnected ? this.connectWallet : () => {}
+				method: !this.isConnected ? this.connectWallet : () => {
+				}
 			}
 		},
 	},
 	created() {
-		routes.forEach(v => {
-			let meta = {} as RouteMeta;
-			if(v.meta) {
-				let tmp = v.meta as unknown as any[]
-				tmp.forEach(val => {
-					const [[key, value]] = Object.entries(val)
-					meta[key] = value as any
+		const refreshRoutes = () => {
+			this.urls = []
+			routes.forEach(v => {
+				console.log(this.$route.name, v.name)
+				console.log(this.$route.path, v.path)
+				this.urls.push({
+					label: v.meta && v.meta.label ? capitalize(v.meta.label) : capitalize(v.name as string),
+					path: v.path,
+					active: this.$route.name === v.name || this.$route.path === v.path,
+					meta: v.meta
 				})
-			}
-			this.urls.push({
-				label: (v.meta?.label || v.name) as string,
-				path: v.path,
-				active: this.$route.name === v.name || this.$route.path === v.path,
-				meta
 			})
-		})
+		}
+		refreshRoutes()
+
+		watch(
+			() => this.$route,
+			refreshRoutes,
+			{
+				deep: true,
+				immediate: true
+			}
+		)
 	}
 })
 </script>

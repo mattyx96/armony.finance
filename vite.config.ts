@@ -19,7 +19,17 @@ const path = require('path');
 export default defineConfig({
 	plugins: [
 		vue(),
-		Pages(),
+		Pages({
+			extendRoute(route, parent) {
+				return {
+					meta: {
+						hidden: false,
+						requiresAuth: false,
+					},
+					...route
+				}
+			}
+		}),
 	],
 	resolve: {
 		alias: {
