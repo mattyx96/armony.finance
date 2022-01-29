@@ -43,7 +43,8 @@ import {Address} from "composition/address";
 export default defineComponent({
 	name: "wrapper",
 	data: () => ({
-		governance: {} as ethers.Contract
+		governance: {} as ethers.Contract,
+		melodity: {} as ethers.Contract,
 	}),
 	methods: {
 	},
@@ -56,8 +57,14 @@ export default defineComponent({
 				this.governance = result
 			}
 		}
-		console.log(this.governance)
+		if(Object.keys(this.melodity).length === 0) {
+			let result = await Provider.init().loadContract(ContractTypes.melodity)
+			if(result) {
+				this.melodity = result
+			}
+		}
 		this.governance.balanceOf(Address.init().connectedAs).then(console.log).catch(console.log)
+		this.melodity.balanceOf(Address.init().connectedAs).then(console.log).catch(console.log)
 	}
 })
 </script>

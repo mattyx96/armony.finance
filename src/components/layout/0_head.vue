@@ -113,10 +113,6 @@ export default defineComponent({
 				immediate: true
 			}
 		)
-	},
-	mounted() {
-		this.connectedAs = Address.init().connectedAs
-		this.isConnected = Address.init().isConnected
 	}
 })
 </script>
