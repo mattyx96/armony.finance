@@ -89,6 +89,10 @@ export class Provider {
 		return this._signer !== undefined ? this._signer : false
 	}
 
+	public get isTesting(): boolean {
+		return this._testing
+	}
+
 	public get onNewProviderRegistered(): ISimpleEvent<ethers.providers.Web3Provider> {
 		return this._newProviderRegistered.asEvent()
 	}

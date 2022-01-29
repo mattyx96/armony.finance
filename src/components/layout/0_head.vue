@@ -16,7 +16,7 @@
 					<li v-if="!e.meta.hidden">
 						<router-link :to="e.path" class="w-full h-full flex items-center justify-center cursor-pointer transition-all
 							duration-300 hover:shadow-lg hover:shadow-pink-400 rounded"
-						   :class="e.active ? 'bg-gray-800 hover:bg-gray-800' : 'hover:bg-gray-900'">
+						             :class="e.active ? 'bg-gray-800 hover:bg-gray-800' : 'hover:bg-gray-900'">
 							{{ e.label }}
 						</router-link>
 					</li>
@@ -62,13 +62,11 @@ interface navigationUrl {
 
 export default defineComponent({
 	name: "l-head",
-	data() {
-		return {
-			urls: [] as navigationUrl[],
-			isConnected: Address.init().isConnected,
-			connectedAs: Address.init().connectedAs,
-		}
-	},
+	data: () => ({
+		urls: [] as navigationUrl[],
+		isConnected: Address.init().isConnected,
+		connectedAs: Address.init().connectedAs,
+	}),
 	computed: {
 		connectionButton(): any {
 			return {
