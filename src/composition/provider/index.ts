@@ -76,7 +76,7 @@ export class Provider {
 		return await _initContractInstance(
 			contract_type,
 			this._signer !== undefined ? this._signer : null,
-			this._provider as ethers.providers.JsonRpcProvider,
+			(this._provider !== undefined ? this._provider : this._fallbackProvider) as ethers.providers.JsonRpcProvider,
 			this._signer !== undefined
 		)
 	}

@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/composition/WorkerController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/stackable.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/staking/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TransactionOverlay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransactionOverlay.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/0_head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/0_head.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/address.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/address.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/provider/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/wrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +105,7 @@
       <workItem from="1643040155300" duration="659000" />
       <workItem from="1643106417384" duration="9334000" />
       <workItem from="1643170087542" duration="25379000" />
-      <workItem from="1643441239125" duration="18515000" />
+      <workItem from="1643441239125" duration="26440000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -171,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643458569153</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="worker controller, transaction overlay update, wrapper and header syncronization">
+      <created>1643469492536</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1643469492536</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +199,8 @@
     <MESSAGE value="address and provider singleton development, routing fix" />
     <MESSAGE value="workflow addition, packages update, contracts update" />
     <MESSAGE value="overlay addition, overlay tweaking, provider extension, toaster inclusion, wrapper completion" />
-    <option name="LAST_COMMIT_MESSAGE" value="overlay addition, overlay tweaking, provider extension, toaster inclusion, wrapper completion" />
+    <MESSAGE value="worker controller, transaction overlay update, wrapper and header syncronization" />
+    <option name="LAST_COMMIT_MESSAGE" value="worker controller, transaction overlay update, wrapper and header syncronization" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

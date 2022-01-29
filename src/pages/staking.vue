@@ -10,12 +10,12 @@
 		<div class="px-32 py-24 grid grid-cols-2">
 			<div>
 				<h1 class="text-5xl font-bold text-[#19191B]">
-					$MELD Wrapper
+					Armony staking
 				</h1>
 				<h3 class="text-lg font-light mt-8 text-[#696871]">
-					Empower your $MELD, migrate to $gMELD.
+					Put your crypto at work.
 					<br>
-					Stake, buy, exchange, play & earn with $gMELD
+					With Armony you receive up to {{ best_apy }}% APY on your stacked cryptocurrencies!
 				</h3>
 			</div>
 			<div class="flex flex-col items-center justify-center font-semibold">
@@ -49,6 +49,8 @@ import {ethers} from "ethers";
 import {Provider} from "composition/provider";
 import {ContractTypes} from "composition/provider/types";
 import {renderNumber} from "composition/strings";
+import {Stackable} from "composition/staking/types";
+import {Staking} from "composition/staking";
 
 export default defineComponent({
 	name: "index",
@@ -68,6 +70,7 @@ export default defineComponent({
 			interval: -1
 		},
 		pending: false,
+		stackable: [] as Stackable[],
 	}),
 	methods: {
 		insertMaxMeld() {
@@ -89,6 +92,11 @@ export default defineComponent({
 	},
 	computed: {},
 	async created() {
+		let s: Staking = new Staking()
+		s.onStackingReady.subscribe(() => {
+			console.log("stacking ready")
+			console.log(s)
+		})
 		Address.init().watchAddress((v: string): void => {
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
