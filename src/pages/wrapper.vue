@@ -81,6 +81,7 @@ import {Address} from "composition/address";
 import {renderNumber} from "composition/strings";
 import TransactionOverlay from "components/TransactionOverlay.vue"
 import Toaster from "composition/toaster";
+import {WorkerController} from "composition/workerController";
 
 
 export default defineComponent({
@@ -110,101 +111,104 @@ export default defineComponent({
 			this.meld = this.max_meld
 		},
 		async load() {
-			this.pending = true
-			if (Object.keys(this.governance).length === 0) {
-				let result = await Provider.init().loadContract(ContractTypes.melodityGovernance)
-				if (result) {
-					this.governance = result
+			await WorkerController.init().workAsync(async () => {
+				if (Object.keys(this.governance).length === 0) {
+					let result = await Provider.init().loadContract(ContractTypes.melodityGovernance)
+					if (result) {
+						this.governance = result
+					}
 				}
-			}
-			if (Object.keys(this.melodity).length === 0) {
-				let result = await Provider.init().loadContract(ContractTypes.melodity)
-				if (result) {
-					this.melodity = result
+				if (Object.keys(this.melodity).length === 0) {
+					let result = await Provider.init().loadContract(ContractTypes.melodity)
+					if (result) {
+						this.melodity = result
+					}
 				}
-			}
 
-			let amount = await this.melodity.balanceOf(this.connectedAs)
-			this.max_meld = renderNumber(amount, 18, 18)
+				let amount = await this.melodity.balanceOf(this.connectedAs)
+				this.max_meld = renderNumber(amount, 18, 18)
 
-			let allowance = "0",
-				required = `1${"0".repeat(40)}`
-			if (this.isConnected) {
-				allowance = (await this.melodity.allowance(this.connectedAs, this.governance.address)).toString()
-			}
-			this.approved = BigInt(allowance) >= BigInt(required)
-			this.pending = false
+				let allowance = "0",
+					required = `1${"0".repeat(40)}`
+				if (this.isConnected) {
+					allowance = (await this.melodity.allowance(this.connectedAs, this.governance.address)).toString()
+				}
+				this.approved = BigInt(allowance) >= BigInt(required)
+			})
 		},
 		async wrap() {
-			// parse the number
-			let [integer, decimal] = this.meld.split(".")
-			integer = integer.replaceAll(",", "")
-			if (decimal) {
-				decimal = decimal.padEnd(18, "0")
-			}
-
-			let amount = `${integer}${decimal ?? ""}`
-
-			this.overlay.confirmations = this.overlay.time = 0
-			this.overlay.open = true
-			try {
-				let tx: ethers.providers.TransactionResponse = await this.governance.wrap(amount)
-				this.overlay.tx = tx.hash
-				let receipt: ethers.providers.TransactionReceipt = await tx.wait()
-
-				// transaction confirmed
-				this.overlay.open = false
-				// send a notification stating a successful transaction
-				new Toaster({
-					title: `Wrap completed!`,
-					message: `You have successfully wrapped ${this.meld} $MELD to ${this.meld} $gMELD.`,
-					type: "success"
-				})
-
-				let [integer, decimal] = this.max_meld.split(".")
+			await WorkerController.init().workAsync(async () => {
+				// parse the number
+				let [integer, decimal] = this.meld.split(".")
 				integer = integer.replaceAll(",", "")
 				if (decimal) {
 					decimal = decimal.padEnd(18, "0")
 				}
-				let max_amount = `${integer}${decimal ?? ""}`
-				this.max_meld = renderNumber(max_amount)
-				this.meld = ""
-			} catch (e: any) {
-				this.overlay.open = false
-				// an error occurred, show an error message and go on
-				new Toaster({
-					code: `${e.code}.${e.data.code}`,
-					message: `${e.message.replace(".", "")}: ${e.data.message}`,
-				})
-			}
+
+				let amount = `${integer}${decimal ?? ""}`
+
+				this.overlay.confirmations = this.overlay.time = 0
+				this.overlay.open = true
+				try {
+					let tx: ethers.providers.TransactionResponse = await this.governance.wrap(amount)
+					this.overlay.tx = tx.hash
+					let receipt: ethers.providers.TransactionReceipt = await tx.wait()
+
+					// transaction confirmed
+					this.overlay.open = false
+					// send a notification stating a successful transaction
+					new Toaster({
+						title: `Wrap completed!`,
+						message: `You have successfully wrapped ${this.meld} $MELD to ${this.meld} $gMELD.`,
+						type: "success"
+					})
+
+					let [integer, decimal] = this.max_meld.split(".")
+					integer = integer.replaceAll(",", "")
+					if (decimal) {
+						decimal = decimal.padEnd(18, "0")
+					}
+					let max_amount = `${integer}${decimal ?? ""}`
+					this.max_meld = renderNumber(max_amount)
+					this.meld = ""
+				} catch (e: any) {
+					this.overlay.open = false
+					// an error occurred, show an error message and go on
+					new Toaster({
+						code: `${e.code}.${e.data.code}`,
+						message: `${e.message.replace(".", "")}: ${e.data.message}`,
+					})
+				}
+			})
 		},
 		async approve() {
-			let amount = `1${"0".repeat(70)}`
+			await WorkerController.init().workAsync(async () => {
+				let amount = `1${"0".repeat(70)}`
 
-			this.overlay.confirmations = this.overlay.time = 0
-			this.overlay.open = true
-			try {
-				let tx: ethers.providers.TransactionResponse = await this.melodity.approve(this.governance.address, amount)
-				this.overlay.tx = tx.hash
+				this.overlay.confirmations = this.overlay.time = 0
+				this.overlay.open = true
+				try {
+					let tx: ethers.providers.TransactionResponse = await this.melodity.approve(this.governance.address, amount)
+					this.overlay.tx = tx.hash
+					let receipt: ethers.providers.TransactionReceipt = await tx.wait()
 
-				let receipt: ethers.providers.TransactionReceipt = await tx.wait()
-
-				// transaction confirmed
-				this.overlay.open = false
-				// send a notification stating a successful transaction
-				new Toaster({
-					title: `Wrapper approved!`,
-					message: `You have successfully approved the wrapper.`,
-					type: "success"
-				})
-			} catch (e: any) {
-				this.overlay.open = false
-				// an error occurred, show an error message and go on
-				new Toaster({
-					code: `${e.code}.${e.data.code}`,
-					message: `${e.message.replace(".", "")}: ${e.data.message}`,
-				})
-			}
+					// transaction confirmed
+					this.overlay.open = false
+					// send a notification stating a successful transaction
+					new Toaster({
+						title: `Wrapper approved!`,
+						message: `You have successfully approved the wrapper.`,
+						type: "success"
+					})
+				} catch (e: any) {
+					this.overlay.open = false
+					// an error occurred, show an error message and go on
+					new Toaster({
+						code: `${e.code}.${e.data.code}`,
+						message: `${e.message.replace(".", "")}: ${e.data.message}`,
+					})
+				}
+			})
 		},
 	},
 	computed: {
@@ -223,7 +227,7 @@ export default defineComponent({
 							)
 					),
 				text: this.pending ?
-					"..." :
+					"Pending ..." :
 					(
 						!this.isConnected ?
 							"Connect wallet" :
@@ -237,12 +241,16 @@ export default defineComponent({
 		}
 	},
 	async created() {
-		Address.init().onNewAddressRegistered.subscribe((v: string): void => {
+		Address.init().watchAddress((v: string): void => {
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
 
 			this.load()
 		})
+		WorkerController.init().watchState(
+			() => this.pending = true,
+			() => this.pending = false
+		)
 	}
 })
 </script>

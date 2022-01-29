@@ -33,6 +33,12 @@ export class Address {
 		return this
 	}
 
+	public watchAddress(addressCallback: (address: string) => void): { unsubscribeAddress: () => void } {
+		return {
+			unsubscribeAddress: this._newAddressRegistered.subscribe(addressCallback)
+		}
+	}
+
 	public get connectedAs(): string | false {
 		return this._address !== undefined ? this._address : false
 	}

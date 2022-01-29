@@ -73,7 +73,7 @@ export default defineComponent({
 				this.$emit('update:time', 0);
 				this.$emit('update:confirmations', 0);
 
-				if(!this.noAutoAnimation) {
+				if(!this.noAutoAnimation && this.tx?.length > 0) {
 					setTimeout(() => {
 						if (this.confirmations === 0) {
 							this.$emit('update:confirmations', this.confirmations + 1)
@@ -85,13 +85,32 @@ export default defineComponent({
 							this.$emit('update:confirmations', this.confirmations + 1)
 						}
 					}, 10000)
+
+					this.interval = setInterval(() => {
+						this.$emit('update:time', this.time + 1)
+					}, 1000)
 				}
+			} else { //modal closed
+				clearInterval(this.interval)
+			}
+		},
+		tx(_new) {
+			if(_new.length > 0) {
+				setTimeout(() => {
+					if (this.confirmations === 0) {
+						this.$emit('update:confirmations', this.confirmations + 1)
+					}
+				}, 5000)
+
+				setTimeout(() => {
+					if (this.confirmations === 1) {
+						this.$emit('update:confirmations', this.confirmations + 1)
+					}
+				}, 10000)
 
 				this.interval = setInterval(() => {
 					this.$emit('update:time', this.time + 1)
 				}, 1000)
-			} else { //modal closed
-				clearInterval(this.interval)
 			}
 		}
 	},

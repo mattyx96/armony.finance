@@ -78,7 +78,7 @@ export default defineComponent({
 		},
 	},
 	created() {
-		Address.init().onNewAddressRegistered.subscribe((v: string): void => {
+		Address.init().watchAddress((v: string): void => {
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
 		})
