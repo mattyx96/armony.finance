@@ -8,11 +8,9 @@
 import {createApp} from 'vue'
 import App from './App.vue'
 import {router} from "./router"
-import {index, key} from "./store"
 
 import "./assets/tailwind.css"
 
-createApp(App)
+const app = createApp(App)
 	.use(router)
-	.use(index, key)
 	.mount('#app')

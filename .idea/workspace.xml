@@ -2,16 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/composition/strings.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/armony.finance.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/armony.finance.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/address.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/provider/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/provider/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/provider/wallet.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/0_head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/0_head.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/stacking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/router.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/router.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/wrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/getters.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/mutations.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/state.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typings/env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/router.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typings/router.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/vuex.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/Auction.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/Auction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/BlindAuction.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/BlindAuction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/Marketplace.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/Marketplace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/Masterchef.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/Masterchef.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/Melodity.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/Melodity.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/MelodityGovernance.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/MelodityGovernance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/MelodityStacking.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/MelodityStacking.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/StackingPanda.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/StackingPanda.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web3/StackingReceipt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/StackingReceipt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +79,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/composition/provider" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
@@ -62,16 +87,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/composition/provider" />
+      <recent name="$PROJECT_DIR$/src/store/modules/web3" />
       <recent name="$PROJECT_DIR$/src/pages" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/web3" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/composition/provider" />
+      <recent name="$PROJECT_DIR$/src/composition" />
       <recent name="$PROJECT_DIR$/src/types" />
       <recent name="$PROJECT_DIR$/src/compatibility" />
       <recent name="$PROJECT_DIR$/src/web3" />
-      <recent name="$PROJECT_DIR$/src/web3/testnet" />
-      <recent name="$PROJECT_DIR$/src/store" />
     </key>
   </component>
   <component name="RunManager">
@@ -98,7 +125,9 @@
       <workItem from="1642927970499" duration="19644000" />
       <workItem from="1642952480800" duration="2729000" />
       <workItem from="1643040155300" duration="659000" />
-      <workItem from="1643106417384" duration="9216000" />
+      <workItem from="1643106417384" duration="9334000" />
+      <workItem from="1643170087542" duration="25379000" />
+      <workItem from="1643441239125" duration="7508000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -135,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642955185453</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="wrapper and head updates">
+      <created>1643130979778</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1643130979778</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +189,8 @@
     <MESSAGE value="copyright and packages inclusion" />
     <MESSAGE value="urls extraction, types migration" />
     <MESSAGE value="gitignore update" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore update" />
+    <MESSAGE value="wrapper and head updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="wrapper and head updates" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

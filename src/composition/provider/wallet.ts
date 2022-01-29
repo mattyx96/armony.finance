@@ -5,27 +5,23 @@
  * Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
  */
 
-import {State} from "./state";
-import {ActionTree} from "vuex";
-import {ACTIONS, GETTERS, MUTATIONS} from "./types";
-
-import { ethers } from "ethers";
-import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import url from "@/assets/images/binance.png"
+import url from "@/assets/images/binance.png";
+import Web3Modal from "web3modal";
+import {ethers} from "ethers";
 
-export const actions: ActionTree<State, State> = {
-	[ACTIONS.connectWallet]: async ({commit, getters}) => {
+export const connectWallet =
+	async (): Promise<{ signer: ethers.providers.JsonRpcSigner, provider: ethers.providers.Web3Provider }> => {
 		const provider_options = {
 			walletconnect: {
 				package: WalletConnectProvider, // required
 				options: {
 					rpc: {
-						56: 'https://bsc-dataseed1.binance.org',
+						56: 'https://bsc-dataseed.binance.org',
 						97: "https://data-seed-prebsc-1-s1.binance.org:8545/"
 					},
 					network: 'binance',
-					chainId: getters[GETTERS.isTestnet] ? 97 : 56,
+					chainId: import.meta.env.DEV ? 97 : 56,
 				}
 			},
 			"custom-binancechainwallet": {
@@ -63,15 +59,8 @@ export const actions: ActionTree<State, State> = {
 		const provider = new ethers.providers.Web3Provider(instance);
 		const signer = provider.getSigner();
 
-		commit(MUTATIONS.connectionCompleted)
-		commit(MUTATIONS.registerAddress, {
-			address: await signer.getAddress()
-		})
-		commit(MUTATIONS.registerSigner, {
-			signer: signer
-		})
-		commit(MUTATIONS.registerProvider, {
-			provider: provider
-		})
-	},
-} as ActionTree<State, State>
+		return {
+			provider,
+			signer
+		}
+	}

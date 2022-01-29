@@ -40,6 +40,7 @@ export default defineConfig({
 			"@": path.resolve(__dirname, 'src/'),
 			"store": path.resolve(__dirname, 'src/store'),
 			"components": path.resolve(__dirname, 'src/components'),
+			"composition": path.resolve(__dirname, 'src/composition'),
 		},
 		extensions: [
 			'.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'

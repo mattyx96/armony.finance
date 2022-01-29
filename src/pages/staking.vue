@@ -13,7 +13,6 @@
 
 <script>
 import {mapGetters, mapActions} from "vuex";
-import {ACTIONS, GETTERS} from "store/types";
 import {defineComponent} from "vue";
 
 export default defineComponent({
