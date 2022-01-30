@@ -13,21 +13,96 @@
 					Armony staking
 				</h1>
 				<h3 class="text-lg font-light mt-8 text-[#696871]">
-					Put your crypto at work.
-					<br>
-					With Armony you receive up to {{ best_apy }}% APY on your stacked cryptocurrencies!
+					<span class="no">
+						Put your crypto at work.
+						<br>
+						With Armony you receive up to
+					</span>
+					<span class="p-2 rounded-md" :class="shimmer">
+						{{ bestAPY }} %
+					</span>
+					<span>
+						APY on your stacked cryptocurrencies!
+					</span>
 				</h3>
 			</div>
 			<div class="flex flex-col items-center justify-center font-semibold">
-				<h4 class="text-xl">1.00 $MELD</h4>
-				<p>=</p>
-				<h4 class="text-xl">1.00 $gMELD</h4>
-				<small class="font-bold">Forever</small>
+				TODO
 			</div>
 		</div>
 		<div class="bg-gradient-to-br to-[#947B9E33] from-[#7989B533] min-h-[32rem] py-12 px-32">
-			<div class="grid grid-cols-8">
-
+			<div class="grid grid-cols-9 border">
+				<div class="col-span-9 grid grid-cols-9 px-4">
+					<div class="font-semibold text-sm col-span-3 text-center">
+						Crypto
+					</div>
+					<div class="font-semibold text-sm col-span-2 text-center">
+						Your earnings
+					</div>
+					<div class="font-semibold text-sm col-span-1 text-center">
+						APY
+					</div>
+					<div class="font-semibold text-sm col-span-2 text-center">
+						Deposited
+					</div>
+					<div class="font-semibold text-sm col-span-1 text-center"></div>
+				</div>
+				<div v-for="(e, i) of stackable" :key="i"
+				     class="bg-gray-50 rounded-xl col-span-9 my-2 grid grid-cols-9 p-4">
+					<div class="font-semibold col-span-3 grid grid-cols-3 gap-2">
+						<div class="flex items-center justify-center relative">
+							<img :src="e.baseCurrency.picture" :alt="e.baseCurrency.name"
+							     class="h-16 w-16 object-contain">
+							<img :src="e.rewardCurrency.picture" :alt="e.rewardCurrency.name"
+							     class="h-8 w-8 object-contain absolute rounded-full bg-orange-400 -top-2 left-1/3
+									-translate-x-1/2 p-1">
+						</div>
+						<div class="flex flex-col justify-center">
+							<h4 class="font-semibold flex items-center"
+							    :title="`Stake ${e.baseCurrency.name}`">
+								<i class='bx bxs-coin-stack mr-2'></i>
+								{{ e.baseCurrency.name }}
+							</h4>
+							<h4 class="font-semibold text-xs text-gray-600 flex items-center"
+							    :title="`Earn ${e.rewardCurrency.name}`">
+								<i class='bx bxs-coin mr-2 mt-auto'></i>
+								{{ e.rewardCurrency.name }}
+							</h4>
+						</div>
+						<div class="relative">
+							<img :src="arrow" alt="arrow" class="object-contain left-0 bottom-0 absolute">
+						</div>
+					</div>
+					<div class="font-semibold col-span-2 text-gray-600 flex items-center justify-center">
+						<template v-if="!staked_ready">
+							<span class="p-2 rounded-md" :class="stakedShimmer">
+								{{ bestAPY }} %
+							</span>
+						</template>
+						<template v-else-if="staked[i].earnings">
+							<span class="text-green-400">
+								{{ staked[i].earnings }} {{ e.rewardCurrency.name }}
+							</span>
+						</template>
+						<template v-else>
+							Historical values not found
+						</template>
+					</div>
+					<div class="font-semibold text-lg col-span-1 flex items-center justify-center text-gray-600">
+						{{ e.apy }}%
+					</div>
+					<div class="font-semibold col-span-2 flex items-center justify-center text-gray-600">
+						<template v-if="!staked_ready">
+							<span class="p-2 rounded-md" :class="stakedShimmer">
+								{{ bestAPY }} %
+							</span>
+						</template>
+						<template v-else>
+							{{ staked[i].receiptAmount }} {{ staked[i].ticker }}
+						</template>
+					</div>
+					<div class="font-semibold col-span-1"></div>
+				</div>
 			</div>
 		</div>
 
@@ -49,8 +124,9 @@ import {ethers} from "ethers";
 import {Provider} from "composition/provider";
 import {ContractTypes} from "composition/provider/types";
 import {renderNumber} from "composition/strings";
-import {Stackable} from "composition/staking/types";
+import {Stackable, Staked} from "composition/staking/types";
 import {Staking} from "composition/staking";
+import arrow from "@/assets/images/arrow.svg"
 
 export default defineComponent({
 	name: "index",
@@ -70,7 +146,11 @@ export default defineComponent({
 			interval: -1
 		},
 		pending: false,
+		staking_ready: false,
 		stackable: [] as Stackable[],
+		arrow,
+		staked_ready: false,
+		staked: [] as Staked[],
 	}),
 	methods: {
 		insertMaxMeld() {
@@ -90,16 +170,32 @@ export default defineComponent({
 			})
 		},
 	},
-	computed: {},
+	computed: {
+		bestAPY() {
+			return this.stackable.length > 0 ? this.stackable.reduce((previousValue, currentValue) => {
+				return +previousValue.apy > +currentValue.apy ? previousValue : currentValue
+			}).apy : "0.00"
+		},
+		shimmer() {
+			return !this.staking_ready ? "shimmer mr-2" : ""
+		},
+		stakedShimmer() {
+			return !this.staked_ready ? "shimmer mr-2" : ""
+		}
+	},
 	async created() {
-		let s: Staking = new Staking()
-		s.onStackingReady.subscribe(() => {
-			console.log("stacking ready")
-			console.log(s)
+		Staking.init().onStackingReady.subscribe(() => {
+			this.staking_ready = true
+			this.stackable = Staking.init().stackable
+		})
+		Staking.init().onStackedDataReady.subscribe(() => {
+			this.staked_ready = true
+			this.staked = Staking.init().staked
 		})
 		Address.init().watchAddress((v: string): void => {
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
+
 
 			this.load()
 		})

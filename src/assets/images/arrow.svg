@@ -1,0 +1,33 @@
+<!--
+  - Copyright (C) 2022 Do inc. - All Rights Reserved
+  - Unauthorized copying of this file, via any medium is strictly prohibited
+  - Proprietary and confidential
+  - Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
+  -->
+
+<svg width="80" height="51" xmlns="http://www.w3.org/2000/svg" fill="none">
+ <defs>
+  <filter id="filter0_f_1_3011" x="18.4392" y="0.34304" width="61.1755" height="50.6384" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="8.58849" result="effect1_foregroundBlur_1_3011"/>
+  </filter>
+  <linearGradient id="paint0_linear_1_3011" x1="1.05323" y1="1.79004" x2="1.36766" y2="0.98184">
+   <stop stop-color="#62CBFF" stop-opacity="0.01"/>
+   <stop offset="1" stop-color="#339CFE"/>
+  </linearGradient>
+  <linearGradient id="paint1_linear_1_3011" x1="0.61762" y1="-0.26475" x2="0.40519" y2="1.52984">
+   <stop stop-color="#309AFF"/>
+   <stop offset="1" stop-color="#52AD97" stop-opacity="0.01"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g filter="url(#filter0_f_1_3011)" id="svg_1">
+   <ellipse rx="13.575" ry="7.86101" transform="matrix(0.981618 -0.190855 0.190763 0.981636 49.027 25.6622)" fill="url(#paint0_linear_1_3011)" id="svg_2"/>
+  </g>
+  <path d="m1,41.0675c0,0 4.7907,-8.8828 10.2947,-5.8242c5.5041,3.0585 6.2174,5.8242 11.1099,3.9891c4.8925,-1.8352 5.1987,-17.345 9.4796,-14.2864c4.2809,3.0585 14.8477,9.1756 24.0211,0" stroke="url(#paint1_linear_1_3011)" stroke-width="1.81995" stroke-linecap="round" stroke-linejoin="round" id="svg_3"/>
+ </g>
+ <g>
+  <title>Layer 2</title>
+  <path id="svg_4" fill="#2BB596" d="m60.56191,22.31202l-1.55989,1.56028c-0.57433,0.57448 -1.50551,0.57448 -2.07984,0c-0.57434,-0.57448 -0.57434,-1.50589 0,-2.08037l1.55988,-1.56028l-4.10743,-4.10846l10.2947,0l0,10.29731l-4.10742,-4.10848z"/>
+ </g>
+</svg>

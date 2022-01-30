@@ -4,7 +4,7 @@
 		"baseCurrency": {
 			"contract": "0xc65003e7e1EF83181Fa8a679451f57A828FE4Faf",
 			"name": "gMELD",
-			"picture": null
+			"picture": "/assets/gmeld.png"
 		},
 		"contract": "0x340475897b3645a8d8CEbdd68717540dECb10Dd7",
 		"epoch": {
@@ -22,7 +22,7 @@
 		"rewardCurrency": {
 			"contract": "0xc65003e7e1EF83181Fa8a679451f57A828FE4Faf",
 			"name": "gMELD",
-			"picture": null
+			"picture": "/assets/gmeld.png"
 		}
 	}
 ]

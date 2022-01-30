@@ -8,6 +8,7 @@
 import {ethers} from "ethers";
 
 export const __PERCENT_SCALE__ = ethers.utils.parseEther("100.0").toBigInt()
+export const __EPOCH_PER_YEAR__ = 8760n
 export const __RETRIEVE__ = "__RETRIEVE__"
 
 export interface StackableCurrency {
@@ -19,14 +20,14 @@ export interface StackableCurrency {
 export interface Epoch {
 	epochDuration: number
 	currentEpoch: number
-	rewardScaleFactor: BigInt
+	rewardScaleFactor: bigint
 }
 
 export interface Era {
 	startingTime: number
 	eraDuration: number
 	currentEra: number
-	eraScaleFactor: BigInt
+	eraScaleFactor: bigint
 }
 
 export interface Stackable {
@@ -34,15 +35,21 @@ export interface Stackable {
 	rewardCurrency: StackableCurrency
 	epoch: Epoch
 	era: Era
-	receiptValue: BigInt
+	receiptValue: bigint
 	contract: ethers.Contract
 	abi: any[]
+	apy: string
+}
+
+export interface Staked {
+	receiptAmount: string
+	boughtAtReceiptValue?: bigint
+	earnings?: string
+	contract: ethers.Contract
+	ticker: string
 }
 
 export enum ABI {
 	__MELODITY_STACKING__
 }
 
-export enum MagicValues {
-	__RETRIEVE__
-}

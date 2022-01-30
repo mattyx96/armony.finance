@@ -10,7 +10,10 @@ import {connectWallet as _connectWallet} from "./wallet"
 import {Address} from "@/composition/address"
 import {ContractTypes} from "composition/provider/types";
 import {ISignal, ISimpleEvent, SignalDispatcher, SimpleEventDispatcher} from "strongly-typed-events";
-import {initContractInstance as _initContractInstance} from "composition/provider/contracts";
+import {
+	initContractInstance as _initContractInstance,
+	initCustomContractInstance as _initCustomContractInstance
+} from "composition/provider/contracts";
 
 export class Provider {
 	// properties
@@ -75,6 +78,16 @@ export class Provider {
 	public async loadContract(contract_type: ContractTypes): Promise<ethers.Contract | false> {
 		return await _initContractInstance(
 			contract_type,
+			this._signer !== undefined ? this._signer : null,
+			(this._provider !== undefined ? this._provider : this._fallbackProvider) as ethers.providers.JsonRpcProvider,
+			this._signer !== undefined
+		)
+	}
+
+	public async loadCustomContract(contract_type: ContractTypes, address: string): Promise<ethers.Contract | false> {
+		return await _initCustomContractInstance(
+			contract_type,
+			address,
 			this._signer !== undefined ? this._signer : null,
 			(this._provider !== undefined ? this._provider : this._fallbackProvider) as ethers.providers.JsonRpcProvider,
 			this._signer !== undefined

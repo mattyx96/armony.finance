@@ -55,8 +55,16 @@ export const connectWallet =
 		})
 
 		const instance = await web3_modal.connect();
-
 		const provider = new ethers.providers.Web3Provider(instance);
+
+		let chain_id = (await provider.getNetwork()).chainId
+		if(import.meta.env.DEV && chain_id !== 97) {
+			alert("Wrong network selected, please move to BSC testnet and reload the page")
+		}
+		else if(!import.meta.env.DEV && chain_id !== 56) {
+			alert("Wrong network selected, please move to BSC and reload the page")
+		}
+
 		const signer = provider.getSigner();
 
 		return {

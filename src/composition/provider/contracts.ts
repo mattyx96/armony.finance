@@ -88,3 +88,72 @@ export const initContractInstance = async (
 			return false
 	}
 }
+
+export const initCustomContractInstance = async (
+	contract_type: ContractTypes,
+	address: string,
+	signer: ethers.providers.JsonRpcSigner | null,
+	provider: ethers.providers.JsonRpcProvider,
+	connected: boolean
+): Promise<ethers.Contract | false> => {
+	switch (contract_type) {
+		case ContractTypes.masterchef:
+			return loadContract(
+				address,
+				(await import("@/abi/Masterchef.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		case ContractTypes.melodity:
+			return loadContract(
+				address,
+				(await import("@/abi/Melodity.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		case ContractTypes.melodityGovernance:
+			return loadContract(
+				address,
+				(await import("@/abi/MelodityGovernance.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		case ContractTypes.marketplace:
+			return loadContract(
+				address,
+				(await import("@/abi/Marketplace.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		case ContractTypes.stacking:
+			return loadContract(
+				address,
+				(await import("@/abi/MelodityStacking.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		case ContractTypes.stackingPanda:
+			return loadContract(
+				address,
+				(await import("@/abi/StackingPanda.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		case ContractTypes.stackingReceipt:
+			return loadContract(
+				address,
+				(await import("@/abi/StackingReceipt.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		default:
+			return false
+	}
+}

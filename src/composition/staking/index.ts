@@ -5,21 +5,46 @@
  * Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
  */
 
-import {__RETRIEVE__, ABI, Stackable} from "composition/staking/types";
+import {__EPOCH_PER_YEAR__, __PERCENT_SCALE__, __RETRIEVE__, ABI, Stackable, Staked} from "composition/staking/types";
 import STACKABLE from "@/assets/stackable.json"
 import MELODITY_STACKING from "@/abi/MelodityStacking.json"
 import {Provider} from "composition/provider";
 import {ContractTypes} from "composition/provider/types";
-import {ISignal, SignalDispatcher} from "strongly-typed-events";
+import {ISignal, ISimpleEvent, SignalDispatcher, SimpleEventDispatcher} from "strongly-typed-events";
+import {ethers} from "ethers";
+import {Address} from "composition/address";
+import {renderNumber} from "composition/strings";
 
 export class Staking {
 	private _stackable: Stackable[] = []
+	private _staked: Staked[] = []
 	private _completedParsingUnits = 0
+	private _completedStakingUnits = 0
+	private _signerSubscription?: () => void
+	private static _instance?: Staking
 
 	private _stackingReady = new SignalDispatcher()
+	private _stakedReady = new SignalDispatcher()
+	private _signerInjected = new SignalDispatcher()
+	private _invalidStackableFound = new SimpleEventDispatcher<object>()
 
-	public constructor() {
+	private constructor() {
+		if (!Provider.init().signer) {
+			this._signerSubscription = Provider.init().onNewSignerRegistered.subscribe(() => {
+				this.injectSigner()
+			})
+		}
+
+		// no need to tell parse to inject the signer as in case the user is already logged the signer is automatically
+		// injected in the contract instance
 		this.parse()
+	}
+
+	public static init(): Staking {
+		if (this._instance === undefined) {
+			this._instance = new Staking()
+		}
+		return this._instance
 	}
 
 	private parse() {
@@ -96,32 +121,49 @@ export class Staking {
 						eraScaleFactor: era_info_raw["eraScaleFactor"],
 						rewardFactorPerEpoch: era_info_raw["rewardFactorPerEpoch"],
 					}
-					
+
 					if (v.epoch.rewardScaleFactor === __RETRIEVE__) {
 						stackable.epoch.rewardScaleFactor = BigInt(era_info.rewardFactorPerEpoch.toString())
 					}
 					if (v.era.eraDuration === __RETRIEVE__) {
-						stackable.era.eraDuration = +(era_info.rewardFactorPerEpoch.toString())
+						stackable.era.eraDuration = +(era_info.eraDuration.toString())
 					}
 					if (v.era.eraScaleFactor === __RETRIEVE__) {
-						stackable.era.eraScaleFactor = BigInt(era_info.rewardFactorPerEpoch.toString())
+						stackable.era.eraScaleFactor = BigInt(era_info.eraScaleFactor.toString())
 					}
 					if (v.era.startingTime === __RETRIEVE__) {
-						stackable.era.startingTime = +(era_info.rewardFactorPerEpoch.toString())
+						stackable.era.startingTime = +(era_info.startingTime.toString())
 					}
 					if (v.receiptValue === __RETRIEVE__) {
-						stackable.receiptValue = BigInt(era_info.rewardFactorPerEpoch.toString())
+						stackable.receiptValue = BigInt((await res.poolInfo())["receiptValue"].toString())
 					}
-					
+
+					let growth_factor: bigint =
+						stackable.epoch.rewardScaleFactor * stackable.receiptValue / __PERCENT_SCALE__
+					let apr = growth_factor * __EPOCH_PER_YEAR__
+					let daily_apr = apr / 365n
+					stackable.apy = (((1 + +`0.${daily_apr.toString().padStart(18, "0")}`) ** 365 - 1) * 100).toFixed(2)
 
 					this._stackable.push(stackable)
+					this.loadStakedData().then(() => {})
 				}
 			} else {
-				console.error("invalid record found", v)
+				this._invalidStackableFound.dispatchAsync(v)
 			}
 
 			this.checkIfReady()
 		})
+	}
+
+	private injectSigner() {
+		this._stackable = this._stackable.map((value): Stackable => {
+			value.contract.connect(Provider.init().signer as ethers.providers.JsonRpcSigner)
+			return value
+		})
+
+		this._signerInjected.dispatchAsync()
+
+		this.loadStakedData().then(() => {})
 	}
 
 	private checkIfReady() {
@@ -132,7 +174,55 @@ export class Staking {
 		}
 	}
 
+	private checkIfStakedReady() {
+		this._completedStakingUnits++
+
+		if (this._completedStakingUnits === STACKABLE.length) {
+			this._stakedReady.dispatchAsync()
+		}
+	}
+
+	private async loadStakedData(): Promise<void> {
+		if(Provider.init().signer) {
+			let current_stake = this._stackable[this._completedStakingUnits]
+			let staking_receipt_address = await current_stake.contract.stackingReceipt()
+			let stake = {} as Staked
+
+			let res = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, staking_receipt_address)
+			if(res) {
+				stake.contract = res
+				stake.receiptAmount = renderNumber(await stake.contract.balanceOf(Address.init().connectedAs))
+				stake.ticker = await stake.contract.symbol()
+
+				// TODO: off chain api needed to retrieve the earnings and the historical buying price
+				this._staked.push(stake)
+			}
+
+			this.checkIfStakedReady()
+		}
+	}
+
+	public get stackable(): Stackable[] {
+		return this._stackable
+	}
+
+	public get staked(): Staked[] {
+		return this._staked
+	}
+
 	public get onStackingReady(): ISignal {
 		return this._stackingReady.asEvent()
+	}
+
+	public get onSignerInjected(): ISignal {
+		return this._signerInjected.asEvent()
+	}
+
+	public get onStackedDataReady(): ISignal {
+		return this._stakedReady.asEvent()
+	}
+
+	public get onInvalidStackableFound(): ISimpleEvent<object> {
+		return this._invalidStackableFound.asEvent()
 	}
 }
