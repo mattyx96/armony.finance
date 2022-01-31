@@ -13,4 +13,5 @@ export enum ContractTypes {
 	stacking = "mtacking",
 	stackingPanda = "mtackingPanda",
 	stackingReceipt = "mtackingReceipt",
+	melodityIco = "melodityIco",
 }

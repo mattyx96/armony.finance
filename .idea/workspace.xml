@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/shimmer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abi/MelodityIco.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/arrow-down.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/tailwind.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Overlay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/Overlay.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TransactionOverlay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/TransactionOverlay.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/strings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/provider/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/staking/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/wrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
@@ -109,7 +117,7 @@
       <workItem from="1643170087542" duration="25379000" />
       <workItem from="1643441239125" duration="26563000" />
       <workItem from="1643530775705" duration="17012000" />
-      <workItem from="1643600191279" duration="2860000" />
+      <workItem from="1643600191279" duration="16013000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -195,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643568969643</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="shimmer extraction to reusable component">
+      <created>1643606403842</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1643606403842</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +235,8 @@
     <MESSAGE value="worker controller, transaction overlay update, wrapper and header syncronization" />
     <MESSAGE value="stackable" />
     <MESSAGE value="provider extension and fix, staking, shimmer" />
-    <option name="LAST_COMMIT_MESSAGE" value="provider extension and fix, staking, shimmer" />
+    <MESSAGE value="shimmer extraction to reusable component" />
+    <option name="LAST_COMMIT_MESSAGE" value="shimmer extraction to reusable component" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

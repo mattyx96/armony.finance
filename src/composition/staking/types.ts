@@ -43,6 +43,7 @@ export interface Stackable {
 
 export interface Staked {
 	receiptAmount: string
+	allowance: bigint
 	boughtAtReceiptValue?: bigint
 	earnings?: string
 	contract: ethers.Contract

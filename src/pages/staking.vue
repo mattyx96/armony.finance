@@ -28,7 +28,7 @@
 				TODO
 			</div>
 		</div>
-		<div class="bg-gradient-to-br to-[#947B9E33] from-[#7989B533] min-h-[32rem] py-12 px-32">
+		<div class="bg-gradient-to-br to-[#947B9E33] from-[#7989B533] min-h-[32rem] py-12 px-32 text-gray-800">
 			<div class="grid grid-cols-9 border">
 				<div class="col-span-9 grid grid-cols-9 px-4">
 					<div class="font-semibold text-sm col-span-3 text-center">
@@ -45,49 +45,97 @@
 					</div>
 					<div class="font-semibold text-sm col-span-1 text-center"></div>
 				</div>
-				<div v-for="(e, i) of stackable" :key="i"
-				     class="bg-gray-50 rounded-xl col-span-9 my-2 grid grid-cols-9 p-4">
-					<div class="font-semibold col-span-3 grid grid-cols-3 gap-2">
-						<div class="flex items-center justify-center relative">
-							<img :src="e.baseCurrency.picture" :alt="e.baseCurrency.name"
-							     class="h-16 w-16 object-contain">
-							<img :src="e.rewardCurrency.picture" :alt="e.rewardCurrency.name"
-							     class="h-8 w-8 object-contain absolute rounded-full bg-orange-400 -top-2 left-1/3
+				<template v-if="stackable.length === 0">
+					<div v-for="(e, i) of Array.from({length: 3}, (v, k) => k)" :key="i"
+					     class="bg-gray-50 rounded-xl col-span-9 my-2 grid grid-cols-9 p-4">
+						<div class="font-semibold col-span-3 grid grid-cols-3 gap-2">
+							<div class="flex items-center justify-center relative">
+								<shimmer text="" :loading="stackable.length === 0"
+								         class="h-16 w-16 rounded-full"></shimmer>
+								<shimmer text="" :loading="stackable.length === 0"
+								         class="h-8 w-8 absolute rounded-full -top-2 left-1/3 -translate-x-1/2"></shimmer>
+							</div>
+							<div class="flex flex-col items-center justify-center">
+								<shimmer text="" :loading="stackable.length === 0"></shimmer>
+							</div>
+							<div class="relative flex flex-col items-center justify-center">
+								<shimmer text="" :loading="stackable.length === 0" class="font-light mx-auto"></shimmer>
+							</div>
+						</div>
+						<div class="font-semibold col-span-2 text-gray-600 flex items-center justify-center">
+							<shimmer :loading="stackable.length === 0" text=""></shimmer>
+						</div>
+						<div class="font-semibold text-lg col-span-1 flex items-center justify-center text-gray-600">
+							<shimmer :loading="stackable.length === 0" text=""></shimmer>
+						</div>
+						<div class="font-semibold col-span-2 flex items-center justify-center text-gray-600">
+							<shimmer :loading="stackable.length === 0" text=""></shimmer>
+						</div>
+						<div class="font-semibold col-span-1"></div>
+					</div>
+				</template>
+				<div v-else class="bg-gray-50 rounded-xl col-span-9 my-2 grid grid-cols-9 p-4">
+					<template v-for="(e, i) of stackable" :key="i">
+						<div class="font-semibold col-span-3 grid grid-cols-3 gap-2">
+							<div class="flex items-center justify-center relative">
+								<img :src="e.baseCurrency.picture" :alt="e.baseCurrency.name"
+								     class="h-16 w-16 object-contain">
+								<img :src="e.rewardCurrency.picture" :alt="e.rewardCurrency.name"
+								     class="h-8 w-8 object-contain absolute rounded-full bg-orange-400 -top-2 left-1/3
 									-translate-x-1/2 p-1">
+							</div>
+							<div class="flex flex-col justify-center">
+								<h4 class="font-semibold flex items-center"
+								    :title="`Stake ${e.baseCurrency.name}`">
+									<i class='bx bxs-coin-stack mr-2'></i>
+									{{ e.baseCurrency.name }}
+								</h4>
+								<h4 class="font-semibold text-xs text-gray-600 flex items-center"
+								    :title="`Earn ${e.rewardCurrency.name}`">
+									<i class='bx bxs-coin mr-2 mt-auto'></i>
+									{{ e.rewardCurrency.name }}
+								</h4>
+							</div>
+							<div class="relative flex flex-col"
+							     :class="!price_loaded ? 'items-center justify-center' : ''">
+								<template v-if="price_loaded">
+									<img v-if="isMeldVariationPositive" :src="arrow" alt="arrow"
+									     class="object-contain left-0 bottom-0 absolute">
+									<img v-else :src="arrow_down" alt="arrow"
+									     class="object-contain left-0 bottom-0 absolute">
+
+									<div class="font-light mx-auto pl-2">{{ gmeldPrice }} $</div>
+									<div class="text-xs mx-auto pl-2" :class="dailyPriceVariationClasses">
+										{{ isMeldVariationPositive ? "+" : "" }}{{ gmeldDailyVariation }} %
+									</div>
+								</template>
+								<shimmer v-else text="" :loading="!price_loaded"></shimmer>
+							</div>
 						</div>
-						<div class="flex flex-col justify-center">
-							<h4 class="font-semibold flex items-center"
-							    :title="`Stake ${e.baseCurrency.name}`">
-								<i class='bx bxs-coin-stack mr-2'></i>
-								{{ e.baseCurrency.name }}
-							</h4>
-							<h4 class="font-semibold text-xs text-gray-600 flex items-center"
-							    :title="`Earn ${e.rewardCurrency.name}`">
-								<i class='bx bxs-coin mr-2 mt-auto'></i>
-								{{ e.rewardCurrency.name }}
-							</h4>
+						<div class="font-semibold col-span-2 text-gray-600 flex items-center justify-center">
+							<template v-if="!staked_ready || staked[i]?.earnings !== undefined">
+								<shimmer :loading="!staked_ready"
+								         :text="`${staked[i]?.earnings} ${e.rewardCurrency.name}`"></shimmer>
+							</template>
+							<template v-else>
+								Historical data not found
+							</template>
 						</div>
-						<div class="relative">
-							<img :src="arrow" alt="arrow" class="object-contain left-0 bottom-0 absolute">
+						<div class="font-semibold text-lg col-span-1 flex items-center justify-center text-gray-600">
+							{{ e.apy }}%
 						</div>
-					</div>
-					<div class="font-semibold col-span-2 text-gray-600 flex items-center justify-center">
-						<template v-if="!staked_ready || staked[i]?.earnings !== undefined">
+						<div class="font-semibold col-span-2 flex items-center justify-center text-gray-600">
 							<shimmer :loading="!staked_ready"
-							         :text="`${staked[i]?.earnings} ${e.rewardCurrency.name}`"></shimmer>
-						</template>
-						<template v-else>
-							Historical values not found
-						</template>
-					</div>
-					<div class="font-semibold text-lg col-span-1 flex items-center justify-center text-gray-600">
-						{{ e.apy }}%
-					</div>
-					<div class="font-semibold col-span-2 flex items-center justify-center text-gray-600">
-						<shimmer :loading="!staked_ready"
-							:text="`${staked[i]?.receiptAmount} ${staked[i]?.ticker}`"></shimmer>
-					</div>
-					<div class="font-semibold col-span-1"></div>
+							         :text="`${staked[i]?.receiptAmount} ${staked[i]?.ticker}`"></shimmer>
+						</div>
+						<div class="font-semibold col-span-1 flex items-center justify-center">
+							<div class="rounded-lg px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer
+								hover:shadow-lg hover:shadow-green-800/20 select-none"
+							     @click="stakeButtonState.method[i]">
+								{{ stakeButtonState.text[i] }}
+							</div>
+						</div>
+					</template>
 				</div>
 			</div>
 		</div>
@@ -113,7 +161,9 @@ import {renderNumber} from "composition/strings";
 import {Stackable, Staked} from "composition/staking/types";
 import {Staking} from "composition/staking";
 import arrow from "@/assets/images/arrow.svg"
+import arrow_down from "@/assets/images/arrow-down.svg"
 import Shimmer from "components/shimmer.vue";
+import Toaster from "composition/toaster";
 
 export default defineComponent({
 	name: "index",
@@ -136,8 +186,13 @@ export default defineComponent({
 		staking_ready: false,
 		stackable: [] as Stackable[],
 		arrow,
+		arrow_down,
 		staked_ready: false,
 		staked: [] as Staked[],
+		price_loaded: false,
+		gmeldPrice: "",
+		gmeldDailyVariation: "",
+		isMeldVariationPositive: true
 	}),
 	methods: {
 		insertMaxMeld() {
@@ -156,6 +211,33 @@ export default defineComponent({
 				this.max_gmeld = renderNumber(amount, 18, 6)
 			})
 		},
+		async approve(id: number) {
+			console.log(id)
+			await WorkerController.init().workAsync(async () => {
+				await Staking.init()
+					.watchTransactionStart(() => {
+						this.overlay.confirmations = this.overlay.time = 0
+						this.overlay.open = true
+					})
+					.watchIsReadyTransactionHash(tx => this.overlay.tx = tx)
+					.watchTransactionConfirmed(() => {
+						// transaction confirmed
+						this.overlay.open = false
+						this.staked[id].allowance = BigInt(`1${"0".repeat(70)}`)
+						// send a notification stating a successful transaction
+						new Toaster({
+							title: `Staking contract approved!`,
+							message: `You have successfully approved this staking contract.`,
+							type: "success"
+						})
+					})
+					.watchTransactionError(err => {
+						this.overlay.open = false
+						new Toaster(err)
+					})
+					.approveStake(id)
+			})
+		}
 	},
 	computed: {
 		bestAPY() {
@@ -163,6 +245,36 @@ export default defineComponent({
 				return +previousValue.apy > +currentValue.apy ? previousValue : currentValue
 			}).apy : "0.00"
 		},
+		dailyPriceVariationClasses() {
+			return this.isMeldVariationPositive ? "text-green-400" : "text-red-400"
+		},
+		isStakeApproved() {
+			return this.staked.map(v => v.allowance >= BigInt(`1${"0".repeat(40)}`))
+		},
+		stakeButtonState() {
+			return {
+				text: this.stackable.map((value, index) => {
+					return this.pending ? "Pending ..." : (
+						this.isConnected ? (
+							this.isStakeApproved[index] ? "Deposit" : "Approve"
+						) : "Connect wallet"
+					)
+				}),
+				method: this.stackable.map((value, index) => {
+					return this.pending ? () => false : (
+						this.isConnected ? (
+							this.isStakeApproved[index] ? () => {
+
+							} : () => {
+								this.approve(index)
+							}
+						) : () => {
+							Provider.init().connectWallet()
+						}
+					)
+				})
+			}
+		}
 	},
 	async created() {
 		Staking.init().onStackingReady.subscribe(() => {
@@ -172,6 +284,13 @@ export default defineComponent({
 		Staking.init().onStackedDataReady.subscribe(() => {
 			this.staked_ready = true
 			this.staked = Staking.init().staked
+		})
+		Staking.init().onPriceDataLoaded.subscribe(({price, dailyChange}) => {
+			this.price_loaded = true
+
+			this.gmeldPrice = price.toFixed(2)
+			this.gmeldDailyVariation = dailyChange.toFixed(2)
+			this.isMeldVariationPositive = dailyChange >= 0
 		})
 		Address.init().watchAddress((v: string): void => {
 			this.connectedAs = !!v ? v : false

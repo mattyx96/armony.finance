@@ -84,6 +84,14 @@ export const initContractInstance = async (
 				provider,
 				connected
 			)
+		case ContractTypes.melodityIco:
+			return loadContract(
+				import.meta.env.DEV ? "0xc652b14fDe48C3d6782FA7FA70a68c52681D3B12" : "0xEde62Ac08D0Be6eF937c7bBda0C171b4c4432214",
+				(await import("@/abi/MelodityIco.json")).default,
+				signer,
+				provider,
+				connected
+			)
 		default:
 			return false
 	}
@@ -149,6 +157,14 @@ export const initCustomContractInstance = async (
 			return loadContract(
 				address,
 				(await import("@/abi/StackingReceipt.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		case ContractTypes.melodityIco:
+			return loadContract(
+				address,
+				(await import("@/abi/MelodityIco.json")).default,
 				signer,
 				provider,
 				connected
