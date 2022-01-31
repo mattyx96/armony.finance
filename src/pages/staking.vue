@@ -18,9 +18,7 @@
 						<br>
 						With Armony you receive up to
 					</span>
-					<span class="p-2 rounded-md" :class="shimmer">
-						{{ bestAPY }} %
-					</span>
+					<shimmer :loading="!staking_ready" :text="`${bestAPY} %`"></shimmer>
 					<span>
 						APY on your stacked cryptocurrencies!
 					</span>
@@ -74,15 +72,9 @@
 						</div>
 					</div>
 					<div class="font-semibold col-span-2 text-gray-600 flex items-center justify-center">
-						<template v-if="!staked_ready">
-							<span class="p-2 rounded-md" :class="stakedShimmer">
-								{{ bestAPY }} %
-							</span>
-						</template>
-						<template v-else-if="staked[i].earnings">
-							<span class="text-green-400">
-								{{ staked[i].earnings }} {{ e.rewardCurrency.name }}
-							</span>
+						<template v-if="!staked_ready || staked[i]?.earnings !== undefined">
+							<shimmer :loading="!staked_ready"
+							         :text="`${staked[i]?.earnings} ${e.rewardCurrency.name}`"></shimmer>
 						</template>
 						<template v-else>
 							Historical values not found
@@ -92,14 +84,8 @@
 						{{ e.apy }}%
 					</div>
 					<div class="font-semibold col-span-2 flex items-center justify-center text-gray-600">
-						<template v-if="!staked_ready">
-							<span class="p-2 rounded-md" :class="stakedShimmer">
-								{{ bestAPY }} %
-							</span>
-						</template>
-						<template v-else>
-							{{ staked[i].receiptAmount }} {{ staked[i].ticker }}
-						</template>
+						<shimmer :loading="!staked_ready"
+							:text="`${staked[i]?.receiptAmount} ${staked[i]?.ticker}`"></shimmer>
 					</div>
 					<div class="font-semibold col-span-1"></div>
 				</div>
@@ -117,7 +103,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import TransactionOverlay from "components/TransactionOverlay.vue";
+import TransactionOverlay from "components/Overlay/TransactionOverlay.vue";
 import {Address} from "composition/address";
 import {WorkerController} from "composition/workerController";
 import {ethers} from "ethers";
@@ -127,10 +113,11 @@ import {renderNumber} from "composition/strings";
 import {Stackable, Staked} from "composition/staking/types";
 import {Staking} from "composition/staking";
 import arrow from "@/assets/images/arrow.svg"
+import Shimmer from "components/shimmer.vue";
 
 export default defineComponent({
 	name: "index",
-	components: {TransactionOverlay},
+	components: {Shimmer, TransactionOverlay},
 	data: () => ({
 		governance: {} as ethers.Contract,
 		isConnected: Address.init().isConnected,
@@ -176,12 +163,6 @@ export default defineComponent({
 				return +previousValue.apy > +currentValue.apy ? previousValue : currentValue
 			}).apy : "0.00"
 		},
-		shimmer() {
-			return !this.staking_ready ? "shimmer mr-2" : ""
-		},
-		stakedShimmer() {
-			return !this.staked_ready ? "shimmer mr-2" : ""
-		}
 	},
 	async created() {
 		Staking.init().onStackingReady.subscribe(() => {

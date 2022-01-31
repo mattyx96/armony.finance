@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/gmeld.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shimmer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/stackable.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/stackable.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/tailwind.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/wallet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/wallet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Overlay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/Overlay.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TransactionOverlay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/TransactionOverlay.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/strings.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/wrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -64,7 +61,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -77,11 +74,11 @@
       <recent name="$PROJECT_DIR$/src/store/modules/web3" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/public/assets" />
       <recent name="$PROJECT_DIR$/src/composition/provider" />
       <recent name="$PROJECT_DIR$/src/composition" />
       <recent name="$PROJECT_DIR$/src/types" />
-      <recent name="$PROJECT_DIR$/src/compatibility" />
     </key>
   </component>
   <component name="RunManager">
@@ -111,7 +108,8 @@
       <workItem from="1643106417384" duration="9334000" />
       <workItem from="1643170087542" duration="25379000" />
       <workItem from="1643441239125" duration="26563000" />
-      <workItem from="1643530775705" duration="16966000" />
+      <workItem from="1643530775705" duration="17012000" />
+      <workItem from="1643600191279" duration="2860000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -190,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643477521703</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="provider extension and fix, staking, shimmer">
+      <created>1643568969643</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1643568969643</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +219,8 @@
     <MESSAGE value="overlay addition, overlay tweaking, provider extension, toaster inclusion, wrapper completion" />
     <MESSAGE value="worker controller, transaction overlay update, wrapper and header syncronization" />
     <MESSAGE value="stackable" />
-    <option name="LAST_COMMIT_MESSAGE" value="stackable" />
+    <MESSAGE value="provider extension and fix, staking, shimmer" />
+    <option name="LAST_COMMIT_MESSAGE" value="provider extension and fix, staking, shimmer" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -79,7 +79,7 @@ import {ContractTypes} from "composition/provider/types";
 import {Provider} from "composition/provider";
 import {Address} from "composition/address";
 import {renderNumber} from "composition/strings";
-import TransactionOverlay from "components/TransactionOverlay.vue"
+import TransactionOverlay from "components/Overlay/TransactionOverlay.vue"
 import Toaster from "composition/toaster";
 import {WorkerController} from "composition/workerController";
 

@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-import Overlay from "components/Overlay.vue";
+import Overlay from "components/Overlay/Overlay.vue";
 
 export default defineComponent({
 	name: "TransactionOverlay",
