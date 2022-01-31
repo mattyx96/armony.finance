@@ -164,10 +164,11 @@ import arrow from "@/assets/images/arrow.svg"
 import arrow_down from "@/assets/images/arrow-down.svg"
 import Shimmer from "components/shimmer.vue";
 import Toaster from "composition/toaster";
+import Modal from "components/Overlay/Modal.vue";
 
 export default defineComponent({
 	name: "index",
-	components: {Shimmer, TransactionOverlay},
+	components: {Modal, Shimmer, TransactionOverlay},
 	data: () => ({
 		governance: {} as ethers.Contract,
 		isConnected: Address.init().isConnected,

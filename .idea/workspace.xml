@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/abi/MelodityIco.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/arrow-down.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Overlay/Modal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +61,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Overlay" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
@@ -75,11 +69,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/composition" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/composition/provider" />
-      <recent name="$PROJECT_DIR$/src/store/modules/web3" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/Overlay" />
@@ -117,7 +111,7 @@
       <workItem from="1643170087542" duration="25379000" />
       <workItem from="1643441239125" duration="26563000" />
       <workItem from="1643530775705" duration="17012000" />
-      <workItem from="1643600191279" duration="16013000" />
+      <workItem from="1643600191279" duration="17089000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -210,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643606403842</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="melodity ico abi inclusion to compute price during ICO, stacking approval">
+      <created>1643649919708</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1643649919708</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +237,8 @@
     <MESSAGE value="stackable" />
     <MESSAGE value="provider extension and fix, staking, shimmer" />
     <MESSAGE value="shimmer extraction to reusable component" />
-    <option name="LAST_COMMIT_MESSAGE" value="shimmer extraction to reusable component" />
+    <MESSAGE value="melodity ico abi inclusion to compute price during ICO, stacking approval" />
+    <option name="LAST_COMMIT_MESSAGE" value="melodity ico abi inclusion to compute price during ICO, stacking approval" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
