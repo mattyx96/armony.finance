@@ -17,7 +17,8 @@
 					<a v-if="!e.meta.hidden">
 						<router-link
 							:to="e.path"
-							class="text-white text-center h-12 px-4 mx-0.5 font-medium flex items-center justify-center md:flex hidden"
+							class="text-white text-center h-12 px-4 mx-0.5 font-medium flex items-center justify-center
+								md:flex hidden"
 							:class="e.active ?
 			                'text-[#F74EFF] underline decoration-4 decoration-[#F74EFF] underline-offset-8'
 			                : 'hover:bg-gray-900 hover:rounded-full'">
@@ -29,8 +30,8 @@
 					<a v-if="elem?.type && elem.type === 'button'" :key="-id" :href="elem.url"
 					   :target="urlsTargets[id].target" :rel="urlsTargets[id].rel"
 					   class="rounded-full h-12 w-auto text-white flex items-center bg-gray-800 shadow-md
-					   transition-all duration-300 hover:shadow-fuchsia-300/50 hover:shadow-lg hover:bg-[#F74EFF] cursor-pointer
-					   select-none w-min md:flex hidden whitespace-nowrap mx-0.5 px-4">
+					   transition-all duration-300 hover:shadow-fuchsia-300/50 hover:shadow-lg hover:bg-[#F74EFF]
+					   cursor-pointer select-none w-min md:flex hidden whitespace-nowrap mx-0.5 px-4">
 						{{ elem.label }}
 					</a>
 					<a v-else :key="id" :href="elem.url" :target="urlsTargets[id].target" :rel="urlsTargets[id].rel"

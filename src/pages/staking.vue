@@ -7,10 +7,12 @@
 
 <template>
 	<div class="flex flex-col">
-		<div class="px-32 py-24 grid grid-cols-2">
+		<div class="px-12 md:px-32 py-24 grid grid-cols-1 md:grid-cols-2">
 			<div>
-				<h1 class="text-5xl font-bold text-[#19191B]">
-					Armony staking
+				<h1 class="text-6xl xl:mt-4 font-bold text-[#19191B]">
+					Armony
+					<br>
+					staking
 				</h1>
 				<h3 class="text-lg font-light mt-8 text-[#696871]">
 					<span class="no">
@@ -24,11 +26,23 @@
 					</span>
 				</h3>
 			</div>
-			<div class="flex flex-col items-center justify-center font-semibold">
-				TODO
+			<div class="flex flex-col font-semibold bg-gradient-to-bl from-[#414A65] to-[#5A4663]
+			    backdrop-filter backdrop-blur py-8 px-4 md:py-8 md:px-4 xl:p-12 w-full xl:w-8/12 mx-auto rounded-[3rem]
+			    text-white mt-8 md:mt-0font-poppins shadow-lg">
+				<p class="text-center text-lg">Total interest earned to date</p>
+				<div class="border-2 py-3 px-6 pt-10 rounded-[2rem] border-gray-400 flex flex-col justify-center
+				        items-start mt-6">
+					<p class="text-[#47D680] font-semibold text-5xl">$6,000.00</p>
+					<span class="self-end font-semibold">MELD</span>
+				</div>
+				<a class="rounded-full h-12 w-full text-gray-700 flex justify-center items-center bg-white
+					   transition-all duration-300 cursor-pointer mt-6
+					   select-none whitespace-nowrap mx-0.5 px-4">
+					View balances
+				</a>
 			</div>
 		</div>
-		<div class="bg-gradient-to-br to-[#947B9E33] from-[#7989B533] min-h-[32rem] py-12 px-32 text-gray-800">
+		<div class="bg-gradient-to-br to-[#947B9E33] from-[#7989B533] min-h-[32rem] py-12 px-2 md:px-32 text-gray-800">
 			<div class="grid grid-cols-9 border">
 				<div class="col-span-9 grid grid-cols-9 px-4">
 					<div class="font-semibold text-sm col-span-3 text-center">
