@@ -232,6 +232,12 @@ export default defineComponent({
 			}
 		});
 
+		//init
+		Address.init().watchAddress((v: string): void => {
+			this.connectedAs = !!v ? v : false
+			this.isConnected = !!v
+		})
+
 		const refreshRoutes = () => {
 			// reset the urls
 			this.local_urls = []

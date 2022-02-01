@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import {defineComponent} from "vue/dist/vue";
+import {defineComponent} from "vue";
 
 export default defineComponent({
 	name: "l-body"
