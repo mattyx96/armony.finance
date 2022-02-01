@@ -6,8 +6,8 @@
   -->
 
 <template>
-	<overlay :open="open">
-		<div class="min-h-[4rem] m-auto" :class="[modalSize, modalRounding, background]">
+	<overlay :open="open" @click="close">
+		<div class="min-h-[4rem] m-auto" :class="[modalSize, modalRounding, background]" @click.stop>
 			<slot></slot>
 		</div>
 	</overlay>
@@ -41,17 +41,22 @@ export default defineComponent({
 			default: "lg",
 		}
 	},
+	methods: {
+		close() {
+			this.$emit("update:open", false)
+		}
+	},
 	computed: {
 		modalSize() {
 			switch (this.size) {
 				case "xs":
-					return "w-16"
-				case "sm":
 					return "w-32"
-				case "md":
+				case "sm":
 					return "w-64"
-				case "lg":
+				case "md":
 					return "w-96"
+				case "lg":
+					return "w-1/3"
 				case "xl":
 					return "w-1/2"
 				case "full":

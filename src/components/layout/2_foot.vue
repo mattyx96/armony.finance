@@ -53,8 +53,9 @@
 
 <script>
 import {footer} from "composition/footer";
+import {defineComponent} from "vue/dist/vue";
 
-export default {
+export default defineComponent({
 	name: "l-foot",
 	data: () => ({
 
@@ -64,7 +65,7 @@ export default {
 			...footer(),
 		}
 	},
-}
+})
 </script>
 
 <style scoped>

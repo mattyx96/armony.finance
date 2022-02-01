@@ -28,7 +28,7 @@ export default defineComponent({
 		}
 	},
 	data: () => ({
-		placeholder: randomString(10)
+		placeholder: "O".repeat(10)
 	}),
 	computed: {
 		shimmer() {

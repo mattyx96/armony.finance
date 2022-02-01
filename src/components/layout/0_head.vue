@@ -115,7 +115,7 @@
 <script lang="ts">
 import {urls} from "composition/header";
 import routes from "~pages"
-import {watch} from "vue";
+import {defineComponent, watch} from "vue";
 import {RouteMeta} from "vue-router";
 import {capitalize} from "@/composition/strings";
 import {Address} from "composition/address";
@@ -128,7 +128,7 @@ interface navigationUrl {
 	meta?: RouteMeta
 }
 
-export default {
+export default defineComponent({
 	name: "head2",
 	data: () => ({
 		scroll: {
@@ -261,7 +261,7 @@ export default {
 			}
 		)
 	}
-}
+})
 </script>
 
 <style scoped>

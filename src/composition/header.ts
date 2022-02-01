@@ -23,12 +23,12 @@ export function urls() {
                 url: "https://do-inc.co/team",
                 label: "Team",
                 external: true,
-            }),*/
+            }),
             reactive({
                 url: "https://docsend.com/view/fpxvfwmhtnq38gi6",
                 label: "Whitepaper",
                 external: true,
-            }),
+            }),*/
             reactive({
                 url: "/signin",
                 label: "Sign In",

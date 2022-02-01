@@ -153,6 +153,7 @@
 				</div>
 			</div>
 		</div>
+		<modal-staking-deposit v-model:open="depositModal.isOpen"></modal-staking-deposit>
 
 		<transaction-overlay
 			v-bind="overlay"
@@ -179,10 +180,11 @@ import arrow_down from "@/assets/images/arrow-down.svg"
 import Shimmer from "components/shimmer.vue";
 import Toaster from "composition/toaster";
 import Modal from "components/Overlay/Modal.vue";
+import ModalStakingDeposit from "components/Overlay/ModalStakingDeposit.vue";
 
 export default defineComponent({
 	name: "index",
-	components: {Modal, Shimmer, TransactionOverlay},
+	components: {ModalStakingDeposit, Modal, Shimmer, TransactionOverlay},
 	data: () => ({
 		governance: {} as ethers.Contract,
 		isConnected: Address.init().isConnected,
@@ -207,7 +209,10 @@ export default defineComponent({
 		price_loaded: false,
 		gmeldPrice: "",
 		gmeldDailyVariation: "",
-		isMeldVariationPositive: true
+		isMeldVariationPositive: true,
+		depositModal: {
+			isOpen: true
+		}
 	}),
 	methods: {
 		insertMaxMeld() {
