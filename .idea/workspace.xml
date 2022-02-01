@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Overlay/Modal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/1_bsc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/2_bscscan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/3_cmc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/4_coingecko.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/certik.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/interfi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layout/head2.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/footer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/header.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/2_foot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/2_foot.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="Vue Single File Component" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -29,13 +43,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value=".*" />
-      </list>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,16 +68,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Overlay" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
+      <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/src/composition" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/composition/provider" />
@@ -84,12 +95,13 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+    <configuration name="dev --host" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
       </scripts>
+      <arguments value="--host" />
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
@@ -219,6 +231,17 @@
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />

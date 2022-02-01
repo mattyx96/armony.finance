@@ -7,7 +7,8 @@
 
 <template>
 	<div class="min-h-screen">
-		<l-head></l-head>
+<!--		<l-head></l-head>-->
+		<h-e-a-d2></h-e-a-d2>
 		<l-body>
 			<slot></slot>
 		</l-body>
@@ -19,10 +20,11 @@
 import LHead from "@/components/layout/0_head";
 import LBody from "@/components/layout/1_body";
 import LFoot from "@/components/layout/2_foot";
+import HEAD2 from "@/components/layout/head2";
 
 export default {
 	name: "layout",
-	components: {LFoot, LBody, LHead},
+	components: {LFoot, LBody, LHead, HEAD2},
 }
 </script>
 
