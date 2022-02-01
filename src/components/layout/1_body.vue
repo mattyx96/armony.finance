@@ -12,9 +12,11 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from "vue/dist/vue";
+
+export default defineComponent({
 	name: "l-body"
-}
+})
 </script>
 
 <style scoped>

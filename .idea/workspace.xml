@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/CONTRATTO GOONIES.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/1_bsc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/2_bscscan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/3_cmc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/4_coingecko.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/certik.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/featured/interfi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layout/head2.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/footer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composition/header.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Overlay/Modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/Modal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shimmer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shimmer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/2_foot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/2_foot.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="Vue Single File Component" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -34,13 +43,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value=".*" />
-      </list>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -66,16 +68,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Overlay" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
+      <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/src/composition" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/composition/provider" />
@@ -89,12 +95,13 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+    <configuration name="dev --host" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
       </scripts>
+      <arguments value="--host" />
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
@@ -116,8 +123,7 @@
       <workItem from="1643170087542" duration="25379000" />
       <workItem from="1643441239125" duration="26563000" />
       <workItem from="1643530775705" duration="17012000" />
-      <workItem from="1643600191279" duration="17256000" />
-      <workItem from="1643694779472" duration="5614000" />
+      <workItem from="1643600191279" duration="17089000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -217,14 +223,7 @@
       <option name="project" value="LOCAL" />
       <updated>1643649919708</updated>
     </task>
-    <task id="LOCAL-00015" summary="modal skeleton">
-      <created>1643651028056</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1643651028056</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +231,17 @@
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -251,8 +261,7 @@
     <MESSAGE value="provider extension and fix, staking, shimmer" />
     <MESSAGE value="shimmer extraction to reusable component" />
     <MESSAGE value="melodity ico abi inclusion to compute price during ICO, stacking approval" />
-    <MESSAGE value="modal skeleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="modal skeleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="melodity ico abi inclusion to compute price during ICO, stacking approval" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
