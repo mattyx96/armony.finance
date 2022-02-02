@@ -63,7 +63,7 @@
 					<div class="flex flex-col mt-4">
 						<label class="font-bold text-sm mb-2">
 							Stakable NFTs
-							<sup class="text-xs">1,2</sup>
+							<sup class="text-[0.6em]">1,2</sup>
 						</label>
 						<div class="flex flex-col">
 							<div v-for="(e, i) of ownedNFT" :key="i"
@@ -82,11 +82,15 @@
 									<table>
 										<tbody>
 										<tr>
-											<th>gMELD staking bonus</th>
+											<td>
+												gMELD staking bonus
+											</td>
 											<td>{{ e.bonus.meldToMeld }}</td>
 										</tr>
 										<tr>
-											<th>Exotic staking bonus</th>
+											<td>
+												Exotic staking bonus
+											</td>
 											<td>{{ e.bonus.toMeld }}</td>
 										</tr>
 										</tbody>
@@ -95,13 +99,14 @@
 							</div>
 						</div>
 					</div>
-					<ol class="list-decimal text-sm text-gray-500">
+					<ol class="list-decimal list-inside text-sm text-gray-500 px-2 mt-3">
 						<li>
 							Paired staking will result in a higher number of receipt received for the staking of a given amount
 							of {{ baseCurrencyTicker }}.
 						</li>
 						<li>
-							An NFT staked can be withdrawn only once all the receipt token .
+							An NFT staked can be withdrawn only once all the receipt tokens received during the staking
+							gets withdrawn, multiple small part withdrawn gets cumulated.
 						</li>
 					</ol>
 

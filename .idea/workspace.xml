@@ -2,13 +2,187 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-0e911e.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-0e911e.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-46adb8.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-46adb8.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-6b2783.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-6b2783.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-791c40.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-791c40.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-af6df3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-brands-400-af6df3.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-0e911e.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-0e911e.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-180707.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-180707.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-548601.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-548601.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-5bd1b2.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-5bd1b2.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-791c40.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-791c40.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-882569.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-882569.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-972b33.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-972b33.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-af6df3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-af6df3.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-b276a4.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-b276a4.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-c635b8.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-c635b8.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-c69c5d.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-c69c5d.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-d5bbe9.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-d5bbe9.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-edb9e6.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-edb9e6.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-ee9a34.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-ee9a34.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-f2eb46.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-f2eb46.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-f7aaa1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-duotone-900-f7aaa1.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-0e911e.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-0e911e.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-180707.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-180707.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-548601.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-548601.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-5bd1b2.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-5bd1b2.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-791c40.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-791c40.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-882569.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-882569.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-972b33.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-972b33.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-af6df3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-af6df3.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-b276a4.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-b276a4.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-c635b8.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-c635b8.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-c69c5d.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-c69c5d.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-d5bbe9.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-d5bbe9.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-edb9e6.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-edb9e6.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-ee9a34.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-ee9a34.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-f2eb46.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-f2eb46.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-f7aaa1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-light-300-f7aaa1.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-0e911e.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-0e911e.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-180707.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-180707.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-548601.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-548601.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-5bd1b2.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-5bd1b2.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-791c40.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-791c40.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-882569.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-882569.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-972b33.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-972b33.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-af6df3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-af6df3.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-b276a4.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-b276a4.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-c635b8.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-c635b8.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-c69c5d.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-c69c5d.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-d5bbe9.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-d5bbe9.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-edb9e6.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-edb9e6.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-ee9a34.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-ee9a34.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-f2eb46.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-f2eb46.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-f7aaa1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-regular-400-f7aaa1.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-0e911e.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-0e911e.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-180707.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-180707.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-548601.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-548601.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-5bd1b2.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-5bd1b2.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-791c40.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-791c40.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-882569.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-882569.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-972b33.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-972b33.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-af6df3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-af6df3.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-b276a4.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-b276a4.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-c635b8.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-c635b8.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-c69c5d.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-c69c5d.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-d5bbe9.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-d5bbe9.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-edb9e6.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-edb9e6.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-ee9a34.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-ee9a34.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-f2eb46.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-f2eb46.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-f7aaa1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-solid-900-f7aaa1.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-0e911e.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-0e911e.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-180707.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-180707.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-548601.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-548601.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-5bd1b2.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-5bd1b2.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-791c40.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-791c40.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-882569.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-882569.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-972b33.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-972b33.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-af6df3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-af6df3.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-b276a4.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-b276a4.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-c635b8.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-c635b8.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-c69c5d.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-c69c5d.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-d5bbe9.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-d5bbe9.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-edb9e6.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-edb9e6.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-ee9a34.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-ee9a34.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-f2eb46.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-f2eb46.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-f7aaa1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-thin-100-f7aaa1.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-v4compatibility.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/webfonts/pro-fa-v4compatibility.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/pro-v4-font-face.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/pro-v4-shims.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/pro-v5-font-face.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/pro.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shimmer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shimmer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +242,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Overlay" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
@@ -76,18 +250,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets" />
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/composition" />
-      <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/composition/provider" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/public/assets" />
       <recent name="$PROJECT_DIR$/src/composition/provider" />
       <recent name="$PROJECT_DIR$/src/composition" />
-      <recent name="$PROJECT_DIR$/src/types" />
     </key>
   </component>
   <component name="RunManager">
@@ -122,7 +296,7 @@
       <workItem from="1643694779472" duration="5687000" />
       <workItem from="1643749006854" duration="213000" />
       <workItem from="1643749470713" duration="353000" />
-      <workItem from="1643779025412" duration="6629000" />
+      <workItem from="1643779025412" duration="11076000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -236,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643745906744</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="modal staking fix and update">
+      <created>1643789327350</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1643789327350</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +446,8 @@
     <MESSAGE value="melodity ico abi inclusion to compute price during ICO, stacking approval" />
     <MESSAGE value="modal skeleton" />
     <MESSAGE value="modal staking deposit, shimmer update" />
-    <option name="LAST_COMMIT_MESSAGE" value="modal staking deposit, shimmer update" />
+    <MESSAGE value="modal staking fix and update" />
+    <option name="LAST_COMMIT_MESSAGE" value="modal staking fix and update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
