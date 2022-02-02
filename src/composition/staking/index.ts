@@ -321,10 +321,6 @@ export class Staking {
 		}
 	}
 
-	public loadBaseCurrency(id: number) {
-
-	}
-
 	public watchTransactionStart(callback: () => void): Staking {
 		this._transactionStarted.one(callback)
 
