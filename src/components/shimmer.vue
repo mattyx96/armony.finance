@@ -7,13 +7,22 @@
 
 <template>
 	<span class="p-2 rounded-md mr-2 select-none" :class="shimmer">
-		{{ content }}
+		<template v-if="!loading">
+			<template v-if="text !== undefined">
+				{{ text }}
+			</template>
+			<template v-else>
+				<slot></slot>
+			</template>
+		</template>
+		<template v-else>
+			{{ placeholder }}
+		</template>
 	</span>
 </template>
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import {randomString} from "composition/strings";
 
 export default defineComponent({
 	name: "shimmer",
@@ -24,7 +33,6 @@ export default defineComponent({
 		},
 		text: {
 			type: String as PropType<string>,
-			required: true
 		}
 	},
 	data: () => ({
@@ -33,9 +41,6 @@ export default defineComponent({
 	computed: {
 		shimmer() {
 			return this.loading ? "shimmer" : ""
-		},
-		content() {
-			return this.loading ? this.placeholder : this.text
 		}
 	}
 })

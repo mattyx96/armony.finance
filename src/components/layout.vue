@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts">
-import LHead from "@/components/layout/0_head";
-import LBody from "@/components/layout/1_body";
-import LFoot from "@/components/layout/2_foot";
+import LHead from "components/layout/0_head";
+import LBody from "components/layout/1_body";
+import LFoot from "components/layout/2_foot";
 
 export default {
 	name: "layout",

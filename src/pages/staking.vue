@@ -153,7 +153,11 @@
 				</div>
 			</div>
 		</div>
-		<modal-staking-deposit v-model:open="depositModal.isOpen"></modal-staking-deposit>
+		<modal-staking-deposit v-model:open="depositModal.isOpen"
+		                       :base-currency-contract-address="depositModal.baseCurrencyContractAddress"
+		                       :receipt-value="depositModal.receiptValue"
+		                       :base-currency-ticker="depositModal.ticker"
+		></modal-staking-deposit>
 
 		<transaction-overlay
 			v-bind="overlay"
@@ -211,8 +215,11 @@ export default defineComponent({
 		gmeldDailyVariation: "",
 		isMeldVariationPositive: true,
 		depositModal: {
-			isOpen: true
-		}
+			isOpen: false,
+			receiptValue: 0n,
+			baseCurrencyContractAddress: "",
+			ticker: "",
+		},
 	}),
 	methods: {
 		insertMaxMeld() {
@@ -232,7 +239,6 @@ export default defineComponent({
 			})
 		},
 		async approve(id: number) {
-			console.log(id)
 			await WorkerController.init().workAsync(async () => {
 				await Staking.init()
 					.watchTransactionStart(() => {
@@ -257,6 +263,12 @@ export default defineComponent({
 					})
 					.approveStake(id)
 			})
+		},
+		deposit(id: number) {
+			this.depositModal.receiptValue = this.stackable[id].receiptValue
+			this.depositModal.baseCurrencyContractAddress = this.stackable[id].baseCurrency.contract
+			this.depositModal.ticker = this.stackable[id].baseCurrency.name
+			this.depositModal.isOpen = true
 		}
 	},
 	computed: {
@@ -284,7 +296,7 @@ export default defineComponent({
 					return this.pending ? () => false : (
 						this.isConnected ? (
 							this.isStakeApproved[index] ? () => {
-
+								this.deposit(index)
 							} : () => {
 								this.approve(index)
 							}

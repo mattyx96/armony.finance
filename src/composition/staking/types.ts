@@ -50,6 +50,16 @@ export interface Staked {
 	ticker: string
 }
 
+export interface StackingPanda {
+	id: number
+	name: string
+	picUrl: string
+	bonus: {
+		meldToMeld: string
+		toMeld: string
+	}
+}
+
 export enum ABI {
 	__MELODITY_STACKING__
 }
