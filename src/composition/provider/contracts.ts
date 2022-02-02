@@ -30,7 +30,7 @@ export const initContractInstance = async (
 	switch (contract_type) {
 		case ContractTypes.masterchef:
 			return loadContract(
-				import.meta.env.DEV ? "0xe23Ca2E8Ea4dEbCf586174F546E566Ceb1c2c18C" : "",
+				import.meta.env.DEV ? "0x637f37eB10Cf22b3f35f988e56bee0ec25318AF7" : "",
 				(await import("@/abi/Masterchef.json")).default,
 				signer,
 				provider,
@@ -46,7 +46,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.melodityGovernance:
 			return loadContract(
-				import.meta.env.DEV ? "0xc65003e7e1EF83181Fa8a679451f57A828FE4Faf" : "",
+				import.meta.env.DEV ? "0x02D016FDc5C64315EF9B75CDaf8cfFEB144FAb6e" : "",
 				(await import("@/abi/MelodityGovernance.json")).default,
 				signer,
 				provider,
@@ -62,7 +62,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stacking:
 			return loadContract(
-				import.meta.env.DEV ? "0x340475897b3645a8d8CEbdd68717540dECb10Dd7" : "",
+				import.meta.env.DEV ? "0xAb6735D3129e0116a29Bab1eb9A8cEEca55d91DE" : "",
 				(await import("@/abi/MelodityStacking.json")).default,
 				signer,
 				provider,
@@ -70,7 +70,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stackingPanda:
 			return loadContract(
-				import.meta.env.DEV ? "0xd77C549e33EDFB09D6Dc86652314F0F0015836DF" : "",
+				import.meta.env.DEV ? "0x712D12E3ff0F15f6b519bd04DBbE03fC577dac4E" : "",
 				(await import("@/abi/StackingPanda.json")).default,
 				signer,
 				provider,
@@ -78,7 +78,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stackingReceipt:
 			return loadContract(
-				import.meta.env.DEV ? "0x5Efa012ED32fFE60B189a1FC67C14aD69fc70Fa7" : "",
+				import.meta.env.DEV ? "0x7DE8226Ade12A2f876099A3b057630b7AA40A9a4" : "",
 				(await import("@/abi/StackingReceipt.json")).default,
 				signer,
 				provider,

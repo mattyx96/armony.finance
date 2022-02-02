@@ -175,8 +175,8 @@ export default defineComponent({
 					this.overlay.open = false
 					// an error occurred, show an error message and go on
 					new Toaster({
-						code: `${e.code}.${e.data.code}`,
-						message: `${e.message.replace(".", "")}: ${e.data.message}`,
+						code: `${e.code}.${e?.data?.code || 0}`,
+						message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
 					})
 				}
 			})
@@ -204,8 +204,8 @@ export default defineComponent({
 					this.overlay.open = false
 					// an error occurred, show an error message and go on
 					new Toaster({
-						code: `${e.code}.${e.data.code}`,
-						message: `${e.message.replace(".", "")}: ${e.data.message}`,
+						code: `${e.code}.${e?.data?.code || 0}`,
+						message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
 					})
 				}
 			})
@@ -240,7 +240,7 @@ export default defineComponent({
 			}
 		}
 	},
-	async created() {
+	created() {
 		Address.init().watchAddress((v: string): void => {
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
@@ -251,6 +251,10 @@ export default defineComponent({
 			() => this.pending = true,
 			() => this.pending = false
 		)
+		try {
+			this.load()
+		} catch (e) {
+		}
 	}
 })
 </script>

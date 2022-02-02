@@ -157,6 +157,7 @@
 		                       :base-currency-contract-address="depositModal.baseCurrencyContractAddress"
 		                       :receipt-value="depositModal.receiptValue"
 		                       :base-currency-ticker="depositModal.ticker"
+		                       :stake-contract-address="depositModal.stakeContractAddress"
 		></modal-staking-deposit>
 
 		<transaction-overlay
@@ -219,6 +220,7 @@ export default defineComponent({
 			receiptValue: 0n,
 			baseCurrencyContractAddress: "",
 			ticker: "",
+			stakeContractAddress: "",
 		},
 	}),
 	methods: {
@@ -268,6 +270,7 @@ export default defineComponent({
 			this.depositModal.receiptValue = this.stackable[id].receiptValue
 			this.depositModal.baseCurrencyContractAddress = this.stackable[id].baseCurrency.contract
 			this.depositModal.ticker = this.stackable[id].baseCurrency.name
+			this.depositModal.stakeContractAddress = this.stackable[id].contract.address
 			this.depositModal.isOpen = true
 		}
 	},
@@ -308,7 +311,7 @@ export default defineComponent({
 			}
 		}
 	},
-	async created() {
+	created() {
 		Staking.init().onStackingReady.subscribe(() => {
 			this.staking_ready = true
 			this.stackable = Staking.init().stackable

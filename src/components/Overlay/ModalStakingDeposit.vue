@@ -39,7 +39,8 @@
 						</div>
 					</div>
 					<div class="mx-auto px-3 py-2 mt-4 rounded-bl-3xl rounded-tr-3xl border border-green-500 transition-all
-						duration-300 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 hover:bg-green-500">
+						duration-300 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 hover:bg-green-500"
+					     @click="deposit">
 						Deposit
 					</div>
 				</div>
@@ -101,7 +102,8 @@
 					</div>
 					<ol class="list-decimal list-inside text-sm text-gray-500 px-2 mt-3">
 						<li>
-							Paired staking will result in a higher number of receipt received for the staking of a given amount
+							Paired staking will result in a higher number of receipt received for the staking of a given
+							amount
 							of {{ baseCurrencyTicker }}.
 						</li>
 						<li>
@@ -111,12 +113,20 @@
 					</ol>
 
 					<div class="mx-auto px-3 py-2 mt-4 rounded-tl-3xl rounded-br-3xl border border-green-500 transition-all
-						duration-300 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 hover:bg-green-500">
-						Deposit
+						duration-300 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 hover:bg-green-500"
+					     @click="NFTDepositState.action">
+						{{ NFTDepositState.text }}
 					</div>
 				</div>
 			</template>
 		</div>
+
+		<transaction-overlay
+			v-bind="overlay"
+			v-model:open="overlay.open"
+			v-model:time="overlay.time"
+			v-model:confirmations="overlay.confirmations"
+		/>
 	</modal>
 </template>
 
@@ -130,10 +140,13 @@ import {ContractTypes} from "composition/provider/types";
 import {renderNumber} from "composition/strings";
 import {Address} from "composition/address";
 import {StackingPanda} from "composition/staking/types";
+import {WorkerController} from "composition/workerController";
+import Toaster from "composition/toaster";
+import TransactionOverlay from "components/Overlay/TransactionOverlay.vue";
 
 export default defineComponent({
 	name: "ModalStakingDeposit",
-	components: {Shimmer, Modal},
+	components: {TransactionOverlay, Shimmer, Modal},
 	emits: [
 		"update:open",
 	],
@@ -152,6 +165,10 @@ export default defineComponent({
 		baseCurrencyTicker: {
 			type: String as PropType<string>,
 			required: true
+		},
+		stakeContractAddress: {
+			type: String as PropType<string>,
+			required: true
 		}
 	},
 	data: () => ({
@@ -160,6 +177,7 @@ export default defineComponent({
 		max: "",
 		baseCurrency: {} as ethers.Contract,
 		stakingPanda: {} as ethers.Contract,
+		stake: {} as ethers.Contract,
 		ownedNFT: [{
 			id: 0,
 			name: "test-name",
@@ -169,6 +187,15 @@ export default defineComponent({
 				toMeld: "0.44"
 			}
 		}] as StackingPanda[],
+		NFTDepositApproved: false,
+		selectedNFT: -1,
+		overlay: {
+			open: false,
+			confirmations: 0,
+			tx: "",
+			time: 0,
+			interval: -1
+		},
 	}),
 	methods: {
 		close(ev: boolean) {
@@ -182,6 +209,118 @@ export default defineComponent({
 		},
 		async retrieveMax() {
 			this.max = renderNumber(await this.baseCurrency.balanceOf(Address.init().connectedAs))
+		},
+		async checkNFTDepositApproved() {
+			this.NFTDepositApproved = (await this.stakingPanda.getApproved(this.selectedNFT)) === this.stake.address
+		},
+		async approveNFTDeposit() {
+			await WorkerController.init().workAsync(async () => {
+				this.overlay.confirmations = this.overlay.time = 0
+				this.overlay.open = true
+				try {
+					let tx: ethers.providers.TransactionResponse = await this.stakingPanda.approve(this.stake.address, this.selectedNFT)
+					this.overlay.tx = tx.hash
+					let receipt: ethers.providers.TransactionReceipt = await tx.wait()
+
+					// transaction confirmed
+					this.overlay.open = false
+					// send a notification stating a successful transaction
+					new Toaster({
+						title: `NFT staking approved!`,
+						message: `You have successfully approved the staking of your NFT #${this.selectedNFT}.`,
+						type: "success"
+					})
+				} catch (e: any) {
+					this.overlay.open = false
+					// an error occurred, show an error message and go on
+					new Toaster({
+						code: `${e.code}.${e?.data?.code || 0}`,
+						message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
+					})
+				}
+			})
+		},
+		async deposit() {
+			await WorkerController.init().workAsync(async () => {
+				// parse the number
+				let [integer, decimal] = this.depositAmount.split(".")
+				integer = integer.replaceAll(",", "")
+				if (decimal) {
+					decimal = decimal.padEnd(18, "0")
+				}
+
+				let amount = `${integer}${decimal ?? ""}`
+
+				this.overlay.confirmations = this.overlay.time = 0
+				this.overlay.open = true
+				try {
+					let tx: ethers.providers.TransactionResponse = await this.stake.deposit(amount/*, {
+						gasLimit: 175000,
+						gasPrice: 10_000_000_000,
+					}*/)
+					this.overlay.tx = tx.hash
+					let receipt: ethers.providers.TransactionReceipt = await tx.wait()
+
+					// transaction confirmed
+					this.overlay.open = false
+					// send a notification stating a successful transaction
+					new Toaster({
+						title: `Staking completed!`,
+						message: `You have successfully staked ${this.depositAmount} $${this.baseCurrencyTicker}!`,
+						type: "success"
+					})
+
+					await this.retrieveMax()
+					this.depositAmount = ""
+				} catch (e: any) {
+					console.log(e)
+					this.overlay.open = false
+					// an error occurred, show an error message and go on
+					new Toaster({
+						code: `${e.code}.${e?.data?.code || 0}`,
+						message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
+					})
+				}
+			})
+		},
+		async depositWithNFT() {
+			await WorkerController.init().workAsync(async () => {
+				// parse the number
+				let [integer, decimal] = this.depositAmount.split(".")
+				integer = integer.replaceAll(",", "")
+				if (decimal) {
+					decimal = decimal.padEnd(18, "0")
+				}
+
+				let amount = `${integer}${decimal ?? ""}`
+
+				this.overlay.confirmations = this.overlay.time = 0
+				this.overlay.open = true
+				try {
+					let tx: ethers.providers.TransactionResponse = await this.stake.depositWithNFT(amount, this.selectedNFT)
+					this.overlay.tx = tx.hash
+					let receipt: ethers.providers.TransactionReceipt = await tx.wait()
+
+					// transaction confirmed
+					this.overlay.open = false
+					// send a notification stating a successful transaction
+					new Toaster({
+						title: `Staking completed!`,
+						message: `You have successfully staked ${this.depositAmount} $${this.baseCurrencyTicker} + Stacking Panda #${this.selectedNFT}!`,
+						type: "success"
+					})
+
+					await this.retrieveMax()
+					this.depositAmount = ""
+				} catch (e: any) {
+					this.overlay.open = false
+					// an error occurred, show an error message and go on
+					new Toaster({
+						code: `${e.code}.${e?.data?.code || 0}`,
+						message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
+					})
+				}
+			})
 		}
 	},
 	computed: {
@@ -193,7 +332,20 @@ export default defineComponent({
 		},
 		isLoadingMax() {
 			return this.max === ""
-		}
+		},
+		NFTDepositState() {
+			return this.NFTDepositApproved ? {
+				text: "Deposit",
+				action: () => {
+					this.depositWithNFT()
+				}
+			} : {
+				text: "Approve",
+				action: () => {
+					this.approveNFTDeposit()
+				}
+			}
+		},
 	},
 	watch: {
 		async open(n) {
@@ -204,34 +356,41 @@ export default defineComponent({
 					await this.retrieveMax()
 				}
 			}
+			if (n) {
+				let res = await Provider.init().loadContract(ContractTypes.stacking)
+				if (res) {
+					this.stake = res
+					await this.retrieveMax()
+				}
+			}
+
+			let res = await Provider.init().loadContract(ContractTypes.stackingPanda)
+			if (this.stakingPanda?.address === undefined && res) {
+				this.stakingPanda = res
+			}
 
 			if (this.ownedNFT.length === 0) {
-				let res = await Provider.init().loadContract(ContractTypes.stackingPanda)
-				if (res) {
-					this.stakingPanda = res
+				for (let i = 0; i < 100; i++) {
+					try {
+						let addr = await this.stakingPanda.ownerOf(i)
 
-					for (let i = 0; i < 100; i++) {
-						try {
-							let addr = await this.stakingPanda.ownerOf(i)
-
-							if (addr === Address.init().connectedAs) {
-								let metadata_raw = await this.stakingPanda.metadata(i)
-								this.ownedNFT.push({
-									id: i,
-									name: metadata_raw["name"],
-									picUrl: metadata_raw["picUrl"],
-									bonus: {
-										toMeld: renderNumber(metadata_raw["toMeld"], 18, 2),
-										meldToMeld: renderNumber(metadata_raw["meldToMeld"], 18, 2)
-									}
-								})
-							}
-						} catch (e) {
-							// generates error for missing nft id (not yet generated) print it in the console and
-							// continue as normal
-							console.log(e)
-							break
+						if (addr === Address.init().connectedAs) {
+							let metadata_raw = await this.stakingPanda.metadata(i)
+							this.ownedNFT.push({
+								id: i,
+								name: metadata_raw["name"],
+								picUrl: metadata_raw["picUrl"],
+								bonus: {
+									toMeld: renderNumber(metadata_raw["toMeld"], 18, 2),
+									meldToMeld: renderNumber(metadata_raw["meldToMeld"], 18, 2)
+								}
+							})
 						}
+					} catch (e) {
+						// generates error for missing nft id (not yet generated) print it in the console and
+						// continue as normal
+						console.log(e)
+						break
 					}
 				}
 			}

@@ -14,7 +14,6 @@ import {ISignal, ISimpleEvent, SignalDispatcher, SimpleEventDispatcher} from "st
 import {ethers} from "ethers";
 import {Address} from "composition/address";
 import {renderNumber} from "composition/strings";
-import Toaster from "composition/toaster";
 
 export class Staking {
 	private _stackable: Stackable[] = []
