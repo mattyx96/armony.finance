@@ -14,7 +14,6 @@ import {ISignal, ISimpleEvent, SignalDispatcher, SimpleEventDispatcher} from "st
 import {ethers} from "ethers";
 import {Address} from "composition/address";
 import {renderNumber} from "composition/strings";
-import Toaster from "composition/toaster";
 
 export class Staking {
 	private _stackable: Stackable[] = []
@@ -57,6 +56,10 @@ export class Staking {
 		return this._instance
 	}
 
+	/**
+	 * Parse and validate the STACKABLE array
+	 * @private
+	 */
 	private parse() {
 		STACKABLE.forEach(async v => {
 			const rex = new RegExp(/^0x[0-9a-fA-f]{40}$/)
@@ -148,6 +151,7 @@ export class Staking {
 						stackable.receiptValue = BigInt((await res.poolInfo())["receiptValue"].toString())
 					}
 
+					// computes the APY using the latest data and extending them to a full year
 					let growth_factor: bigint =
 						stackable.epoch.rewardScaleFactor * stackable.receiptValue / __PERCENT_SCALE__
 					let apr = growth_factor * __EPOCH_PER_YEAR__
@@ -155,8 +159,7 @@ export class Staking {
 					stackable.apy = (((1 + +`0.${daily_apr.toString().padStart(18, "0")}`) ** 365 - 1) * 100).toFixed(2)
 
 					this._stackable.push(stackable)
-					this.loadStakedData().then(() => {
-					})
+					this.loadStakedData().then(() => false)
 				}
 			} else {
 				this._invalidStackableFound.dispatchAsync(v)
@@ -166,6 +169,11 @@ export class Staking {
 		})
 	}
 
+	/**
+	 * Inject the signer into all the instances of the stackable contracts
+	 * @private
+	 * @emits _signerInjected
+	 */
 	private injectSigner() {
 		this._stackable = this._stackable.map((value): Stackable => {
 			value.contract.connect(Provider.init().signer as ethers.providers.JsonRpcSigner)
@@ -177,6 +185,11 @@ export class Staking {
 		this.loadStakedData().then(() => false)
 	}
 
+	/**
+	 * Check if all the stackable data got retrieved and updates the counter
+	 * @private
+	 * @emits _stackingReady
+	 */
 	private checkIfReady() {
 		this._completedParsingUnits++
 
@@ -185,6 +198,11 @@ export class Staking {
 		}
 	}
 
+	/**
+	 * Check if all the staked data got retrieved and updates the counter
+	 * @private
+	 * @emits _stakedReady
+	 */
 	private checkIfStakedReady() {
 		this._completedStakingUnits++
 
@@ -193,18 +211,51 @@ export class Staking {
 		}
 	}
 
+	/**
+	 * Load the data of a stake using on-chain data
+	 * @private
+	 */
 	private async loadStakedData(): Promise<void> {
+		// check if a wallet is connected, if it is not data cannot be retrieved
 		if (Provider.init().signer) {
+			// as this method is called each time a stake load ends the current stake is the last completed one
 			let current_stake = this._stackable[this._completedStakingUnits]
+			// retrieve the stacking receipt address from the contract
 			let staking_receipt_address = await current_stake.contract.stackingReceipt()
+
+			// finally init an empty instance of the return type
 			let stake = {} as Staked
 
-			let res = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, staking_receipt_address)
-			if (res) {
-				stake.contract = res
-				stake.receiptAmount = renderNumber(await stake.contract.balanceOf(Address.init().connectedAs))
-				stake.ticker = await stake.contract.symbol()
-				stake.allowance = BigInt((await stake.contract.allowance(
+			// load the staking receipt contract
+			let result_receipt_token = await Provider.init()
+				.loadCustomContract(
+					ContractTypes.stackingReceipt,
+					staking_receipt_address
+				)
+
+			// load the base currency used for deposit
+			let result_base_currency = await Provider.init()
+				.loadCustomContract(
+					// here any ABI that implements ERC20 is ok, we only need a few ERC20 methods
+					ContractTypes.melodityGovernance,
+					current_stake.baseCurrency.contract
+				)
+
+			// check that the contract are actually initialized with real values
+			if (result_receipt_token && result_base_currency) {
+				// load the contract instance and a few useful information into the stake
+				stake.contract = result_receipt_token
+				stake.receiptAmount = renderNumber(await result_receipt_token.balanceOf(Address.init().connectedAs))
+				stake.ticker = await result_receipt_token.symbol()
+
+				// loads the receipt allowance into the stake, this value is used during withdraw
+				stake.withdrawAllowance = BigInt((await result_receipt_token.allowance(
+					Address.init().connectedAs,
+					current_stake.contract.address
+				)).toString())
+
+				// load the base currency allowance into the stake, this value is used during deposit
+				stake.allowance = BigInt((await result_base_currency.allowance(
 					Address.init().connectedAs,
 					current_stake.contract.address
 				)).toString())
@@ -217,11 +268,17 @@ export class Staking {
 		}
 	}
 
+	/**
+	 * Load the price data and 24h variation from coingecko.
+	 * NOTE: This actually displays only the gMELD data and computes them from the ICO if not ended yet
+	 * @private
+	 */
 	private async loadPriceData(): Promise<void> {
 		const bnb_usd = "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd&include_24hr_change=true"
-		const meld_usd_bnb = "https://api.coingecko.com/api/v3/simple/price?ids=melodity&vs_currencies=usd&include_24hr_change=true"
+		const meld_usd = "https://api.coingecko.com/api/v3/simple/price?ids=melodity&vs_currencies=usd&include_24hr_change=true"
 
-		let response = await fetch(meld_usd_bnb)
+		// retrieve data from the gMELD-USD pair
+		let response = await fetch(meld_usd)
 		let json: any = undefined
 
 		if (response.ok) {
@@ -291,27 +348,60 @@ export class Staking {
 		)[0]
 	}
 
-	public async approveStake(id: number): Promise<void> {
+	public async approveStakeDeposit(id: number): Promise<void> {
 		const innerMethod = async () => {
 			this._transactionStarted.dispatchAsync()
 			try {
-				let stake = this._staked[id].contract
-				let stackable = this._stackable[id].contract
-				let amount = `1${"0".repeat(70)}`
+				let result_base_currency = await Provider.init().loadCustomContract(ContractTypes.melodityGovernance, this._stackable[id].baseCurrency.contract)
+				if(result_base_currency) {
+					let amount = `1${"0".repeat(70)}`
 
-				let tx: ethers.providers.TransactionResponse = await stake.approve(stackable.address, amount)
-				this._transactionHash.dispatchAsync(tx.hash)
+					let tx: ethers.providers.TransactionResponse = await result_base_currency.approve(this._stackable[id].contract.address, amount)
+					this._transactionHash.dispatchAsync(tx.hash)
 
-				let receipt: ethers.providers.TransactionReceipt = await tx.wait(2)
-				this._transactionReceipt.dispatchAsync(receipt)
+					let receipt: ethers.providers.TransactionReceipt = await tx.wait(2)
+					this._transactionReceipt.dispatchAsync(receipt)
 
-				// transaction confirmed
-				// send a notification stating a successful transaction
-				this._transactionConfirmed.dispatchAsync()
+					// transaction confirmed
+					// send a notification stating a successful transaction
+					this._transactionConfirmed.dispatchAsync()
+				}
 			} catch (e: any) {
 				this._transactionError.dispatchAsync({
 					code: `${e.code}.${e?.data?.code || 0}`,
-					message: `${e.message.replace(".", "")}: ${e.data.message}`
+					message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
+				})
+			}
+		}
+
+		if(this._staked.length > id && this._stackable.length > id && this._staked.length === this._stackable.length) {
+			await innerMethod()
+		}
+	}
+
+	public async approveStakeWithdraw(id: number): Promise<void> {
+		const innerMethod = async () => {
+			this._transactionStarted.dispatchAsync()
+			try {
+				let receipt_address = await this._stackable[id].contract.stackingReceipt()
+				let result_receipt = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, receipt_address)
+				if(result_receipt) {
+					let amount = `1${"0".repeat(70)}`
+
+					let tx: ethers.providers.TransactionResponse = await result_receipt.approve(this._stackable[id].contract.address, amount)
+					this._transactionHash.dispatchAsync(tx.hash)
+
+					let receipt: ethers.providers.TransactionReceipt = await tx.wait(2)
+					this._transactionReceipt.dispatchAsync(receipt)
+
+					// transaction confirmed
+					// send a notification stating a successful transaction
+					this._transactionConfirmed.dispatchAsync()
+				}
+			} catch (e: any) {
+				this._transactionError.dispatchAsync({
+					code: `${e.code}.${e?.data?.code || 0}`,
+					message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
 				})
 			}
 		}

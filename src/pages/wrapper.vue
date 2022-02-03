@@ -125,15 +125,17 @@ export default defineComponent({
 					}
 				}
 
-				let amount = await this.melodity.balanceOf(this.connectedAs)
-				this.max_meld = renderNumber(amount, 18, 18)
-
-				let allowance = "0",
-					required = `1${"0".repeat(40)}`
 				if (this.isConnected) {
+					let amount = await this.melodity.balanceOf(this.connectedAs)
+					this.max_meld = renderNumber(amount, 18, 18)
+
+					let allowance = "0",
+						required = `1${"0".repeat(40)}`
+
 					allowance = (await this.melodity.allowance(this.connectedAs, this.governance.address)).toString()
+
+					this.approved = BigInt(allowance) >= BigInt(required)
 				}
-				this.approved = BigInt(allowance) >= BigInt(required)
 			})
 		},
 		async wrap() {
@@ -175,8 +177,8 @@ export default defineComponent({
 					this.overlay.open = false
 					// an error occurred, show an error message and go on
 					new Toaster({
-						code: `${e.code}.${e.data.code}`,
-						message: `${e.message.replace(".", "")}: ${e.data.message}`,
+						code: `${e.code}.${e?.data?.code || 0}`,
+						message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
 					})
 				}
 			})
@@ -204,8 +206,8 @@ export default defineComponent({
 					this.overlay.open = false
 					// an error occurred, show an error message and go on
 					new Toaster({
-						code: `${e.code}.${e.data.code}`,
-						message: `${e.message.replace(".", "")}: ${e.data.message}`,
+						code: `${e.code}.${e?.data?.code || 0}`,
+						message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
 					})
 				}
 			})
@@ -240,7 +242,7 @@ export default defineComponent({
 			}
 		}
 	},
-	async created() {
+	created() {
 		Address.init().watchAddress((v: string): void => {
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
@@ -251,6 +253,10 @@ export default defineComponent({
 			() => this.pending = true,
 			() => this.pending = false
 		)
+		try {
+			this.load()
+		} catch (e) {
+		}
 	}
 })
 </script>

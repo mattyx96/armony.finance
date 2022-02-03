@@ -9,8 +9,11 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import {router} from "./router"
 
-import "./assets/tailwind.css"
-import 'boxicons/css/boxicons.min.css'
+import "@/assets/tailwind.css"
+import "@/assets/pro.css"
+import "@/assets/pro-v5-font-face.css"
+import "@/assets/pro-v4-shims.css"
+import "@/assets/pro-v4-font-face.css"
 
 const app = createApp(App)
 	.use(router)

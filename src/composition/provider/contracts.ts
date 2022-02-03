@@ -28,14 +28,6 @@ export const initContractInstance = async (
 	connected: boolean
 ): Promise<ethers.Contract | false> => {
 	switch (contract_type) {
-		case ContractTypes.masterchef:
-			return loadContract(
-				import.meta.env.DEV ? "0xe23Ca2E8Ea4dEbCf586174F546E566Ceb1c2c18C" : "",
-				(await import("@/abi/Masterchef.json")).default,
-				signer,
-				provider,
-				connected
-			)
 		case ContractTypes.melodity:
 			return loadContract(
 				import.meta.env.DEV ? "0x5EaA8Be0ebe73C0B6AdA8946f136B86b92128c55" : "",
@@ -44,17 +36,33 @@ export const initContractInstance = async (
 				provider,
 				connected
 			)
+		case ContractTypes.masterchef:
+			return loadContract(
+				import.meta.env.DEV ? "0x0073528162cb70d95A9A4b750E1B775Ffd8B0740" : "",
+				(await import("@/abi/Masterchef.json")).default,
+				signer,
+				provider,
+				connected
+			)
 		case ContractTypes.melodityGovernance:
 			return loadContract(
-				import.meta.env.DEV ? "0xc65003e7e1EF83181Fa8a679451f57A828FE4Faf" : "",
+				import.meta.env.DEV ? "0xBF7aA2dFdAAB4f6746659A615E632cf46dE94764" : "",
 				(await import("@/abi/MelodityGovernance.json")).default,
+				signer,
+				provider,
+				connected
+			)
+		case ContractTypes.stackingPanda:
+			return loadContract(
+				import.meta.env.DEV ? "0x8934d232BeE00fdF0b582283A7EE3C31f8559088" : "",
+				(await import("@/abi/StackingPanda.json")).default,
 				signer,
 				provider,
 				connected
 			)
 		case ContractTypes.marketplace:
 			return loadContract(
-				import.meta.env.DEV ? "0x1070c8cb887124ec8871bAd67a5B3560dC7b5Ba2" : "",
+				import.meta.env.DEV ? "0x875e68CB55bC2f4F45f32134cBDA01F54A182Ff3" : "",
 				(await import("@/abi/Marketplace.json")).default,
 				signer,
 				provider,
@@ -62,23 +70,15 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stacking:
 			return loadContract(
-				import.meta.env.DEV ? "0x340475897b3645a8d8CEbdd68717540dECb10Dd7" : "",
+				import.meta.env.DEV ? "0x7F4f2179F58e27eef6282069414a9e983b166B1e" : "",
 				(await import("@/abi/MelodityStacking.json")).default,
-				signer,
-				provider,
-				connected
-			)
-		case ContractTypes.stackingPanda:
-			return loadContract(
-				import.meta.env.DEV ? "0xd77C549e33EDFB09D6Dc86652314F0F0015836DF" : "",
-				(await import("@/abi/StackingPanda.json")).default,
 				signer,
 				provider,
 				connected
 			)
 		case ContractTypes.stackingReceipt:
 			return loadContract(
-				import.meta.env.DEV ? "0x5Efa012ED32fFE60B189a1FC67C14aD69fc70Fa7" : "",
+				import.meta.env.DEV ? "0x31d404e105c390fe3FA09A306855e7F828E7EDec" : "",
 				(await import("@/abi/StackingReceipt.json")).default,
 				signer,
 				provider,

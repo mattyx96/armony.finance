@@ -1,3 +1,10 @@
+<!--
+  - Copyright (C) 2022 Do inc. - All Rights Reserved
+  - Unauthorized copying of this file, via any medium is strictly prohibited
+  - Proprietary and confidential
+  - Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
+  -->
+
 <template>
 	<header
 		class="w-full flex font-poppins transition-all duration-300 bg-black"
@@ -51,7 +58,7 @@
 				     :class="connectionButton.classes">
 					<div class="h-12 w-12 rounded-full text-gray-100 bg-[#2EC56A] border border-[#2EC56A] flex
 						items-center justify-center group-hover:shadow-md hover:shadow-green-300/50 flex-shrink-0">
-						<i class="bx bx-wallet text-2xl"></i>
+						<i class="fa-duotone fa-wallet"></i>
 					</div>
 					<p class="truncate font-poppins px-2 text-white">
 						<template v-if="isConnected">
