@@ -12,22 +12,22 @@
 				cursor-pointer"
 			     :class="selectedTabClasses.standard"
 			     @click="switchDepositMode(false)">
-				Plain deposit
+				Plain withdraw
 			</div>
 			<div class="flex items-center justify-center font-semibold text-lg transition-all duration-300
 				cursor-pointer"
 			     :class="selectedTabClasses.withNFT"
 			     @click="switchDepositMode(true)">
-				Deposit with NFT
+				Withdraw with NFT
 			</div>
 		</div>
 		<div class="p-4 text-gray-800">
 			<template v-if="!isNFTDeposit">
 				<div class="flex flex-col">
 					<div class="flex items-center justify-center">
-						<label class="font-bold text-sm">Deposit amount</label>
+						<label class="font-bold text-sm">Withdraw amount</label>
 						<shimmer class="text-xs ml-auto" :loading="isLoadingMax">
-							{{ max }} {{ baseCurrencyTicker }}
+							{{ max }} {{ receiptTicker }}
 						</shimmer>
 					</div>
 					<div class="flex items-center justify-center p-1 mt-1">
@@ -40,17 +40,17 @@
 					</div>
 					<div class="mx-auto px-3 py-2 mt-4 rounded-bl-3xl rounded-tr-3xl border border-green-500 transition-all
 						duration-300 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 hover:bg-green-500"
-					     @click="deposit">
-						Deposit
+					     @click="withdraw">
+						Withdraw
 					</div>
 				</div>
 			</template>
 			<template v-else>
 				<div class="flex flex-col">
 					<div class="flex items-center justify-center">
-						<label class="font-bold text-sm">Deposit amount</label>
+						<label class="font-bold text-sm">Withdraw amount</label>
 						<shimmer class="text-xs ml-auto" :loading="isLoadingMax">
-							{{ max }} {{ baseCurrencyTicker }}
+							{{ max }} {{ receiptTicker }}
 						</shimmer>
 					</div>
 					<div class="flex items-center justify-center p-1 mt-1">
@@ -63,59 +63,41 @@
 					</div>
 					<div class="flex flex-col mt-4">
 						<label class="font-bold text-sm mb-2">
-							Stakable NFTs
+							Withdrawable NFTs
 							<sup class="text-[0.6em]">1,2</sup>
 						</label>
 						<div class="flex flex-col">
-							<div v-for="(e, i) of ownedNFT" :key="i"
+							<div v-for="(e, i) of depositedNFTs" :key="i"
 							     class="border rounded-md shadow shadow-blue-800/20 transition-all
 									duration-300 p-2 w-full flex flex-col hover:shadow-lg">
 								<div class="flex flex-col items-center justify-center">
 									<div class="rounded-full h-32 w-32 mx-auto flex">
-										<img :src="e.picUrl" :alt="`NFT #${e.id} pic`" class="object-contain m-auto">
+										<img :src="e.picUrl" :alt="`NFT #${e.nftId} pic`" class="object-contain m-auto">
 									</div>
 									<div class="capitalize mt-2 mb-4">
 										{{ e.name }}
 									</div>
-								</div>
-								<div class="">
-									Stats
-									<table>
-										<tbody>
-										<tr>
-											<td>
-												gMELD staking bonus
-											</td>
-											<td>{{ e.bonus.meldToMeld }}</td>
-										</tr>
-										<tr>
-											<td>
-												Exotic staking bonus
-											</td>
-											<td>{{ e.bonus.toMeld }}</td>
-										</tr>
-										</tbody>
-									</table>
+									<div class="">
+										yet to withdraw with this nft: {{ e.stackedAmount }}
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<ol class="list-decimal list-inside text-sm text-gray-500 px-2 mt-3">
 						<li>
-							Paired staking will result in a higher number of receipt received for the staking of a given
-							amount
-							of {{ baseCurrencyTicker }}.
-						</li>
-						<li>
 							An NFT staked can be withdrawn only once all the receipt tokens received during the staking
 							gets withdrawn, multiple small part withdrawn gets cumulated.
+						</li>
+						<li>
+							NFT will be automatically withdrawn during the withdraw of receipts via this panel.
 						</li>
 					</ol>
 
 					<div class="mx-auto px-3 py-2 mt-4 rounded-tl-3xl rounded-br-3xl border border-green-500 transition-all
 						duration-300 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 hover:bg-green-500"
-					     @click="NFTDepositState.action">
-						{{ NFTDepositState.text }}
+					     @click="withdrawWithNFT">
+						Withdraw
 					</div>
 				</div>
 			</template>
@@ -139,13 +121,13 @@ import {Provider} from "composition/provider";
 import {ContractTypes} from "composition/provider/types";
 import {renderNumber} from "composition/strings";
 import {Address} from "composition/address";
-import {StackingPanda} from "composition/staking/types";
+import {StackingPanda, StakedNFT} from "composition/staking/types";
 import {WorkerController} from "composition/workerController";
 import Toaster from "composition/toaster";
 import TransactionOverlay from "components/Overlay/TransactionOverlay.vue";
 
 export default defineComponent({
-	name: "ModalStakingDeposit",
+	name: "ModalStakingWithdraw",
 	components: {TransactionOverlay, Shimmer, Modal},
 	emits: [
 		"update:open",
@@ -154,11 +136,11 @@ export default defineComponent({
 		open: {
 			type: Boolean as PropType<boolean>,
 		},
-		baseCurrencyContractAddress: {
+		receiptContractAddress: {
 			type: String as PropType<string>,
 			required: true
 		},
-		baseCurrencyTicker: {
+		receiptTicker: {
 			type: String as PropType<string>,
 			required: true
 		},
@@ -171,19 +153,16 @@ export default defineComponent({
 		isNFTDeposit: false,
 		depositAmount: "",
 		max: "",
-		baseCurrency: {} as ethers.Contract,
+		receipt: {} as ethers.Contract,
 		stakingPanda: {} as ethers.Contract,
 		stake: {} as ethers.Contract,
-		ownedNFT: [{
-			id: 0,
+		depositedNFTs: [{
+			nftId: 0,
+			stackedAmount: "1.00",
+			index: 0,
 			name: "test-name",
 			picUrl: "https://img.search.brave.com/UtPSCPZ_rFtwL0y2xGObk_PB8FR_ZxTCgFpMI66Sc30/rs:fit:1024:696:1/g:ce/aHR0cHM6Ly9ub3Rp/emlhaW50ZXJpc3Rh/Lml0L3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIwLzEwL2VyYmEt/Z2F0dGEtMTAyNHg2/OTYuanBn",
-			bonus: {
-				meldToMeld: "1.25",
-				toMeld: "0.44"
-			}
-		}] as StackingPanda[],
-		NFTDepositApproved: false,
+		}] as StakedNFT[],
 		selectedNFT: -1,
 		overlay: {
 			open: false,
@@ -204,39 +183,9 @@ export default defineComponent({
 			this.depositAmount = this.max
 		},
 		async retrieveMax() {
-			this.max = renderNumber(await this.baseCurrency.balanceOf(Address.init().connectedAs))
+			this.max = renderNumber(await this.receipt.balanceOf(Address.init().connectedAs))
 		},
-		async checkNFTDepositApproved() {
-			this.NFTDepositApproved = (await this.stakingPanda.getApproved(this.selectedNFT)) === this.stake.address
-		},
-		async approveNFTDeposit() {
-			await WorkerController.init().workAsync(async () => {
-				this.overlay.confirmations = this.overlay.time = 0
-				this.overlay.open = true
-				try {
-					let tx: ethers.providers.TransactionResponse = await this.stakingPanda.approve(this.stake.address, this.selectedNFT)
-					this.overlay.tx = tx.hash
-					let receipt: ethers.providers.TransactionReceipt = await tx.wait(2)
-
-					// transaction confirmed
-					this.overlay.open = false
-					// send a notification stating a successful transaction
-					new Toaster({
-						title: `NFT staking approved!`,
-						message: `You have successfully approved the staking of your NFT #${this.selectedNFT}.`,
-						type: "success"
-					})
-				} catch (e: any) {
-					this.overlay.open = false
-					// an error occurred, show an error message and go on
-					new Toaster({
-						code: `${e.code}.${e?.data?.code || 0}`,
-						message: `${e.message.replace(".", "")}${e?.data?.message !== undefined ? `: ${e.data.message}` : ""}`,
-					})
-				}
-			})
-		},
-		async deposit() {
+		async withdraw() {
 			await WorkerController.init().workAsync(async () => {
 				// parse the number
 				let [integer, decimal] = this.depositAmount.split(".")
@@ -250,16 +199,16 @@ export default defineComponent({
 				this.overlay.confirmations = this.overlay.time = 0
 				this.overlay.open = true
 				try {
-					let tx: ethers.providers.TransactionResponse = await this.stake.deposit(amount)
+					let tx: ethers.providers.TransactionResponse = await this.stake.withdraw(amount)
 					this.overlay.tx = tx.hash
-					let receipt: ethers.providers.TransactionReceipt = await tx.wait(2)
+					let receipt: ethers.providers.TransactionReceipt = await tx.wait()
 
 					// transaction confirmed
 					this.overlay.open = false
 					// send a notification stating a successful transaction
 					new Toaster({
-						title: `Staking completed!`,
-						message: `You have successfully staked ${this.depositAmount} $${this.baseCurrencyTicker}!`,
+						title: `Withdraw completed!`,
+						message: `You have successfully withdrawn ${this.depositAmount} $${this.receiptTicker}!`,
 						type: "success"
 					})
 
@@ -276,7 +225,7 @@ export default defineComponent({
 				}
 			})
 		},
-		async depositWithNFT() {
+		async withdrawWithNFT() {
 			await WorkerController.init().workAsync(async () => {
 				// parse the number
 				let [integer, decimal] = this.depositAmount.split(".")
@@ -290,7 +239,7 @@ export default defineComponent({
 				this.overlay.confirmations = this.overlay.time = 0
 				this.overlay.open = true
 				try {
-					let tx: ethers.providers.TransactionResponse = await this.stake.depositWithNFT(amount, this.selectedNFT)
+					let tx: ethers.providers.TransactionResponse = await this.stake.withdrawWithNFT(amount, this.depositedNFTs[this.selectedNFT].index)
 					this.overlay.tx = tx.hash
 					let receipt: ethers.providers.TransactionReceipt = await tx.wait(2)
 
@@ -298,8 +247,8 @@ export default defineComponent({
 					this.overlay.open = false
 					// send a notification stating a successful transaction
 					new Toaster({
-						title: `Staking completed!`,
-						message: `You have successfully staked ${this.depositAmount} $${this.baseCurrencyTicker} + Stacking Panda #${this.selectedNFT}!`,
+						title: `Withdraw completed!`,
+						message: `You have successfully withdrawn ${this.depositAmount} $${this.receiptTicker}!`,
 						type: "success"
 					})
 
@@ -327,15 +276,10 @@ export default defineComponent({
 			return this.max === ""
 		},
 		NFTDepositState() {
-			return this.NFTDepositApproved ? {
-				text: "Deposit",
+			return {
+				text: "Withdraw",
 				action: () => {
-					this.depositWithNFT()
-				}
-			} : {
-				text: "Approve",
-				action: () => {
-					this.approveNFTDeposit()
+					this.withdrawWithNFT()
 				}
 			}
 		},
@@ -343,9 +287,9 @@ export default defineComponent({
 	watch: {
 		async open(n) {
 			if (n) {
-				let res = await Provider.init().loadCustomContract(ContractTypes.melodityGovernance, this.baseCurrencyContractAddress)
+				let res = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, this.receiptContractAddress)
 				if (res) {
-					this.baseCurrency = res
+					this.receipt = res
 					await this.retrieveMax()
 				}
 			}
@@ -362,23 +306,20 @@ export default defineComponent({
 				this.stakingPanda = res
 			}
 
-			if (this.ownedNFT.length === 0) {
+			if (this.depositedNFTs.length === 0) {
 				for (let i = 0; i < 100; i++) {
 					try {
-						let addr = await this.stakingPanda.ownerOf(i)
+						let stackedNFT_raw = await this.stake.stackedNFTs(Address.init().connectedAs, i)
+						let stakedNFT = {
+							nftId: stackedNFT_raw["nftId"],
+							stackedAmount: renderNumber(stackedNFT_raw["stackedAmount"]),
+							index: i
+						} as StakedNFT
 
-						if (addr === Address.init().connectedAs) {
-							let metadata_raw = await this.stakingPanda.metadata(i)
-							this.ownedNFT.push({
-								id: i,
-								name: metadata_raw["name"],
-								picUrl: metadata_raw["picUrl"],
-								bonus: {
-									toMeld: renderNumber(metadata_raw["toMeld"], 18, 2),
-									meldToMeld: renderNumber(metadata_raw["meldToMeld"], 18, 2)
-								}
-							})
-						}
+						let metadata_raw = await this.stakingPanda.metadata(stakedNFT.nftId)
+						stakedNFT.name = metadata_raw["name"]
+						stakedNFT.picUrl = metadata_raw["picUrl"]
+						this.depositedNFTs.push(stakedNFT)
 					} catch (e) {
 						// generates error for missing nft id (not yet generated) print it in the console and
 						// continue as normal

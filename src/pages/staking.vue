@@ -143,8 +143,13 @@
 							         :text="`${staked[i]?.receiptAmount} ${staked[i]?.ticker}`"></shimmer>
 						</div>
 						<div class="font-semibold col-span-1 flex items-center justify-center">
+							<div v-if="isConnected" class="rounded-lg px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer
+								hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto"
+							     @click="withdrawButtonState.method[i]">
+								{{ withdrawButtonState.text[i] }}
+							</div>
 							<div class="rounded-lg px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer
-								hover:shadow-lg hover:shadow-green-800/20 select-none"
+								hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto"
 							     @click="stakeButtonState.method[i]">
 								{{ stakeButtonState.text[i] }}
 							</div>
@@ -155,10 +160,14 @@
 		</div>
 		<modal-staking-deposit v-model:open="depositModal.isOpen"
 		                       :base-currency-contract-address="depositModal.baseCurrencyContractAddress"
-		                       :receipt-value="depositModal.receiptValue"
 		                       :base-currency-ticker="depositModal.ticker"
 		                       :stake-contract-address="depositModal.stakeContractAddress"
 		></modal-staking-deposit>
+		<modal-staking-withdraw v-model:open="withdrawModal.isOpen"
+		                        :receipt-contract-address="withdrawModal.receiptContractAddress"
+		                        :receipt-ticker="withdrawModal.receiptTicker"
+		                        :stake-contract-address="withdrawModal.stakeContractAddress">
+		</modal-staking-withdraw>
 
 		<transaction-overlay
 			v-bind="overlay"
@@ -186,10 +195,11 @@ import Shimmer from "components/shimmer.vue";
 import Toaster from "composition/toaster";
 import Modal from "components/Overlay/Modal.vue";
 import ModalStakingDeposit from "components/Overlay/ModalStakingDeposit.vue";
+import ModalStakingWithdraw from "components/Overlay/ModalStakingWithdraw.vue";
 
 export default defineComponent({
 	name: "index",
-	components: {ModalStakingDeposit, Modal, Shimmer, TransactionOverlay},
+	components: {ModalStakingWithdraw, ModalStakingDeposit, Modal, Shimmer, TransactionOverlay},
 	data: () => ({
 		governance: {} as ethers.Contract,
 		isConnected: Address.init().isConnected,
@@ -217,9 +227,14 @@ export default defineComponent({
 		isMeldVariationPositive: true,
 		depositModal: {
 			isOpen: false,
-			receiptValue: 0n,
 			baseCurrencyContractAddress: "",
 			ticker: "",
+			stakeContractAddress: "",
+		},
+		withdrawModal: {
+			isOpen: false,
+			receiptContractAddress: "",
+			receiptTicker: "",
 			stakeContractAddress: "",
 		},
 	}),
@@ -252,10 +267,11 @@ export default defineComponent({
 						// transaction confirmed
 						this.overlay.open = false
 						this.staked[id].allowance = BigInt(`1${"0".repeat(70)}`)
+
 						// send a notification stating a successful transaction
 						new Toaster({
-							title: `Staking contract approved!`,
-							message: `You have successfully approved this staking contract.`,
+							title: `Deposit approved!`,
+							message: `You have successfully approved deposits to this staking contract.`,
 							type: "success"
 						})
 					})
@@ -263,16 +279,48 @@ export default defineComponent({
 						this.overlay.open = false
 						new Toaster(err)
 					})
-					.approveStake(id)
+					.approveStakeDeposit(id)
 			})
 		},
 		deposit(id: number) {
-			this.depositModal.receiptValue = this.stackable[id].receiptValue
 			this.depositModal.baseCurrencyContractAddress = this.stackable[id].baseCurrency.contract
 			this.depositModal.ticker = this.stackable[id].baseCurrency.name
 			this.depositModal.stakeContractAddress = this.stackable[id].contract.address
 			this.depositModal.isOpen = true
-		}
+		},
+		withdraw(id: number) {
+			this.withdrawModal.receiptContractAddress = this.staked[id].contract.address
+			this.withdrawModal.receiptTicker = this.staked[id].ticker
+			this.withdrawModal.stakeContractAddress = this.stackable[id].contract.address
+			this.withdrawModal.isOpen = true
+		},
+		async approveWithdraw(id: number) {
+			await WorkerController.init().workAsync(async () => {
+				await Staking.init()
+					.watchTransactionStart(() => {
+						this.overlay.confirmations = this.overlay.time = 0
+						this.overlay.open = true
+					})
+					.watchIsReadyTransactionHash(tx => this.overlay.tx = tx)
+					.watchTransactionConfirmed(() => {
+						// transaction confirmed
+						this.overlay.open = false
+						this.staked[id].withdrawAllowance = BigInt(`1${"0".repeat(70)}`)
+
+						// send a notification stating a successful transaction
+						new Toaster({
+							title: `Withdraw approved!`,
+							message: `You have successfully approved withdrawn from this staking contract.`,
+							type: "success"
+						})
+					})
+					.watchTransactionError(err => {
+						this.overlay.open = false
+						new Toaster(err)
+					})
+					.approveStakeWithdraw(id)
+			})
+		},
 	},
 	computed: {
 		bestAPY() {
@@ -285,6 +333,9 @@ export default defineComponent({
 		},
 		isStakeApproved() {
 			return this.staked.map(v => v.allowance >= BigInt(`1${"0".repeat(40)}`))
+		},
+		isWithdrawApproved() {
+			return this.staked.map(v => v.withdrawAllowance >= BigInt(`1${"0".repeat(40)}`))
 		},
 		stakeButtonState() {
 			return {
@@ -302,6 +353,30 @@ export default defineComponent({
 								this.deposit(index)
 							} : () => {
 								this.approve(index)
+							}
+						) : () => {
+							Provider.init().connectWallet()
+						}
+					)
+				})
+			}
+		},
+		withdrawButtonState() {
+			return {
+				text: this.stackable.map((value, index) => {
+					return this.pending ? "Pending ..." : (
+						this.isConnected ? (
+							this.isWithdrawApproved[index] ? "Withdraw" : "Approve withdraw"
+						) : "Connect wallet"
+					)
+				}),
+				method: this.stackable.map((value, index) => {
+					return this.pending ? () => false : (
+						this.isConnected ? (
+							this.isWithdrawApproved[index] ? () => {
+								this.withdraw(index)
+							} : () => {
+								this.approveWithdraw(index)
 							}
 						) : () => {
 							Provider.init().connectWallet()

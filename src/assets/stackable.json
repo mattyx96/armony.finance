@@ -2,11 +2,11 @@
 	{
 		"abi": "__MELODITY_STACKING__",
 		"baseCurrency": {
-			"contract": "0x02D016FDc5C64315EF9B75CDaf8cfFEB144FAb6e",
+			"contract": "0xBF7aA2dFdAAB4f6746659A615E632cf46dE94764",
 			"name": "gMELD",
 			"picture": "/assets/gmeld.png"
 		},
-		"contract": "0xAb6735D3129e0116a29Bab1eb9A8cEEca55d91DE",
+		"contract": "0x7F4f2179F58e27eef6282069414a9e983b166B1e",
 		"epoch": {
 			"currentEpoch": "__RETRIEVE__",
 			"epochDuration": "__RETRIEVE__",
@@ -20,7 +20,7 @@
 		},
 		"receiptValue": "__RETRIEVE__",
 		"rewardCurrency": {
-			"contract": "0x02D016FDc5C64315EF9B75CDaf8cfFEB144FAb6e",
+			"contract": "0xBF7aA2dFdAAB4f6746659A615E632cf46dE94764",
 			"name": "gMELD",
 			"picture": "/assets/gmeld.png"
 		}

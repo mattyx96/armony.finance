@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingWithdraw.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/stackable.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/stackable.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/0_head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/0_head.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/staking/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/wrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
     </list>
@@ -70,17 +71,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Overlay" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/public/assets" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/composition" />
     </key>
@@ -124,7 +125,8 @@
       <workItem from="1643694779472" duration="5687000" />
       <workItem from="1643749006854" duration="213000" />
       <workItem from="1643749470713" duration="353000" />
-      <workItem from="1643779025412" duration="17401000" />
+      <workItem from="1643779025412" duration="17577000" />
+      <workItem from="1643862723776" duration="14579000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -252,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643817258194</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="new contracts, modal staking deposit to test">
+      <created>1643825330335</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1643825330335</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +292,8 @@
     <MESSAGE value="modal staking deposit, shimmer update" />
     <MESSAGE value="modal staking fix and update" />
     <MESSAGE value="fa" />
-    <option name="LAST_COMMIT_MESSAGE" value="fa" />
+    <MESSAGE value="new contracts, modal staking deposit to test" />
+    <option name="LAST_COMMIT_MESSAGE" value="new contracts, modal staking deposit to test" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

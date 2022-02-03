@@ -44,6 +44,7 @@ export interface Stackable {
 export interface Staked {
 	receiptAmount: string
 	allowance: bigint
+	withdrawAllowance: bigint
 	boughtAtReceiptValue?: bigint
 	earnings?: string
 	contract: ethers.Contract
@@ -58,6 +59,14 @@ export interface StackingPanda {
 		meldToMeld: string
 		toMeld: string
 	}
+}
+
+export interface StakedNFT {
+	stackedAmount: string
+	nftId: number
+	index: number
+	name: string
+	picUrl: string
 }
 
 export enum ABI {
