@@ -256,8 +256,12 @@ export default defineComponent({
 					this.governance = result
 				}
 
-				let amount = await this.governance.balanceOf(this.connectedAs)
-				this.max_gmeld = renderNumber(amount, 18, 6)
+				if(this.isConnected) {
+					let amount = await this.governance.balanceOf(this.connectedAs)
+					this.max_gmeld = renderNumber(amount, 18, 6)
+				}
+
+				await Staking.init().loadPriceData()
 			})
 		},
 		handleReceiptValueUpdate(receipt: bigint) {
@@ -391,14 +395,13 @@ export default defineComponent({
 			return this.stackable.map(value => renderNumber(value.receiptValue))
 		}
 	},
-	mounted() {
+	created() {
 		Staking.init().onStackingReady.subscribe(() => {
 			this.staking_ready = true
 			this.stackable = Staking.init().stackable
 
 			Staking.init().stackable.forEach((value, index) => {
 				value.contract.on("ReceiptValueUpdate", args => {
-					console.log("[event] ReceiptValueUpdate", args)
 					this.stackable[index].receiptValue = BigInt(args.toString())
 				})
 			})
@@ -418,13 +421,23 @@ export default defineComponent({
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
 
-
 			this.load()
 		})
 		WorkerController.init().watchState(
 			() => this.pending = true,
 			() => this.pending = false
 		)
+		try {
+			this.load()
+
+			if(Staking.init().stackable.length !== 0) {
+				this.stackable = Staking.init().stackable
+				this.staked = Staking.init().staked
+				this.staking_ready = true
+				this.staked_ready = true
+			}
+		} catch (e) {
+		}
 	}
 })
 </script>
