@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingWithdraw.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/stackable.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/stackable.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Overlay/ModalStakingWithdraw.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingWithdraw.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/wrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
     </list>
@@ -126,7 +125,8 @@
       <workItem from="1643749006854" duration="213000" />
       <workItem from="1643749470713" duration="353000" />
       <workItem from="1643779025412" duration="17577000" />
-      <workItem from="1643862723776" duration="14579000" />
+      <workItem from="1643862723776" duration="16235000" />
+      <workItem from="1643945260712" duration="6496000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -261,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643825330335</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="new contracts, modal staking deposit completion, modal withdraw completion">
+      <created>1643901826919</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1643901826919</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +300,8 @@
     <MESSAGE value="modal staking fix and update" />
     <MESSAGE value="fa" />
     <MESSAGE value="new contracts, modal staking deposit to test" />
-    <option name="LAST_COMMIT_MESSAGE" value="new contracts, modal staking deposit to test" />
+    <MESSAGE value="new contracts, modal staking deposit completion, modal withdraw completion" />
+    <option name="LAST_COMMIT_MESSAGE" value="new contracts, modal staking deposit completion, modal withdraw completion" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
