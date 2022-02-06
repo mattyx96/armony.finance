@@ -149,6 +149,7 @@ export default defineComponent({
 	components: {TransactionOverlay, Shimmer, Modal},
 	emits: [
 		"update:open",
+		"receiptUpdate",
 	],
 	props: {
 		open: {
@@ -209,6 +210,13 @@ export default defineComponent({
 		async checkNFTDepositApproved() {
 			this.NFTDepositApproved = (await this.stakingPanda.getApproved(this.selectedNFT)) === this.stake.address
 		},
+		async syncData() {
+			let receipt = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, await this.stake.stackingReceipt())
+			if(receipt) {
+				this.$emit("receiptUpdate", BigInt((await receipt.balanceOf(Address.init().connectedAs)).toString()))
+				this.close(false)
+			}
+		},
 		async approveNFTDeposit() {
 			await WorkerController.init().workAsync(async () => {
 				this.overlay.confirmations = this.overlay.time = 0
@@ -265,6 +273,7 @@ export default defineComponent({
 
 					await this.retrieveMax()
 					this.depositAmount = ""
+					await this.syncData()
 				} catch (e: any) {
 					console.log(e)
 					this.overlay.open = false
@@ -305,6 +314,7 @@ export default defineComponent({
 
 					await this.retrieveMax()
 					this.depositAmount = ""
+					await this.syncData()
 				} catch (e: any) {
 					this.overlay.open = false
 					// an error occurred, show an error message and go on

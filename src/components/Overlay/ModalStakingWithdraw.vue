@@ -131,6 +131,7 @@ export default defineComponent({
 	components: {TransactionOverlay, Shimmer, Modal},
 	emits: [
 		"update:open",
+		"receiptUpdate",
 	],
 	props: {
 		open: {
@@ -185,6 +186,13 @@ export default defineComponent({
 		async retrieveMax() {
 			this.max = renderNumber(await this.receipt.balanceOf(Address.init().connectedAs))
 		},
+		async syncData() {
+			let receipt = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, await this.stake.stackingReceipt())
+			if(receipt) {
+				this.$emit("receiptUpdate", BigInt((await receipt.balanceOf(Address.init().connectedAs)).toString()))
+				this.close(false)
+			}
+		},
 		async withdraw() {
 			await WorkerController.init().workAsync(async () => {
 				// parse the number
@@ -214,6 +222,7 @@ export default defineComponent({
 
 					await this.retrieveMax()
 					this.depositAmount = ""
+					await this.syncData()
 				} catch (e: any) {
 					console.log(e)
 					this.overlay.open = false
@@ -254,6 +263,7 @@ export default defineComponent({
 
 					await this.retrieveMax()
 					this.depositAmount = ""
+					await this.syncData()
 				} catch (e: any) {
 					this.overlay.open = false
 					// an error occurred, show an error message and go on

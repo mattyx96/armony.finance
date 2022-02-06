@@ -271,9 +271,8 @@ export class Staking {
 	/**
 	 * Load the price data and 24h variation from coingecko.
 	 * NOTE: This actually displays only the gMELD data and computes them from the ICO if not ended yet
-	 * @private
 	 */
-	private async loadPriceData(): Promise<void> {
+	public async loadPriceData(): Promise<void> {
 		const bnb_usd = "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd&include_24hr_change=true"
 		const meld_usd = "https://api.coingecko.com/api/v3/simple/price?ids=melodity&vs_currencies=usd&include_24hr_change=true"
 
@@ -447,6 +446,10 @@ export class Staking {
 
 	public get staked(): Staked[] {
 		return this._staked
+	}
+
+	public get isInitialized(): boolean {
+		return Staking._instance !== undefined
 	}
 
 	public get onStackingReady(): ISignal {

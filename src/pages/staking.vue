@@ -126,7 +126,7 @@
 								<shimmer v-else text="" :loading="!price_loaded"></shimmer>
 							</div>
 						</div>
-						<div class="font-semibold col-span-2 text-gray-600 flex items-center justify-center">
+						<div class="font-semibold col-span-2 text-gray-600 flex flex-col items-center justify-center">
 							<template v-if="!staked_ready || staked[i]?.earnings !== undefined">
 								<shimmer :loading="!staked_ready"
 								         :text="`${staked[i]?.earnings} ${e.rewardCurrency.name}`"></shimmer>
@@ -134,6 +134,9 @@
 							<template v-else>
 								Historical data not found
 							</template>
+							<small class="mx-auto text-xs">
+								Receipt value: {{ prettyReceiptValue[i] }} {{ e.rewardCurrency.name }}
+							</small>
 						</div>
 						<div class="font-semibold text-lg col-span-1 flex items-center justify-center text-gray-600">
 							{{ e.apy }}%
@@ -162,12 +165,14 @@
 		                       :base-currency-contract-address="depositModal.baseCurrencyContractAddress"
 		                       :base-currency-ticker="depositModal.ticker"
 		                       :stake-contract-address="depositModal.stakeContractAddress"
+		                       @receiptUpdate="handleReceiptValueUpdate"
 		></modal-staking-deposit>
 		<modal-staking-withdraw v-model:open="withdrawModal.isOpen"
 		                        :receipt-contract-address="withdrawModal.receiptContractAddress"
 		                        :receipt-ticker="withdrawModal.receiptTicker"
-		                        :stake-contract-address="withdrawModal.stakeContractAddress">
-		</modal-staking-withdraw>
+		                        :stake-contract-address="withdrawModal.stakeContractAddress"
+		                        @receiptUpdate="handleReceiptValueUpdate"
+		></modal-staking-withdraw>
 
 		<transaction-overlay
 			v-bind="overlay"
@@ -226,12 +231,14 @@ export default defineComponent({
 		gmeldDailyVariation: "",
 		isMeldVariationPositive: true,
 		depositModal: {
+			id: 0,
 			isOpen: false,
 			baseCurrencyContractAddress: "",
 			ticker: "",
 			stakeContractAddress: "",
 		},
 		withdrawModal: {
+			id: 0,
 			isOpen: false,
 			receiptContractAddress: "",
 			receiptTicker: "",
@@ -244,16 +251,21 @@ export default defineComponent({
 		},
 		async load() {
 			await WorkerController.init().workAsync(async () => {
-				if (Object.keys(this.governance).length === 0) {
-					let result = await Provider.init().loadContract(ContractTypes.melodityGovernance)
-					if (result) {
-						this.governance = result
-					}
+				let result = await Provider.init().loadContract(ContractTypes.melodityGovernance)
+				if (result) {
+					this.governance = result
 				}
 
-				let amount = await this.governance.balanceOf(this.connectedAs)
-				this.max_gmeld = renderNumber(amount, 18, 6)
+				if(this.isConnected) {
+					let amount = await this.governance.balanceOf(this.connectedAs)
+					this.max_gmeld = renderNumber(amount, 18, 6)
+				}
+
+				await Staking.init().loadPriceData()
 			})
+		},
+		handleReceiptValueUpdate(receipt: bigint) {
+			this.staked[this.depositModal.id].receiptAmount = renderNumber(receipt)
 		},
 		async approve(id: number) {
 			await WorkerController.init().workAsync(async () => {
@@ -267,13 +279,6 @@ export default defineComponent({
 						// transaction confirmed
 						this.overlay.open = false
 						this.staked[id].allowance = BigInt(`1${"0".repeat(70)}`)
-
-						// send a notification stating a successful transaction
-						new Toaster({
-							title: `Deposit approved!`,
-							message: `You have successfully approved deposits to this staking contract.`,
-							type: "success"
-						})
 					})
 					.watchTransactionError(err => {
 						this.overlay.open = false
@@ -283,6 +288,7 @@ export default defineComponent({
 			})
 		},
 		deposit(id: number) {
+			this.depositModal.id = id
 			this.depositModal.baseCurrencyContractAddress = this.stackable[id].baseCurrency.contract
 			this.depositModal.ticker = this.stackable[id].baseCurrency.name
 			this.depositModal.stakeContractAddress = this.stackable[id].contract.address
@@ -384,12 +390,21 @@ export default defineComponent({
 					)
 				})
 			}
+		},
+		prettyReceiptValue() {
+			return this.stackable.map(value => renderNumber(value.receiptValue))
 		}
 	},
 	created() {
 		Staking.init().onStackingReady.subscribe(() => {
 			this.staking_ready = true
 			this.stackable = Staking.init().stackable
+
+			Staking.init().stackable.forEach((value, index) => {
+				value.contract.on("ReceiptValueUpdate", args => {
+					this.stackable[index].receiptValue = BigInt(args.toString())
+				})
+			})
 		})
 		Staking.init().onStackedDataReady.subscribe(() => {
 			this.staked_ready = true
@@ -406,13 +421,23 @@ export default defineComponent({
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
 
-
 			this.load()
 		})
 		WorkerController.init().watchState(
 			() => this.pending = true,
 			() => this.pending = false
 		)
+		try {
+			this.load()
+
+			if(Staking.init().stackable.length !== 0) {
+				this.stackable = Staking.init().stackable
+				this.staked = Staking.init().staked
+				this.staking_ready = true
+				this.staked_ready = true
+			}
+		} catch (e) {
+		}
 	}
 })
 </script>

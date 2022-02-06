@@ -112,17 +112,13 @@ export default defineComponent({
 		},
 		async load() {
 			await WorkerController.init().workAsync(async () => {
-				if (Object.keys(this.governance).length === 0) {
-					let result = await Provider.init().loadContract(ContractTypes.melodityGovernance)
-					if (result) {
-						this.governance = result
-					}
+				let result = await Provider.init().loadContract(ContractTypes.melodityGovernance)
+				if (result) {
+					this.governance = result
 				}
-				if (Object.keys(this.melodity).length === 0) {
-					let result = await Provider.init().loadContract(ContractTypes.melodity)
-					if (result) {
-						this.melodity = result
-					}
+				result = await Provider.init().loadContract(ContractTypes.melodity)
+				if (result) {
+					this.melodity = result
 				}
 
 				if (this.isConnected) {
@@ -202,6 +198,7 @@ export default defineComponent({
 						message: `You have successfully approved the wrapper.`,
 						type: "success"
 					})
+					this.approved = true
 				} catch (e: any) {
 					this.overlay.open = false
 					// an error occurred, show an error message and go on
