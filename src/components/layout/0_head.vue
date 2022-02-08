@@ -7,10 +7,10 @@
 
 <template>
 	<header
-		class="w-full flex font-poppins transition-all duration-300 bg-black"
+		class="w-full flex justify-center items-center font-poppins transition-all duration-300 bg-black"
 		:class="navAnimationClasses.wrapper">
 		<nav
-			class="xl:mx-10 flex items-center h-16 w-full px-6 transition-all duration-300"
+			class="xl:mx-10 flex items-center h-16 w-full px-6 transition-all duration-300 container mx-auto"
 			:class="navAnimationClasses.nav">
 
 			<!--		logo-->
@@ -27,7 +27,7 @@
 							class="text-white text-center h-12 px-4 mx-0.5 font-medium flex items-center justify-center
 								md:flex hidden"
 							:class="e.active ?
-			                'text-[#F74EFF] underline decoration-4 decoration-[#F74EFF] underline-offset-8'
+			                'text-[#B6B6FF] underline decoration-4 decoration-[#B6B6FF] underline-offset-8'
 			                : 'hover:bg-gray-900 hover:rounded-full'">
 							{{ e.label }}
 						</router-link>
@@ -36,8 +36,8 @@
 				<template v-for="(elem, id) of urls">
 					<a v-if="elem?.type && elem.type === 'button'" :key="-id" :href="elem.url"
 					   :target="urlsTargets[id].target" :rel="urlsTargets[id].rel"
-					   class="rounded-full h-12 w-auto text-white flex items-center bg-gray-800 shadow-md
-					   transition-all duration-300 hover:shadow-fuchsia-300/50 hover:shadow-lg hover:bg-[#F74EFF]
+					   class="rounded-full h-12 w-auto text-white flex items-center bg-[#B6B6FF] shadow-md
+					   transition-all duration-300 hover:bg-[#a4a4e6]
 					   cursor-pointer select-none w-min md:flex hidden whitespace-nowrap mx-0.5 px-4">
 						{{ elem.label }}
 					</a>
@@ -54,15 +54,15 @@
 				<div @click="connectionButton.method"
 				     class="flex justify-start items-center bg-[#47D680] hover:bg-[#37C56A] text-white rounded-full
                         tracking-wide font-semibold shadow-lg cursor-pointer transition-all ease-in duration-100
-                         h-auto pr-3 group w-min hover:shadow-lg hover:shadow-green-300/50"
+                         h-auto pr-3 group w-min"
 				     :class="connectionButton.classes">
 					<div class="h-12 w-12 rounded-full text-gray-100 bg-[#2EC56A] border border-[#2EC56A] flex
-						items-center justify-center group-hover:shadow-md hover:shadow-green-300/50 flex-shrink-0">
+						items-center justify-center group-hover:shadow-md flex-shrink-0">
 						<i class="fa-duotone fa-wallet"></i>
 					</div>
 					<p class="truncate font-poppins px-2 text-white">
 						<template v-if="isConnected">
-							{{ connectedAs }}
+							{{ connectedAs.slice(0, 5) + "..." }}
 						</template>
 						<template v-else>
 							Connect
@@ -74,17 +74,17 @@
 			<div
 				class="text-white md:hidden flex justify-end items-center w-full h-full col-start-4 text-4xl cursor-pointer"
 				@click="openMobileNav">
-				<i class='bx bx-menu-alt-right'></i>
+				<i class="fa-solid fa-bars-staggered"></i>
 			</div>
 			<div class="fixed top-0 left-0 right-0 h-screen transition-all duration-75 grid grid-rows-6 gap-0"
 			     :class="navAnimationClasses.mobile.wrapper">
-				<div v-for="id of Array.from({length: 3}, (v,k) => k)" :key="id"
+				<div v-for="id of Array.from({length: 6}, (v,k) => k)" :key="id"
 				     class="h-full w-full bg-black transition-all duration-300"
 				     :class="[navAnimationClasses.mobile.lines.common, navAnimationClasses.mobile.lines.items[id]]"></div>
 				<div class="fixed z-20 top-0 left-0 right-0 h-screen flex flex-col transition-all duration-300 text-xl"
 				     :class="navAnimationClasses.mobile.content">
-					<div class="ml-auto p-4 cursor-pointer text-white text-4xl" @click="closeMobileNav">
-						<i class='bx bx-x'></i>
+					<div class="ml-auto p-4 cursor-pointer text-white text-4xl mt-5 mr-16" @click="closeMobileNav">
+						<i class="fa-solid fa-x"></i>
 					</div>
 					<template v-for="(e, i) of local_urls" :key="i">
 						<a v-if="!e.meta.hidden">
@@ -92,7 +92,7 @@
 								:to="e.path"
 								class="text-white p-8 font-medium flex items-center justify-center border-b"
 								:class="e.active ?
-			                'text-[#F74EFF] underline decoration-4 decoration-[#F74EFF] underline-offset-8'
+			                'text-[#B6B6FF] underline decoration-4 decoration-[#B6B6FF] underline-offset-8'
 			                : ''">
 								{{ e.label }}
 							</router-link>
@@ -101,7 +101,7 @@
 					<template v-for="(elem, id) of urls">
 						<a v-if="elem?.type && elem.type === 'button'" :key="-id" :href="elem.url"
 						   :target="urlsTargets[id].target" :rel="urlsTargets[id].rel"
-						   class="text-white font-medium rounded-full w-full bg-gray-800 border-2 border-[#F74EFF]
+						   class="text-white font-medium rounded-full w-full bg-gray-800 border-2 border-[#B6B6FF]
 									via-[#f56ec6] bg-left flex items-center justify-center md:p-8 px-8 py-4 col-start-8
 									md:w-1/2 mx-auto mt-6 w-2/3"
 						   @click="closeMobileNav">

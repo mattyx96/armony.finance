@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="">
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="bugfix">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/staking.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/staking_reverse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ShimmerStackableItems.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StackableItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/spinner.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/0_head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/0_head.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/2_foot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/2_foot.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/wrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +27,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="package.json" />
         <option value="Vue Single File Component" />
       </list>
     </option>
@@ -31,13 +43,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value=".*" />
-      </list>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -65,21 +70,25 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Overlay" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/Overlay" />
-      <recent name="$PROJECT_DIR$/public/assets" />
-      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/composition" />
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src/composition/provider" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/public/assets" />
       <recent name="$PROJECT_DIR$/src/composition/provider" />
@@ -118,9 +127,9 @@
       <workItem from="1643694779472" duration="5687000" />
       <workItem from="1643749006854" duration="213000" />
       <workItem from="1643749470713" duration="353000" />
-      <workItem from="1643779025412" duration="17577000" />
-      <workItem from="1643862723776" duration="16235000" />
-      <workItem from="1643945260712" duration="8690000" />
+      <workItem from="1643779025412" duration="6629000" />
+      <workItem from="1644172327276" duration="9753000" />
+      <workItem from="1644257918911" duration="14507000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -234,42 +243,7 @@
       <option name="project" value="LOCAL" />
       <updated>1643745906744</updated>
     </task>
-    <task id="LOCAL-00017" summary="modal staking fix and update">
-      <created>1643789327350</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1643789327350</updated>
-    </task>
-    <task id="LOCAL-00018" summary="fa">
-      <created>1643817258194</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1643817258194</updated>
-    </task>
-    <task id="LOCAL-00019" summary="new contracts, modal staking deposit to test">
-      <created>1643825330335</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1643825330335</updated>
-    </task>
-    <task id="LOCAL-00020" summary="new contracts, modal staking deposit completion, modal withdraw completion">
-      <created>1643901826919</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1643901826919</updated>
-    </task>
-    <task id="LOCAL-00021" summary="new contracts, modal staking deposit optimization, modal withdraw optimization">
-      <created>1643966416618</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1643966416618</updated>
-    </task>
-    <option name="localTasksCounter" value="22" />
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +251,17 @@
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -298,12 +283,7 @@
     <MESSAGE value="melodity ico abi inclusion to compute price during ICO, stacking approval" />
     <MESSAGE value="modal skeleton" />
     <MESSAGE value="modal staking deposit, shimmer update" />
-    <MESSAGE value="modal staking fix and update" />
-    <MESSAGE value="fa" />
-    <MESSAGE value="new contracts, modal staking deposit to test" />
-    <MESSAGE value="new contracts, modal staking deposit completion, modal withdraw completion" />
-    <MESSAGE value="new contracts, modal staking deposit optimization, modal withdraw optimization" />
-    <option name="LAST_COMMIT_MESSAGE" value="new contracts, modal staking deposit optimization, modal withdraw optimization" />
+    <option name="LAST_COMMIT_MESSAGE" value="modal staking deposit, shimmer update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -9,7 +9,8 @@
 	<footer
 		class="footer flex flex-col justify-center items-center items-baseline text-white select-none py-12 md:px-8 px-8">
 		<div
-			class="col-span-full w-full md:p-8 px-3 py-6 grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 xl:gap-20 md:gap-12">
+			class="col-span-full w-full md:p-8 px-3 py-6 grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 xl:gap-20 md:gap-12
+				container mx-auto">
 			<div v-for="(elem, id) of Object.entries(footer)" :key="id"
 			     class="xl:ml-0 lg:ml-12 lg:text-left mt-8 lg:mt-0">
 				<h4 class="font-semibold text-xl font-semibold text-[#B5B2FF] font-poppins md:text-left text-center">
