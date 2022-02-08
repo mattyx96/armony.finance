@@ -2,7 +2,7 @@
   "name": "armony.finance",
   "version": "0.1.0",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite --open --host",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },

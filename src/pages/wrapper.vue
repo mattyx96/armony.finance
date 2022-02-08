@@ -6,63 +6,76 @@
   -->
 
 <template>
-	<div class="flex flex-col">
-		<div class="px-32 py-24 grid grid-cols-2">
+	<div class="flex flex-col text-white font-poppins">
+		<!--above the fold-->
+		<div class="grid grid-cols-1 md:grid-cols-2 px-4 md:px-32 py-24 container mx-auto">
 			<div>
-				<h1 class="text-5xl font-bold text-[#19191B]">
-					$MELD Wrapper
+				<h1 class="text-5xl font-bold text-[#19191B] text-center md:text-left">
+					$MELD <br/> Wrapper
 				</h1>
-				<h3 class="text-lg font-light mt-8 text-[#696871]">
+				<h3 class="text-lg text-center md:text-left font-light mt-8 text-[#696871]">
 					Empower your $MELD, migrate to $gMELD.
 					<br>
 					Stake, buy, exchange, play & earn with $gMELD
 				</h3>
 			</div>
-			<div class="flex flex-col items-center justify-center font-semibold">
+			<div class="flex flex-col items-center justify-center text-gray-800 font-semibold mt-10 md:mt-0">
 				<h4 class="text-xl">1.00 $MELD</h4>
 				<p>=</p>
 				<h4 class="text-xl">1.00 $gMELD</h4>
 				<small class="font-bold">Forever</small>
 			</div>
 		</div>
-		<div class="bg-gradient-to-br to-[#947B9E33] from-[#7989B533] min-h-[32rem] py-12 px-32">
-			<div class="grid grid-cols-8">
-				<div class="col-start-4 col-span-2 bg-purple-200 rounded-lg flex flex-col px-6 py-8">
-					<label for="meld_amount">
-						MELD
-					</label>
-					<small class="ml-auto">
-						Max {{ max_meld }} $MELD
-					</small>
-					<div class="flex items-center rounded-md w-full bg-blue-300 p-2">
-						<small class="ml-auto"></small>
+		<!--pink bg-->
+		<div class="bg-gradient-to-b from-[#BCADFF] to-[#FF40FF] m-4 md:mx-10 lg:mx-32 rounded-[4rem] p-2">
+			<div class="grid grid-cols-4 xl:grid-cols-8 min-h-[32rem] px-4 md:px-32 py-24 container mx-auto">
+				<!--card-->
+				<div class="xl:col-start-3 col-span-4 flex flex-col px-6 py-8 bg-gradient-to-bl from-[#414A65] to-[#5A4663]
+			    backdrop-filter backdrop-blur rounded-[3.5rem] md:rounded-[4.5rem]">
+					<div class="flex justify-between w-4/5 mx-auto">
+						<label class="font-semibold" for="meld_amount">
+							$MELD
+						</label>
+						<small>
+							Max {{ max_meld }} $MELD
+						</small>
+					</div>
+					<div class="flex items-center rounded-full py-4 w-full border-2 border-[#00DB76] p-2">
+						<small class="ml-4"></small>
 						<input id="meld_amount" v-model="meld" placeholder="0.00"
-						       class="truncate w-full bg-transparent outline-none py-2 px-1">
-						<div class="bg-[#5A4663] text-white rounded-sm text-sm ml-3 px-2 py-1 cursor-pointer"
+						       class="truncate w-full bg-gray-700 rounded-lg outline-none py-2 px-1 font-semibold text-2xl text-[#00DB76]">
+						<div class="bg-gray-700 text-white rounded-lg text-sm mr-4 ml-3 px-2 py-1 cursor-pointer"
 						     @click="insertMaxMeld">
 							Max
 						</div>
 					</div>
-					<div class="flex items-center justify-center my-6">
-						<div class="rounded-full h-10 w-10 p-2 bg-blue-300 flex items-center justify-center text-3xl">
-							<i class='bx bx-chevron-down'></i>
+					<div class="flex items-center justify-center my-4">
+						<div
+							class="rounded-full h-10 w-10 p-2 border-2 border-white flex items-center justify-center text-3xl">
+							<i class="fas fa-chevron-down"></i>
 						</div>
 					</div>
-					<label for="gmeld_amount">
-						gMELD
+					<label class="ml-8 font-semibold" for="gmeld_amount">
+						$gMELD
 					</label>
-					<div class="flex items-center rounded-md w-full bg-blue-300 p-2">
-						<input id="gmeld_amount" class="truncate w-full bg-transparent outline-none py-2 px-1"
+					<div class="flex items-center rounded-full w-full border-2 border-[#00DB76] p-2 py-4">
+						<input id="gmeld_amount"
+						       class="truncate w-full bg-transparent outline-none py-2 px-1 text-2xl text-[#00DB76]
+					        font-semibold ml-5"
 						       readonly :value="meld" placeholder="0.00">
 					</div>
-					<div class="text-center font-semibold bg-purple-400 rounded-lg p-2 mt-4 cursor-pointer"
-					     @click="actionButton.action">
-						{{ actionButton.text }}
-					</div>
+					<button class="text-center font-semibold bg-[#00DB76] rounded-full py-4 mt-4 cursor-pointer"
+					        @click="actionButton.action">
+						<template v-if="pending">
+							<spinner></spinner>
+						</template>
+						<template v-else>
+							{{ actionButton.text }}
+						</template>
+					</button>
 				</div>
 			</div>
 		</div>
-
 		<transaction-overlay
 			v-bind="overlay"
 			v-model:open="overlay.open"
@@ -82,12 +95,13 @@ import {renderNumber} from "composition/strings";
 import TransactionOverlay from "components/Overlay/TransactionOverlay.vue"
 import Toaster from "composition/toaster";
 import {WorkerController} from "composition/workerController";
+import Spinner from "components/spinner.vue";
 
 
 export default defineComponent({
 	name: "wrapper",
 	components: {
-		TransactionOverlay
+		TransactionOverlay, Spinner
 	},
 	data: () => ({
 		governance: {} as ethers.Contract,
