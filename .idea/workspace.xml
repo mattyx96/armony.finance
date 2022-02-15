@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="bugfix">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/staking.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/staking_reverse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ShimmerStackableItems.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/StackableItem.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/spinner.vue" afterDir="false" />
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="Stacking &amp; Wrapper UI">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/Logo-Armony_white.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StackableItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StackableItem.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/0_head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/0_head.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/2_foot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/2_foot.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/wrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/wrapper.vue" afterDir="false" />
     </list>
@@ -129,7 +127,11 @@
       <workItem from="1643749470713" duration="353000" />
       <workItem from="1643779025412" duration="6629000" />
       <workItem from="1644172327276" duration="9753000" />
-      <workItem from="1644257918911" duration="14507000" />
+      <workItem from="1644257918911" duration="14797000" />
+      <workItem from="1644577633634" duration="759000" />
+      <workItem from="1644598753044" duration="4627000" />
+      <workItem from="1644791905705" duration="1587000" />
+      <workItem from="1644945997442" duration="3032000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -243,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643745906744</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Stacking &amp; Wrapper UI">
+      <created>1644278906158</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1644278906158</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +292,8 @@
     <MESSAGE value="melodity ico abi inclusion to compute price during ICO, stacking approval" />
     <MESSAGE value="modal skeleton" />
     <MESSAGE value="modal staking deposit, shimmer update" />
-    <option name="LAST_COMMIT_MESSAGE" value="modal staking deposit, shimmer update" />
+    <MESSAGE value="Stacking &amp; Wrapper UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stacking &amp; Wrapper UI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

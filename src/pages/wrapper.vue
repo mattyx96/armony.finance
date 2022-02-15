@@ -40,7 +40,7 @@
 							Max {{ max_meld }} $MELD
 						</small>
 					</div>
-					<div class="flex items-center rounded-full py-4 w-full border-2 border-[#00DB76] p-2">
+					<div class="flex items-center rounded-full py-3 w-full border-2 border-[#00DB76] p-2">
 						<small class="ml-4"></small>
 						<input id="meld_amount" v-model="meld" placeholder="0.00"
 						       class="truncate w-full bg-gray-700 rounded-lg outline-none py-2 px-1 font-semibold text-2xl text-[#00DB76]">
@@ -49,22 +49,24 @@
 							Max
 						</div>
 					</div>
-					<div class="flex items-center justify-center my-4">
-						<div
-							class="rounded-full h-10 w-10 p-2 border-2 border-white flex items-center justify-center text-3xl">
+					<div class="flex items-center justify-center my-3">
+						<div class="rounded-full h-8 w-8 p-2 border-2 border-white flex items-center justify-center
+								text-xl bg-gray-50/50">
 							<i class="fas fa-chevron-down"></i>
 						</div>
 					</div>
 					<label class="ml-8 font-semibold" for="gmeld_amount">
 						$gMELD
 					</label>
-					<div class="flex items-center rounded-full w-full border-2 border-[#00DB76] p-2 py-4">
+					<div class="flex items-center rounded-full w-full border-2 border-[#00DB76] p-2 py-2">
 						<input id="gmeld_amount"
-						       class="truncate w-full bg-transparent outline-none py-2 px-1 text-2xl text-[#00DB76]
+						       class="truncate w-full bg-transparent outline-none py-3 px-1 text-2xl text-[#00DB76]
 					        font-semibold ml-5"
 						       readonly :value="meld" placeholder="0.00">
 					</div>
-					<button class="text-center font-semibold bg-[#00DB76] rounded-full py-4 mt-4 cursor-pointer"
+					<button class="text-center px-6 mx-auto font-semibold bg-[#00DB76] rounded-xl py-2 mt-4 cursor-pointer
+						disabled:bg-gray-200"
+					        :disabled="pending"
 					        @click="actionButton.action">
 						<template v-if="pending">
 							<spinner></spinner>

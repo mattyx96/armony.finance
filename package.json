@@ -17,6 +17,7 @@
     "toastify-js": "^1.11.2",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12",
+    "vue-tippy": "^6.0.0-alpha.49",
     "vuex": "^4.0.2",
     "web3": "^1.7.0",
     "web3modal": "^1.9.5"

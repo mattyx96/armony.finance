@@ -117,12 +117,13 @@ import ModalStakingDeposit from "components/Overlay/ModalStakingDeposit.vue";
 import ModalStakingWithdraw from "components/Overlay/ModalStakingWithdraw.vue";
 import ShimmerStackingItems from "components/ShimmerStackableItems.vue";
 import StackableItem from "components/StackableItem.vue";
+import { Tippy } from 'vue-tippy'
 
 export default defineComponent({
 	name: "index",
 	components: {
 		StackableItem,
-		ShimmerStackingItems, ModalStakingWithdraw, ModalStakingDeposit, Modal, Shimmer, TransactionOverlay
+		ShimmerStackingItems, ModalStakingWithdraw, ModalStakingDeposit, Modal, Shimmer, TransactionOverlay, Tippy
 	},
 	data: () => ({
 		governance: {} as ethers.Contract,
@@ -334,6 +335,7 @@ export default defineComponent({
 			() => this.pending = true,
 			() => this.pending = false
 		)
+
 	}
 })
 </script>

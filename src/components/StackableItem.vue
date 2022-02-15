@@ -10,14 +10,13 @@
 					     class="h-8 w-8 object-contain absolute rounded-full bg-orange-400 -top-2 left-1/3
 									-translate-x-1/2 p-1">
 				</div>
-				<div class="flex flex-col justify-center">
-					<h4 class="font-semibold flex items-center"
-					    :title="`Stake ${e.baseCurrency.name}`">
+				<div class="flex flex-col justify-center"
+				     v-tippy="{content:`Stake ${e.baseCurrency.name} | Earn ${e.rewardCurrency.name}`, arrow: true}">
+					<h4 class="font-semibold flex items-center">
 						<i class='bx bxs-coin-stack mr-2'></i>
 						{{ e.baseCurrency.name }}
 					</h4>
-					<h4 class="font-semibold text-xs text-gray-600 flex items-center"
-					    :title="`Earn ${e.rewardCurrency.name}`">
+					<h4 class="font-semibold text-xs text-gray-600 flex items-center">
 						<i class='bx bxs-coin mr-2 mt-auto'></i>
 						{{ e.rewardCurrency.name }}
 					</h4>
@@ -55,9 +54,9 @@
 				         :text="`${staked[i]?.receiptAmount} ${staked[i]?.ticker}`"></shimmer>
 			</div>
 			<div class="font-semibold col-span-1 flex items-center justify-center">
-				<button v-if="isConnected" :disabled="!pending" class="rounded-lg px-3 py-2 bg-green-400
+				<button v-if="isConnected" :disabled="pending" class="rounded-lg px-3 py-2 bg-green-400
 						transition-all duration-500 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 select-none
-						mx-auto text-white text-center"
+						mx-auto text-white text-center disabled:bg-gray-200"
 				        @click="withdrawButtonState.method[i]">
 					<template v-if="pending">
 						<spinner></spinner>
@@ -67,7 +66,8 @@
 					</template>
 				</button>
 				<button class="rounded-lg px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer
-								hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto text-white text-center"
+							hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto text-white text-center
+							disabled:bg-gray-200"
 				        @click="stakeButtonState.method[i]">
 					<template v-if="pending">
 						<spinner></spinner>
@@ -170,9 +170,9 @@
 				</div>
 				<!--action buttons-->
 				<div class="font-semibold flex items-center justify-center mt-10">
-					<button v-if="isConnected" :disabled="!pending" class="rounded-lg px-3 py-2 bg-green-400
+					<button v-if="isConnected" :disabled="pending" class="rounded-lg px-3 py-2 bg-green-400 ml-auto mr-4
 						transition-all duration-500 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 select-none
-						mx-auto text-white text-center"
+						mx-auto text-white text-center hover:shadow-lg disabled:bg-gray-200"
 					        @click="withdrawButtonState.method[i]">
 						<template v-if="pending">
 							<spinner></spinner>
@@ -181,8 +181,9 @@
 							{{ withdrawButtonState.text[i] }}
 						</template>
 					</button>
-					<button class="rounded-lg px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer
-								hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto text-white text-center"
+					<button class="rounded-lg px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer mr-auto
+								hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto text-white text-center ml-4
+								disabled:bg-gray-200"
 					        @click="stakeButtonState.method[i]">
 						<template v-if="pending">
 							<spinner></spinner>
@@ -203,10 +204,14 @@ import arrow_down from "@/assets/images/arrow-down.svg"
 import {defineComponent} from "vue";
 import Shimmer from "components/shimmer.vue";
 import Spinner from "components/spinner.vue";
+import {directive, Tippy} from 'vue-tippy'
 
 export default defineComponent({
 	name: "StackableItem",
-	components: {Spinner, Shimmer},
+	components: {Spinner, Shimmer, Tippy},
+	directives: {
+		tippy: directive,
+	},
 	props: {
 		pending: {
 			type: Boolean,
@@ -263,6 +268,9 @@ export default defineComponent({
 			return this.isMeldVariationPositive ? "text-green-400" : "text-red-400"
 		},
 	},
+	created() {
+		//
+	}
 })
 </script>
 
