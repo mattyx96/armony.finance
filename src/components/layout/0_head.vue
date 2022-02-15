@@ -15,7 +15,7 @@
 
 			<!--		logo-->
 			<a class="flex items-center w-full md:w-auto justify-start" href="/">
-				<img src="@/assets/images/logo.svg" alt="logo" class="h-12 md:h-36 object-contain w-auto"
+				<img src="@/assets/images/Logo-Armony_white.png" alt="logo" class="h-12 md:h-36 object-contain w-auto"
 				     :class="navAnimationClasses.logo"/>
 			</a>
 
