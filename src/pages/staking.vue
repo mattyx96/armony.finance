@@ -53,9 +53,6 @@
 					<div class="font-semibold text-sm col-span-2 text-center">
 						Deposited
 					</div>
-					<div class="font-semibold text-sm col-span-1 text-center">
-						<!--						Actions-->
-					</div>
 				</div>
 				<template v-if="stackable.length === 0">
 					<shimmer-stacking-items/>
@@ -117,7 +114,7 @@ import ModalStakingDeposit from "components/Overlay/ModalStakingDeposit.vue";
 import ModalStakingWithdraw from "components/Overlay/ModalStakingWithdraw.vue";
 import ShimmerStackingItems from "components/ShimmerStackableItems.vue";
 import StackableItem from "components/StackableItem.vue";
-import { Tippy } from 'vue-tippy'
+import {Tippy} from 'vue-tippy'
 
 export default defineComponent({
 	name: "index",
