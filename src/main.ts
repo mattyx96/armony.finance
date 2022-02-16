@@ -17,6 +17,9 @@ import 'tippy.js/animations/scale.css'
 import 'tippy.js/animations/scale-subtle.css'
 import 'tippy.js/animations/scale-extreme.css'
 import 'tippy.js/dist/border.css'
+import 'tippy.js/dist/svg-arrow.css'
+import 'tippy.js/dist/border.css'
+import { roundArrow  } from 'vue-tippy'
 
 import "@/assets/tailwind.css"
 import "@/assets/pro.css"
@@ -36,11 +39,13 @@ const app = createApp(App)
 			componentSingleton: 'tippy-singleton', // => <tippy-singleton/>,
 			defaultProps: {
 				allowHTML: true,
-				animation: 'shift-toward',
 				animateFill: true,
-				theme: "light",
 				interactive: true,
 				inertia: true,
+				/*hideOnClick: false, //debug
+				trigger: 'click', //debug*/
+				arrow : roundArrow,
+				animation : 'fade'
 			}, // => Global default options * see all props
 		}
 	)

@@ -15,7 +15,11 @@
 
 			<!--		logo-->
 			<a class="flex items-center w-full md:w-auto justify-start" href="/">
-				<img src="@/assets/images/Logo-Armony_white.png" alt="logo" class="h-12 md:h-36 object-contain w-auto"
+				<img src="@/assets/images/Logo-Armony_white.png"
+				     alt="logo" class="h-12 md:h-36 object-contain w-auto hidden md:block"
+				     :class="navAnimationClasses.logo"/>
+				<img src="@/assets/images/logo_white_small.svg"
+				     alt="logo" class="h-12 md:h-36 object-contain w-auto md:hidden"
 				     :class="navAnimationClasses.logo"/>
 			</a>
 
@@ -74,7 +78,8 @@
 			<div
 				class="text-white md:hidden flex justify-end items-center w-full h-full col-start-4 text-4xl cursor-pointer"
 				@click="openMobileNav">
-				<i class="fa-solid fa-bars-staggered"></i>
+				<div class="text-2xl flex items-center justify-center"><i class="fa-solid fa-bars-staggered"></i></div>
+
 			</div>
 			<div class="fixed top-0 left-0 right-0 h-screen transition-all duration-75 grid grid-rows-6 gap-0"
 			     :class="navAnimationClasses.mobile.wrapper">

@@ -1,6 +1,6 @@
 <template>
 	<!--desktop-->
-	<div class="hidden lg:inline-grid bg-gray-50 shadow-lg rounded-xl col-span-9 my-2 grid grid-cols-9 p-4">
+	<div class="hidden lg:inline-grid bg-gray-50 drop-shadow-xl rounded-xl col-span-9 my-2 grid grid-cols-9 p-4">
 		<template v-for="(e, i) of stackable" :key="i">
 			<div class="font-semibold col-span-3 grid grid-cols-3 gap-2">
 				<div class="flex items-center justify-center relative">
@@ -53,8 +53,8 @@
 				<shimmer :loading="!staked_ready"
 				         :text="`${staked[i]?.receiptAmount} ${staked[i]?.ticker}`"></shimmer>
 			</div>
-			<div class="font-semibold col-span-1 flex items-center justify-center">
-				<button v-if="isConnected" :disabled="pending" class="rounded-lg px-3 py-2 bg-green-400
+			<div class="font-semibold text-sm col-span-1 flex items-center flex-wrap justify-center">
+				<button v-if="isConnected" :disabled="pending" class="rounded-full w-full px-3 py-2 bg-green-400 m-1
 						transition-all duration-500 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 select-none
 						mx-auto text-white text-center disabled:bg-gray-200"
 				        @click="withdrawButtonState.method[i]">
@@ -65,9 +65,9 @@
 						{{ withdrawButtonState.text[i] }}
 					</template>
 				</button>
-				<button class="rounded-lg px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer
+				<button class="rounded-full px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer m-1
 							hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto text-white text-center
-							disabled:bg-gray-200"
+							disabled:bg-gray-200 w-full"
 				        @click="stakeButtonState.method[i]">
 					<template v-if="pending">
 						<spinner></spinner>
@@ -82,7 +82,7 @@
 
 	<!--mobile-->
 	<div
-		class="col-span-full lg:hidden w-full flex flex-col justify-center items-center">
+		class="col-span-full lg:hidden w-full flex drop-shadow-xl flex-col justify-center items-center">
 		<template v-for="(e, i) of stackable" :key="i">
 			<!--card-->
 			<div class="bg-gray-50 rounded-[3rem] my-2 px-6 py-10 shadow-lg w-11/12 mx-auto">
@@ -151,7 +151,7 @@
 								APY
 							</div>
 							<div
-								class="font-semibold text-lg flex items-center justify-center text-gray-600">
+								class="font-semibold text-lg flex items-center justify-stert text-gray-600">
 								{{ e.apy }}%
 							</div>
 						</div>
@@ -170,9 +170,9 @@
 				</div>
 				<!--action buttons-->
 				<div class="font-semibold flex items-center justify-center mt-10">
-					<button v-if="isConnected" :disabled="pending" class="rounded-lg px-3 py-2 bg-green-400 ml-auto mr-4
+					<button v-if="isConnected" :disabled="pending" class="rounded-full px-3 py-2 bg-green-400 ml-auto
 						transition-all duration-500 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 select-none
-						mx-auto text-white text-center hover:shadow-lg disabled:bg-gray-200"
+						mx-auto text-white text-center hover:shadow-lg disabled:bg-gray-200 mr-4"
 					        @click="withdrawButtonState.method[i]">
 						<template v-if="pending">
 							<spinner></spinner>
@@ -181,7 +181,7 @@
 							{{ withdrawButtonState.text[i] }}
 						</template>
 					</button>
-					<button class="rounded-lg px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer mr-auto
+					<button class="rounded-full px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer mr-auto
 								hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto text-white text-center ml-4
 								disabled:bg-gray-200"
 					        @click="stakeButtonState.method[i]">
