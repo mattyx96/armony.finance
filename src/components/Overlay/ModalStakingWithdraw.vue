@@ -32,17 +32,17 @@
 					</div>
 					<div class="flex items-center justify-center p-1 mt-1">
 						<input v-model="depositAmount" placeholder="0.00"
-						       class="p-1 border rounded-md outline-none w-full">
-						<div class="bg-[#5A4663] text-white rounded-sm text-sm ml-3 px-2 py-1 cursor-pointer"
+						       class="p-1 border rounded-[1.8rem] outline-none w-full">
+						<div class="bg-[#6e6e99] rounded-[1.8rem] text-white text-sm ml-3 px-2 py-1 cursor-pointer"
 						     @click="insertMax">
 							Max
 						</div>
 					</div>
-					<div class="mx-auto px-3 py-2 mt-4 rounded-bl-3xl rounded-tr-3xl border border-green-500 transition-all
-						duration-300 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 hover:bg-green-500"
-					     @click="withdraw">
+					<button class="mx-auto px-3 py-2 mt-4 rounded-3xl bg-green-400 transition-all
+						duration-300 cursor-pointer hover:shadow-lg hover:shadow-gray-900/20 text-white"
+					        @click="withdraw">
 						Withdraw
-					</div>
+					</button>
 				</div>
 			</template>
 			<template v-else>
@@ -55,8 +55,8 @@
 					</div>
 					<div class="flex items-center justify-center p-1 mt-1">
 						<input v-model="depositAmount" placeholder="0.00"
-						       class="p-1 border rounded-md outline-none w-full">
-						<div class="bg-[#5A4663] text-white rounded-sm text-sm ml-3 px-2 py-1 cursor-pointer"
+						       class="p-1 border rounded-[1.8rem] outline-none w-full">
+						<div class="bg-[#6e6e99] rounded-[1.8rem] text-white text-sm ml-3 px-2 py-1 cursor-pointer"
 						     @click="insertMax">
 							Max
 						</div>
@@ -68,8 +68,8 @@
 						</label>
 						<div class="flex flex-col">
 							<div v-for="(e, i) of depositedNFTs" :key="i"
-							     class="border rounded-md shadow shadow-blue-800/20 transition-all
-									duration-300 p-2 w-full flex flex-col hover:shadow-lg">
+							     class="rounded-[1.8rem] border-2 border-gray-100 transition-all
+									duration-300 w-full flex flex-col p-5">
 								<div class="flex flex-col items-center justify-center">
 									<div class="rounded-full h-32 w-32 mx-auto flex">
 										<img :src="e.picUrl" :alt="`NFT #${e.nftId} pic`" class="object-contain m-auto">
@@ -77,7 +77,7 @@
 									<div class="capitalize mt-2 mb-4">
 										{{ e.name }}
 									</div>
-									<div class="">
+									<div class="text-gray-800">
 										yet to withdraw with this nft: {{ e.stackedAmount }}
 									</div>
 								</div>
@@ -94,11 +94,11 @@
 						</li>
 					</ol>
 
-					<div class="mx-auto px-3 py-2 mt-4 rounded-tl-3xl rounded-br-3xl border border-green-500 transition-all
-						duration-300 cursor-pointer hover:shadow-lg hover:shadow-green-800/20 hover:bg-green-500"
-					     @click="withdrawWithNFT">
+					<button class="mx-auto px-3 py-2 mt-4 rounded-3xl bg-green-400 transition-all
+						duration-300 cursor-pointer hover:shadow-lg hover:shadow-gray-900/20 text-white"
+					        @click="withdrawWithNFT">
 						Withdraw
-					</div>
+					</button>
 				</div>
 			</template>
 		</div>
@@ -121,7 +121,7 @@ import {Provider} from "composition/provider";
 import {ContractTypes} from "composition/provider/types";
 import {renderNumber} from "composition/strings";
 import {Address} from "composition/address";
-import {StackingPanda, StakedNFT} from "composition/staking/types";
+import {StakedNFT} from "composition/staking/types";
 import {WorkerController} from "composition/workerController";
 import Toaster from "composition/toaster";
 import TransactionOverlay from "components/Overlay/TransactionOverlay.vue";
@@ -188,7 +188,7 @@ export default defineComponent({
 		},
 		async syncData() {
 			let receipt = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, await this.stake.stackingReceipt())
-			if(receipt) {
+			if (receipt) {
 				this.$emit("receiptUpdate", BigInt((await receipt.balanceOf(Address.init().connectedAs)).toString()))
 				this.close(false)
 			}
@@ -278,8 +278,8 @@ export default defineComponent({
 	computed: {
 		selectedTabClasses() {
 			return {
-				standard: !this.isNFTDeposit ? "border-b-[3px] border-blue-400" : "",
-				withNFT: this.isNFTDeposit ? "border-b-[3px] border-blue-400" : ""
+				standard: !this.isNFTDeposit ? "border-b-[3px] border-[#b7b7ff]" : "",
+				withNFT: this.isNFTDeposit ? "border-b-[3px] border-[#b7b7ff]" : ""
 			}
 		},
 		isLoadingMax() {

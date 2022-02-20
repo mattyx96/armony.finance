@@ -40,10 +40,13 @@
 							Max {{ max_meld }} $MELD
 						</small>
 					</div>
-					<div class="flex items-center rounded-full py-3 w-full border-2 border-[#00DB76] p-2">
+					<div class="flex items-center rounded-[1.8rem] px-2 py-2 mx-auto w-full md:w-11/12 border-2
+							border-[#c5c5ff] ">
 						<small class="ml-4"></small>
 						<input id="meld_amount" v-model="meld" placeholder="0.00"
-						       class="truncate w-full bg-gray-700 rounded-lg outline-none py-2 px-1 font-semibold text-2xl text-[#00DB76]">
+						       class="truncate w-full bg-gray-700 rounded-lg outline-none py-2 px-1 font-semibold
+						        text-2xl text-[#00DB76]"
+						       v-cleave="meld_cleave">
 						<div class="bg-gray-700 text-white rounded-lg text-sm mr-4 ml-3 px-2 py-1 cursor-pointer"
 						     @click="insertMaxMeld">
 							Max
@@ -58,7 +61,8 @@
 					<label class="ml-8 font-semibold" for="gmeld_amount">
 						$gMELD
 					</label>
-					<div class="flex items-center rounded-full w-full border-2 border-[#00DB76] p-2 py-2">
+					<div class="flex items-center rounded-[1.8rem] mx-auto w-full md:w-11/12 border-2 border-[#c5c5ff]
+							px-2 py-1">
 						<input id="gmeld_amount"
 						       class="truncate w-full bg-transparent outline-none py-3 px-1 text-2xl text-[#00DB76]
 					        font-semibold ml-5"
@@ -121,6 +125,10 @@ export default defineComponent({
 			interval: -1
 		},
 		pending: false,
+		meld_cleave: {
+			numeral: true,
+			numeralDecimalScale: 18
+		},
 	}),
 	methods: {
 		insertMaxMeld() {

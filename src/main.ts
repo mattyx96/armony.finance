@@ -9,7 +9,9 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import {router} from "./router"
 
-import { plugin as VueTippy } from 'vue-tippy'
+import {plugin as VueTippy, roundArrow} from 'vue-tippy'
+import Cleave from 'cleave.js';
+
 import 'tippy.js/dist/tippy.css' // optional for styling
 import 'tippy.js/dist/backdrop.css'
 import 'tippy.js/animations/shift-away.css'
@@ -18,8 +20,6 @@ import 'tippy.js/animations/scale-subtle.css'
 import 'tippy.js/animations/scale-extreme.css'
 import 'tippy.js/dist/border.css'
 import 'tippy.js/dist/svg-arrow.css'
-import 'tippy.js/dist/border.css'
-import { roundArrow  } from 'vue-tippy'
 
 import "@/assets/tailwind.css"
 import "@/assets/pro.css"
@@ -29,24 +29,40 @@ import "@/assets/pro-v4-font-face.css"
 
 
 const app = createApp(App)
-	.use(router)
-	.use(
-		VueTippy,
-		// optional
-		{
-			directive: 'tippy', // => v-tippy
-			component: 'tippy', // => <tippy/>
-			componentSingleton: 'tippy-singleton', // => <tippy-singleton/>,
-			defaultProps: {
-				allowHTML: true,
-				animateFill: true,
-				interactive: true,
-				inertia: true,
-				/*hideOnClick: false, //debug
-				trigger: 'click', //debug*/
-				arrow : roundArrow,
-				animation : 'fade'
-			}, // => Global default options * see all props
-		}
-	)
-	.mount('#app')
+
+app.directive('cleave', {
+    mounted: (el, binding) => {
+        el.cleave = new Cleave(el, binding.value || {})
+    },
+    update: (el) => {
+        const event = new Event('input', {bubbles: true});
+        setTimeout(function () {
+            el.value = el.cleave.properties.result
+            el.dispatchEvent(event)
+        }, 100);
+    }
+})
+
+
+app.use(router)
+    .use(
+        VueTippy,
+        // optional
+        {
+            directive: 'tippy', // => v-tippy
+            component: 'tippy', // => <tippy/>
+            componentSingleton: 'tippy-singleton', // => <tippy-singleton/>,
+            defaultProps: {
+                allowHTML: true,
+                animateFill: true,
+                interactive: true,
+                inertia: true,
+                /*hideOnClick: false, //debug
+                trigger: 'click', //debug*/
+                arrow: roundArrow,
+                animation: 'fade',
+                touch: true,
+            }, // => Global default options * see all props
+        }
+    )
+    .mount('#app')
