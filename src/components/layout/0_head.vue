@@ -51,6 +51,13 @@
 						{{ elem.label }}
 					</a>
 				</template>
+				<button
+					class="rounded-full h-12 w-auto text-white flex items-center bg-[#B6B6FF] shadow-md
+					   transition-all duration-300 hover:bg-[#a4a4e6]
+					   cursor-pointer select-none w-min md:flex hidden whitespace-nowrap mx-0.5 px-4"
+					@click="onSignInPress">
+					Sign In
+				</button>
 			</div>
 
 			<!--	    connect button-->
@@ -75,11 +82,11 @@
 				</div>
 			</div>
 
+			<!--			mobile nav-->
 			<div
 				class="text-white md:hidden flex justify-end items-center w-full h-full col-start-4 text-4xl cursor-pointer"
 				@click="openMobileNav">
 				<div class="text-2xl flex items-center justify-center"><i class="fa-solid fa-bars-staggered"></i></div>
-
 			</div>
 			<div class="fixed top-0 left-0 right-0 h-screen transition-all duration-75 grid grid-rows-6 gap-0"
 			     :class="navAnimationClasses.mobile.wrapper">
@@ -88,13 +95,14 @@
 				     :class="[navAnimationClasses.mobile.lines.common, navAnimationClasses.mobile.lines.items[id]]"></div>
 				<div class="fixed z-20 top-0 left-0 right-0 h-screen flex flex-col transition-all duration-300 text-xl"
 				     :class="navAnimationClasses.mobile.content">
-					<div class="ml-auto p-4 cursor-pointer text-white text-4xl mt-5 mr-16" @click="closeMobileNav">
-						<i class="fa-solid fa-x"></i>
+					<div class="ml-auto p-4 cursor-pointer text-white text-4xl mt-3 mr-3" @click="closeMobileNav">
+						<i class="text-2xl fa-solid fa-x"></i>
 					</div>
 					<template v-for="(e, i) of local_urls" :key="i">
 						<a v-if="!e.meta.hidden">
 							<router-link
 								:to="e.path"
+								@click="closeMobileNav"
 								class="text-white p-8 font-medium flex items-center justify-center border-b"
 								:class="e.active ?
 			                'text-[#B6B6FF] underline decoration-4 decoration-[#B6B6FF] underline-offset-8'
@@ -118,6 +126,13 @@
 							{{ elem.label }}
 						</a>
 					</template>
+					<button
+						class="text-white font-medium rounded-full w-full bg-gray-800 border-2 border-[#B6B6FF]
+									via-[#f56ec6] bg-left flex items-center justify-center md:p-8 px-8 py-4 col-start-8
+									md:w-1/2 mx-auto mt-6 w-2/3"
+						@click="onSignInPress">
+						Sign In
+					</button>
 				</div>
 			</div>
 		</nav>
@@ -132,6 +147,7 @@ import {RouteMeta} from "vue-router";
 import {capitalize} from "@/composition/strings";
 import {Address} from "composition/address";
 import {Provider} from "composition/provider";
+import Toaster from "composition/toaster";
 
 interface navigationUrl {
 	label: string,
@@ -176,6 +192,14 @@ export default defineComponent({
 				this.mobile.open = false
 			}, 1200)
 		},
+		onSignInPress() {
+			this.closeMobileNav();
+			new Toaster({
+				title: `Coming Soon feature`,
+				message: ``,
+				type: "error"
+			})
+		}
 	},
 	computed: {
 		connectionButton(): any {

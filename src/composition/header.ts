@@ -29,12 +29,12 @@ export function urls() {
                 label: "Whitepaper",
                 external: true,
             }),*/
-            reactive({
+            /*reactive({
                 url: "/signin",
                 label: "Sign In",
                 type: "button",
                 external: true,
-            }),
+            }),*/
         ])
     }
 }

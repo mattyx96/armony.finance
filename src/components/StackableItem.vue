@@ -98,7 +98,8 @@
 							     class="h-10 w-10 object-contain absolute rounded-full bg-orange-400 -top-2
 							        left-5-translate-x-1/2 p-1">
 
-							<div class="flex flex-col">
+							<div class="flex flex-col"
+							     v-tippy="{content:`Stake ${e.baseCurrency.name} | Earn ${e.rewardCurrency.name}`}">
 								<h4 class="font-semibold flex items-center"
 								    :title="`Stake ${e.baseCurrency.name}`">
 									<i class='bx bxs-coin-stack mr-2'></i>
