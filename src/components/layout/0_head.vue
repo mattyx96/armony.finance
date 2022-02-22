@@ -7,7 +7,7 @@
 
 <template>
 	<header
-		class="w-full flex justify-center items-center font-poppins transition-all duration-300 bg-black"
+		class="w-full flex justify-center items-center font-dm transition-all duration-300 bg-black"
 		:class="navAnimationClasses.wrapper">
 		<nav
 			class="xl:mx-10 flex items-center h-16 w-full px-6 transition-all duration-300 container mx-auto"

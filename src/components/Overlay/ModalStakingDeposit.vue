@@ -32,7 +32,7 @@
 					</div>
 					<div class="flex items-center justify-center p-1 mt-1">
 						<input v-model="depositAmount" placeholder="0.00"
-						       class="p-1 border rounded-[1.8rem] outline-none w-full">
+						       class="py-2 px-4 border rounded-[1.8rem] outline-none w-full">
 						<div class="bg-[#6e6e99] rounded-[1.8rem] text-white text-sm ml-3 px-2 py-1 cursor-pointer"
 						     @click="insertMax">
 							Max
@@ -55,7 +55,7 @@
 					</div>
 					<div class="flex items-center justify-center p-1 mt-1">
 						<input v-model="depositAmount" placeholder="0.00"
-						       class="p-1 border rounded-[1.8rem] outline-none w-full">
+						       class="py-2 px-4 border rounded-[1.8rem] outline-none w-full">
 						<div class="bg-[#6e6e99] rounded-[1.8rem] text-white text-sm ml-3 px-2 py-1 cursor-pointer"
 						     @click="insertMax">
 							Max
@@ -78,7 +78,7 @@
 										{{ e.name }}
 									</div>
 								</div>
-								<div class="text-gray-800">
+								<div class="text-gray-800 p-2">
 									Stats
 									<table>
 										<tbody>
