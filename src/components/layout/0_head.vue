@@ -7,7 +7,7 @@
 
 <template>
 	<header
-		class="w-full flex justify-center items-center font-dm transition-all duration-300 bg-black"
+		class="w-full flex justify-center items-center font-dm transition-all duration-300 bg-white"
 		:class="navAnimationClasses.wrapper">
 		<nav
 			class="xl:mx-10 flex items-center h-16 w-full px-6 transition-all duration-300 container mx-auto"
@@ -15,10 +15,10 @@
 
 			<!--		logo-->
 			<a class="flex items-center w-full md:w-auto justify-start" href="/">
-				<img src="@/assets/images/Logo-Armony_white.png"
+				<img src="@/assets/images/Logo-Armony.png"
 				     alt="logo" class="h-12 md:h-36 object-contain w-auto hidden md:block"
 				     :class="navAnimationClasses.logo"/>
-				<img src="@/assets/images/logo_white_small.svg"
+				<img src="@/assets/images/logotype_black.svg"
 				     alt="logo" class="h-12 md:h-36 object-contain w-auto md:hidden"
 				     :class="navAnimationClasses.logo"/>
 			</a>
@@ -28,11 +28,11 @@
 					<a v-if="!e.meta.hidden">
 						<router-link
 							:to="e.path"
-							class="text-white text-center h-12 px-4 mx-0.5 font-medium flex items-center justify-center
+							class="text-gray-600 text-center h-12 px-4 mx-0.5 font-medium flex items-center justify-center
 								md:flex hidden"
 							:class="e.active ?
 			                'text-[#B6B6FF] underline decoration-4 decoration-[#B6B6FF] underline-offset-8'
-			                : 'hover:bg-gray-900 hover:rounded-full'">
+			                : 'hover:bg-gray-100 hover:rounded-full'">
 							{{ e.label }}
 						</router-link>
 					</a>
@@ -86,7 +86,7 @@
 			<div
 				class="text-white md:hidden flex justify-end items-center w-full h-full col-start-4 text-4xl cursor-pointer"
 				@click="openMobileNav">
-				<div class="text-2xl flex items-center justify-center"><i class="fa-solid fa-bars-staggered"></i></div>
+				<div class="text-2xl flex text-gray-800 items-center justify-center"><i class="fa-solid fa-bars-staggered"></i></div>
 			</div>
 			<div class="fixed top-0 left-0 right-0 h-screen transition-all duration-75 grid grid-rows-6 gap-0"
 			     :class="navAnimationClasses.mobile.wrapper">
@@ -213,7 +213,7 @@ export default defineComponent({
 		navAnimationClasses() {
 			return {
 				wrapper: {
-					"fixed z-50 h-20 bg-gray-800 bg-opacity-80 flex items-center": this.scroll.animated,
+					"fixed z-50 h-20 bg-white backdrop-filter backdrop-blur bg-opacity-50 flex items-center": this.scroll.animated,
 				},
 				nav: {
 					"my-4": this.scroll.animated,

@@ -6,7 +6,7 @@
   -->
 
 <template>
-	<div class="flex flex-col text-white font-poppins">
+	<div class="flex flex-col text-white font-poppins bg-[#F4F5F9] pb-32">
 		<!--above the fold-->
 		<div class="grid grid-cols-1 md:grid-cols-2 px-4 md:px-32 py-24 container mx-auto">
 			<div>
