@@ -13,23 +13,16 @@ export function footer() {
                     label: "1. Connect your wallet",
                 },
                 {
-                    label: "2. Insert the amount",
+                    label: "2. Wrap your MELD",
                 },
                 {
-                    label: "3. Buy $MELD",
+                    label: "3. Start earning",
                 },
             ]),
             info: ref([
                 {
-                    label: "MELD Phases",
-                },
-                {
-                    label: "MELD Tokenomics",
-                    url: "https://melodity.org/#tokenomics",
-                },
-                {
-                    label: "MELD Locks",
-                    url: "https://docs.melodity.org/faq/lock-explanation#what-are-locks",
+                    label: "Support",
+                    url: "mailto:support@melodity.org",
                 },
             ]),
             docs: ref([
@@ -62,16 +55,16 @@ export function footer() {
             ]),
             links: ref([
                 {
+                    label: "ArmonyArt",
+                    url: "#",
+                },
+                {
                     label: "Melodity",
                     url: "https://melodity.org/",
                 },
                 {
-                    label: "Do-inc",
+                    label: "Do inc.",
                     url: "https://do-inc.co/",
-                },
-                {
-                    label: "ICO",
-                    url: "https://ico.melodity.org/",
                 },
             ]),
         }),

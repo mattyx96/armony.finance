@@ -51,13 +51,13 @@
 						{{ elem.label }}
 					</a>
 				</template>
-				<button
+<!--				<button
 					class="rounded-full h-12 w-auto text-white flex items-center bg-[#B6B6FF] shadow-md
 					   transition-all duration-300 hover:bg-[#a4a4e6]
 					   cursor-pointer select-none w-min md:flex hidden whitespace-nowrap mx-0.5 px-4"
 					@click="onSignInPress">
 					Sign In
-				</button>
+				</button>-->
 			</div>
 
 			<!--	    connect button-->
@@ -160,7 +160,7 @@ export default defineComponent({
 	name: "head2",
 	data: () => ({
 		scroll: {
-			trigger: 100,
+			trigger: 1,
 			animated: false,
 		},
 		mobile: {
