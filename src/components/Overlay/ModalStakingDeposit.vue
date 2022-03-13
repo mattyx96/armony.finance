@@ -79,6 +79,7 @@
 									</div>
 								</div>
 								<div class="text-gray-800 p-2">
+
 									Stats
 									<table>
 										<tbody>
