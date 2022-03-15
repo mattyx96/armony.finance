@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="contracts update">
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="armony finance production release 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/abi/Auction.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/Auction.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/abi/BlindAuction.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/BlindAuction.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/abi/Masterchef.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/Masterchef.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/abi/MelodityGovernance.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/MelodityGovernance.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/abi/MelodityStacking.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/MelodityStacking.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/abi/StackingReceipt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/StackingReceipt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/stackable.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/stackable.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Overlay/ModalStakingWithdraw.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingWithdraw.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/0_head.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/0_head.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/staking/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +144,8 @@
       <workItem from="1646986949303" duration="36000" />
       <workItem from="1646986999812" duration="144000" />
       <workItem from="1646996175377" duration="708000" />
-      <workItem from="1647338076180" duration="6105000" />
+      <workItem from="1647338076180" duration="6132000" />
+      <workItem from="1647353819808" duration="896000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -300,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647340094850</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="armony finance production release 1">
+      <created>1647353596897</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1647353596897</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +346,8 @@
     <MESSAGE value="small UI fixes + buttons stacking fix" />
     <MESSAGE value="contract update" />
     <MESSAGE value="contracts update" />
-    <option name="LAST_COMMIT_MESSAGE" value="contracts update" />
+    <MESSAGE value="armony finance production release 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="armony finance production release 1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

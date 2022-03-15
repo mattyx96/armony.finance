@@ -154,7 +154,7 @@ export class Staking {
 					let growth_factor: bigint =
 						stackable.epoch.rewardScaleFactor * stackable.receiptValue / __PERCENT_SCALE__
 					let apr = growth_factor * __EPOCH_PER_YEAR__
-					let daily_apr = apr / 365n
+					let daily_apr = apr / BigInt(365)
 					stackable.apy = (((1 + +`0.${daily_apr.toString().padStart(18, "0")}`) ** 365 - 1) * 100).toFixed(2)
 
 					this._stackable.push(stackable)

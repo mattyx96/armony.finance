@@ -51,7 +51,7 @@ export default defineConfig({
 			transformMixedEsModules: true,
 		},
 		rollupOptions: {
-			plugins: [inject({Buffer: ['Buffer', 'Buffer']})],
+			//plugins: [inject({Buffer: ['Buffer', 'Buffer']})],
 		},
 	},
 	optimizeDeps: {

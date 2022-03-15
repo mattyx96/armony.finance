@@ -18,7 +18,7 @@
 				<img src="@/assets/images/Logo-Armony.png"
 				     alt="logo" class="h-12 md:h-36 object-contain w-auto hidden md:block"
 				     :class="navAnimationClasses.logo"/>
-				<img src="@/assets/images/logotype_black.svg"
+				<img src="@/assets/images/Logotype_black.svg"
 				     alt="logo" class="h-12 md:h-36 object-contain w-auto md:hidden"
 				     :class="navAnimationClasses.logo"/>
 			</a>

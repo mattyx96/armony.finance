@@ -8,7 +8,7 @@
 import {ethers} from "ethers";
 
 export const __PERCENT_SCALE__ = ethers.utils.parseEther("100.0").toBigInt()
-export const __EPOCH_PER_YEAR__ = 8760n
+export const __EPOCH_PER_YEAR__ = BigInt(8760)
 export const __RETRIEVE__ = "__RETRIEVE__"
 
 export interface StackableCurrency {
