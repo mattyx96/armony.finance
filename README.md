@@ -25,15 +25,15 @@ Published contract addresses:
 | Name                      | Address                                      |
 |:--------------------------|:---------------------------------------------|
 | Melodity (to wrap)        | `0x0000000000000000000000000000000000000000` |
-| Masterchef                | `0x0000000000000000000000000000000000000000` |
-| Melodity Governance       | `0x0000000000000000000000000000000000000000` |
-| PRNG                      | `0x0000000000000000000000000000000000000000` |
-| Stacking Panda            | `0x0000000000000000000000000000000000000000` |
-| Marketplace               | `0x0000000000000000000000000000000000000000` |
-| Melodity DAO Timelock     | `0x0000000000000000000000000000000000000000` |
-| Melodity DAO              | `0x0000000000000000000000000000000000000000` |
-| Melodity Stacking         | `0x0000000000000000000000000000000000000000` |
-| Melodity Stacking Receipt | `0x0000000000000000000000000000000000000000` |
+| Masterchef                | `0x46303b92A45445F51529c6DD705FcF1A9F68E592` |
+| Melodity Governance       | `0xfCFE6E40B47FE7879Cf30180df157Df9e9e8AE33` |
+| PRNG                      | `0x256C62804B4D76758a1b6b9A01879BCCA3f42Bd3` |
+| Stacking Panda            | `0xf6Ab47885AAe4aA670EdF79C97ac39691ede5821` |
+| Marketplace               | `0x98De6C733F86832b3E7839367A9Ca10147b607ed` |
+| Melodity DAO Timelock     | `0xeCEBB0572439F7B9D97EF31dc42efa6937385383` |
+| Melodity DAO              | `0x7e0923D9483475B3Cf5aA926796ECa87CED9653c` |
+| Melodity Stacking         | `0xBBC7f6990BD35BbB2d6970f69616998790cA5614` |
+| Melodity Stacking Receipt | `0x9ea087c29d489D190bd98F0F8D248d94f111dAdd` |
 
 ### Testnet contract addresses
 

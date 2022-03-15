@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="bugfix">
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="contract update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,10 +136,11 @@
       <workItem from="1644945997442" duration="3332000" />
       <workItem from="1644960256175" duration="4817000" />
       <workItem from="1645049276161" duration="3599000" />
-
       <workItem from="1646048132906" duration="22000" />
       <workItem from="1646986949303" duration="36000" />
       <workItem from="1646986999812" duration="144000" />
+      <workItem from="1646996175377" duration="708000" />
+      <workItem from="1647338076180" duration="1850000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -274,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645053658142</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="contract update">
+      <created>1646996253021</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1646996253021</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +325,8 @@
     <MESSAGE value="Stacking &amp; Wrapper UI" />
     <MESSAGE value="UI fixes + tippyjs added" />
     <MESSAGE value="small UI fixes + buttons stacking fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="small UI fixes + buttons stacking fix" />
+    <MESSAGE value="contract update" />
+    <option name="LAST_COMMIT_MESSAGE" value="contract update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
