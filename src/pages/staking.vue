@@ -325,7 +325,6 @@ export default defineComponent({
 			this.connectedAs = !!v ? v : false
 			this.isConnected = !!v
 
-
 			this.load()
 		})
 		WorkerController.init().watchState(

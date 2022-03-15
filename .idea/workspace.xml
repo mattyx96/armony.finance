@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="contract update">
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="contracts update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abi/Auction.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/Auction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abi/BlindAuction.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/BlindAuction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abi/Masterchef.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/Masterchef.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abi/MelodityGovernance.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/MelodityGovernance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abi/MelodityStacking.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/MelodityStacking.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abi/StackingReceipt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/abi/StackingReceipt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/stackable.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/stackable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Overlay/ModalStakingWithdraw.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingWithdraw.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/staking.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +79,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/@walletconnect/web3-provider/dist/cjs/index.d.ts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/abi" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -81,18 +92,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/abi" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/src/composition" />
       <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/composition/provider" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/abi" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/components/Overlay" />
       <recent name="$PROJECT_DIR$/public/assets" />
-      <recent name="$PROJECT_DIR$/src/composition/provider" />
     </key>
   </component>
   <component name="RunManager">
@@ -140,7 +151,7 @@
       <workItem from="1646986949303" duration="36000" />
       <workItem from="1646986999812" duration="144000" />
       <workItem from="1646996175377" duration="708000" />
-      <workItem from="1647338076180" duration="1850000" />
+      <workItem from="1647338076180" duration="6105000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -282,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646996253021</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="contracts update">
+      <created>1647340094850</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1647340094850</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +344,8 @@
     <MESSAGE value="UI fixes + tippyjs added" />
     <MESSAGE value="small UI fixes + buttons stacking fix" />
     <MESSAGE value="contract update" />
-    <option name="LAST_COMMIT_MESSAGE" value="contract update" />
+    <MESSAGE value="contracts update" />
+    <option name="LAST_COMMIT_MESSAGE" value="contracts update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

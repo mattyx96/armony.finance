@@ -24,7 +24,7 @@ Published contract addresses:
 
 | Name                      | Address                                      |
 |:--------------------------|:---------------------------------------------|
-| Melodity (to wrap)        | `0x0000000000000000000000000000000000000000` |
+| Melodity (to wrap)        | `0x13E971De9181eeF7A4aEAEAA67552A6a4cc54f43` |
 | Masterchef                | `0x46303b92A45445F51529c6DD705FcF1A9F68E592` |
 | Melodity Governance       | `0xfCFE6E40B47FE7879Cf30180df157Df9e9e8AE33` |
 | PRNG                      | `0x256C62804B4D76758a1b6b9A01879BCCA3f42Bd3` |

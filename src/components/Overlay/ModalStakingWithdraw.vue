@@ -157,13 +157,7 @@ export default defineComponent({
 		receipt: {} as ethers.Contract,
 		stakingPanda: {} as ethers.Contract,
 		stake: {} as ethers.Contract,
-		depositedNFTs: [{
-			nftId: 0,
-			stackedAmount: "1.00",
-			index: 0,
-			name: "test-name",
-			picUrl: "https://img.search.brave.com/UtPSCPZ_rFtwL0y2xGObk_PB8FR_ZxTCgFpMI66Sc30/rs:fit:1024:696:1/g:ce/aHR0cHM6Ly9ub3Rp/emlhaW50ZXJpc3Rh/Lml0L3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIwLzEwL2VyYmEt/Z2F0dGEtMTAyNHg2/OTYuanBn",
-		}] as StakedNFT[],
+		depositedNFTs: [] as StakedNFT[],
 		selectedNFT: -1,
 		overlay: {
 			open: false,

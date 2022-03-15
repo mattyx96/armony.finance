@@ -114,7 +114,6 @@ export class Staking {
 				// check if the contract is actually returned
 				if (res) {
 					stackable.contract = res
-
 					// retrieve options
 					if (v.epoch.epochDuration === __RETRIEVE__) {
 						stackable.epoch.epochDuration = +((await res._EPOCH_DURATION()).toString())
