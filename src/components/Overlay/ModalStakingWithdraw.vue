@@ -114,17 +114,17 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import Modal from "components/Overlay/Modal.vue";
-import Shimmer from "components/shimmer.vue";
+import Modal from "@/components/Overlay/Modal.vue";
+import Shimmer from "@/components/shimmer.vue";
 import {ethers} from "ethers";
-import {Provider} from "composition/provider";
-import {ContractTypes} from "composition/provider/types";
-import {renderNumber} from "composition/strings";
-import {Address} from "composition/address";
-import {StakedNFT} from "composition/staking/types";
-import {WorkerController} from "composition/workerController";
-import Toaster from "composition/toaster";
-import TransactionOverlay from "components/Overlay/TransactionOverlay.vue";
+import {Provider} from "@/composition/provider";
+import {ContractTypes} from "@/composition/provider/types";
+import {renderNumber} from "@/composition/strings";
+import {Address} from "@/composition/address";
+import {StakedNFT} from "@/composition/staking/types";
+import {WorkerController} from "@/composition/workerController";
+import Toaster from "@/composition/toaster";
+import TransactionOverlay from "@/components/Overlay/TransactionOverlay.vue";
 
 export default defineComponent({
 	name: "ModalStakingWithdraw",

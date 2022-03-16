@@ -5,15 +5,15 @@
  * Written by Emanuele (ebalo) Balsamo <emanuele.balsamo@do-inc.co>
  */
 
-import {__EPOCH_PER_YEAR__, __PERCENT_SCALE__, __RETRIEVE__, ABI, Stackable, Staked} from "composition/staking/types";
-import STACKABLE from "@/assets/stackable.json"
-import MELODITY_STACKING from "@/abi/MelodityStacking.json"
-import {Provider} from "composition/provider";
-import {ContractTypes} from "composition/provider/types";
+import {__EPOCH_PER_YEAR__, __PERCENT_SCALE__, __RETRIEVE__, ABI, Stackable, Staked} from "./types";
+const STACKABLE = require("../../assets/stackable.json")
+const MELODITY_STACKING = require("../../abi/MelodityStacking.json")
+import {Provider} from "../provider";
+import {ContractTypes} from "../provider/types";
 import {ISignal, ISimpleEvent, SignalDispatcher, SimpleEventDispatcher} from "strongly-typed-events";
 import {ethers} from "ethers";
-import {Address} from "composition/address";
-import {renderNumber} from "composition/strings";
+import {Address} from "../address";
+import {renderNumber} from "../strings";
 
 export class Staking {
 	private _stackable: Stackable[] = []
@@ -61,7 +61,7 @@ export class Staking {
 	 * @private
 	 */
 	private parse() {
-		STACKABLE.forEach(async v => {
+		STACKABLE.forEach(async (v: any) => {
 			const rex = new RegExp(/^0x[0-9a-fA-f]{40}$/)
 
 			if (v.abi !== undefined &&

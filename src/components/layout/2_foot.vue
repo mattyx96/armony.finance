@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import {footer} from "composition/footer";
+import {footer} from "@/composition/footer";
 import {defineComponent} from "vue";
 
 export default defineComponent({

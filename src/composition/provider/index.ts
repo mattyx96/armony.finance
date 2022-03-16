@@ -7,19 +7,19 @@
 
 import {ethers} from "ethers";
 import {connectWallet as _connectWallet} from "./wallet"
-import {Address} from "@/composition/address"
-import {ContractTypes} from "composition/provider/types";
+import {Address} from "../address"
+import {ContractTypes} from "./types";
 import {ISignal, ISimpleEvent, SignalDispatcher, SimpleEventDispatcher} from "strongly-typed-events";
 import {
 	initContractInstance as _initContractInstance,
 	initCustomContractInstance as _initCustomContractInstance
-} from "composition/provider/contracts";
+} from "@/composition/provider/contracts";
 
 export class Provider {
 	// properties
 	private _provider?: ethers.providers.Web3Provider
 	private _fallbackProvider?: ethers.providers.JsonRpcProvider
-	private _testing: boolean = import.meta.env.DEV
+	private _testing: boolean = false
 	private _signer?: ethers.providers.JsonRpcSigner
 	private static _instance?: Provider
 

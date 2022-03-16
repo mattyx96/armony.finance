@@ -1,9 +1,9 @@
 import {reactive, ref} from "vue";
-import BSCSCAN from "@/assets/featured/2_bscscan.png";
-import CMC from "@/assets/featured/3_cmc.png";
-import COINGECKO from "@/assets/featured/4_coingecko.png";
-import CERTIK from "@/assets/featured/certik.png";
-import INTERFI from "@/assets/featured/interfi.png";
+const BSCSCAN = "/assets/featured/2_bscscan.png";
+const CMC = "/assets/featured/3_cmc.png";
+const COINGECKO = "/assets/featured/4_coingecko.png";
+const CERTIK = "/assets/featured/certik.png";
+const INTERFI = "/assets/featured/interfi.png";
 
 export function footer() {
     return {

@@ -9,7 +9,7 @@ import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Pages from "vite-plugin-pages";
 // @ts-ignore
-import inject from '@rollup/plugin-inject'
+//import inject from '@rollup/plugin-inject'
 
 
 const path = require('path');
@@ -52,6 +52,7 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			//plugins: [inject({Buffer: ['Buffer', 'Buffer']})],
+			//external: ['Buffer', 'Buffer']
 		},
 	},
 	optimizeDeps: {

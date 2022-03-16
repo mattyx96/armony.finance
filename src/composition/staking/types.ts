@@ -70,6 +70,6 @@ export interface StakedNFT {
 }
 
 export enum ABI {
-	__MELODITY_STACKING__
+	__MELODITY_STACKING__ = "__MELODITY_STACKING__"
 }
 

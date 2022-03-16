@@ -51,13 +51,13 @@
 						{{ elem.label }}
 					</a>
 				</template>
-<!--				<button
-					class="rounded-full h-12 w-auto text-white flex items-center bg-[#B6B6FF] shadow-md
-					   transition-all duration-300 hover:bg-[#a4a4e6]
-					   cursor-pointer select-none w-min md:flex hidden whitespace-nowrap mx-0.5 px-4"
-					@click="onSignInPress">
-					Sign In
-				</button>-->
+				<!--				<button
+									class="rounded-full h-12 w-auto text-white flex items-center bg-[#B6B6FF] shadow-md
+									   transition-all duration-300 hover:bg-[#a4a4e6]
+									   cursor-pointer select-none w-min md:flex hidden whitespace-nowrap mx-0.5 px-4"
+									@click="onSignInPress">
+									Sign In
+								</button>-->
 			</div>
 
 			<!--	    connect button-->
@@ -86,7 +86,8 @@
 			<div
 				class="text-white md:hidden flex justify-end items-center w-full h-full col-start-4 text-4xl cursor-pointer"
 				@click="openMobileNav">
-				<div class="text-2xl flex text-gray-800 items-center justify-center"><i class="fa-solid fa-bars-staggered"></i></div>
+				<div class="text-2xl flex text-gray-800 items-center justify-center"><i
+					class="fa-solid fa-bars-staggered"></i></div>
 			</div>
 			<div class="fixed top-0 left-0 right-0 h-screen transition-all duration-75 grid grid-rows-6 gap-0"
 			     :class="navAnimationClasses.mobile.wrapper">
@@ -140,14 +141,14 @@
 </template>
 
 <script lang="ts">
-import {urls} from "composition/header";
-import routes from "~pages"
+import {urls} from "@/composition/header";
+import {routes} from "@/router"
 import {defineComponent, watch} from "vue";
 import {RouteMeta} from "vue-router";
 import {capitalize} from "@/composition/strings";
-import {Address} from "composition/address";
-import {Provider} from "composition/provider";
-import Toaster from "composition/toaster";
+import {Address} from "@/composition/address";
+import {Provider} from "@/composition/provider";
+import Toaster from "@/composition/toaster";
 
 interface navigationUrl {
 	label: string,
@@ -254,7 +255,13 @@ export default defineComponent({
 			}
 		},
 		urlsTargets() {
-			return this.urls.map(v => ({target: v.external ? "_blank" : "", rel: v.external ? "noopener" : ""}))
+			return this.urls.map((v: any) => {
+				let is_external: boolean = v.external
+				return {
+					target: is_external ? "_blank" : "",
+					rel: is_external ? "noopener" : ""
+				}
+			})
 		},
 	},
 	async created() {
@@ -278,7 +285,7 @@ export default defineComponent({
 			// reset the urls
 			this.local_urls = []
 
-			routes.forEach(v => {
+			routes.forEach((v: any) => {
 				// push the navigation url structure to the array
 				this.local_urls.push({
 					// if the url has a label tag than use the capitalized label, otherwise use the capitalized name of

@@ -83,7 +83,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import Shimmer from "components/shimmer.vue";
+import Shimmer from "@/components/shimmer.vue";
 
 export default defineComponent({
 	name: "ShimmerStackingItem",

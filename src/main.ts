@@ -7,9 +7,10 @@
 
 import {createApp} from 'vue'
 import App from './App.vue'
-import {router} from "./router"
+import router from "./router/index"
 
 import {plugin as VueTippy, roundArrow} from 'vue-tippy'
+// @ts-ignore
 import Cleave from 'cleave.js';
 
 import 'tippy.js/dist/tippy.css' // optional for styling
@@ -22,10 +23,6 @@ import 'tippy.js/dist/border.css'
 import 'tippy.js/dist/svg-arrow.css'
 
 import "@/assets/tailwind.css"
-import "@/assets/pro.css"
-import "@/assets/pro-v5-font-face.css"
-import "@/assets/pro-v4-shims.css"
-import "@/assets/pro-v4-font-face.css"
 
 
 const app = createApp(App)
@@ -34,6 +31,7 @@ app.directive('cleave', {
     mounted: (el, binding) => {
         el.cleave = new Cleave(el, binding.value || {})
     },
+    // @ts-ignore
     update: (el) => {
         const event = new Event('input', {bubbles: true});
         setTimeout(function () {

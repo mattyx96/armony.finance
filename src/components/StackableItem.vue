@@ -200,11 +200,11 @@
 </template>
 
 <script lang="ts">
-import arrow from "@/assets/images/arrow.svg"
-import arrow_down from "@/assets/images/arrow-down.svg"
+const arrow = "/assets/images/arrow.svg"
+const arrow_down = "/assets/images/arrow-down.svg"
 import {defineComponent} from "vue";
-import Shimmer from "components/shimmer.vue";
-import Spinner from "components/spinner.vue";
+import Shimmer from "@/components/shimmer.vue";
+import Spinner from "@/components/spinner.vue";
 import {directive, Tippy} from 'vue-tippy'
 
 export default defineComponent({

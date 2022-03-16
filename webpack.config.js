@@ -15,5 +15,13 @@ module.exports = {
 			"components": path.resolve(__dirname, 'src/components'),
 			"composition": path.resolve(__dirname, 'src/composition'),
 		},
+		fallback: {
+			"stream": require.resolve("stream-browserify"),
+			"assert": require.resolve("assert/"),
+			"http": require.resolve("stream-http"),
+			"https": require.resolve("https-browserify"),
+			"os": require.resolve("os-browserify/browser"),
+			"url": require.resolve("url/")
+		},
 	},
 };

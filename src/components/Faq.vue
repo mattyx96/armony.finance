@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {faq} from "composition/faq";
+import {faq} from "@/composition/faq";
 
 export default {
 	name: "Faq",

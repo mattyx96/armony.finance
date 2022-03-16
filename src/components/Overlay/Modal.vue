@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue'
-import Overlay from "components/Overlay/Overlay.vue";
+import Overlay from "@/components/Overlay/Overlay.vue";
 
 export default defineComponent({
 	name: "Modal",
@@ -26,7 +26,7 @@ export default defineComponent({
 	props: {
 		open: {
 			type: Boolean as PropType<boolean>,
-			required: true
+			//required: true
 		},
 		background: {
 			type: String as PropType<string>,

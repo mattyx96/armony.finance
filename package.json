@@ -1,35 +1,41 @@
 {
   "name": "armony.finance",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "vite --open --host",
-    "build": "vite build",
-    "preview": "vite preview"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@rollup/plugin-inject": "^4.0.4",
-    "@types/node": "^17.0.10",
     "@walletconnect/web3-provider": "^1.7.1",
+    "assert": "^2.0.0",
     "cleave.js": "^1.6.0",
+    "core-js": "^3.8.3",
     "ethers": "^5.5.3",
+    "https-browserify": "^1.0.0",
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "safe-buffer": "^5.2.1",
     "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "strongly-typed-events": "^2.1.14",
     "toastify-js": "^1.11.2",
-    "vue": "^3.2.25",
-    "vue-router": "^4.0.12",
+    "url": "^0.11.0",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3",
     "vue-tippy": "^6.0.0-alpha.49",
-    "vuex": "^4.0.2",
     "web3": "^1.7.0",
     "web3modal": "^1.9.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.0.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.15",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.2",
-    "vite-plugin-pages": "^0.20.0",
-    "vue-tsc": "^0.29.8"
+    "typescript": "~4.5.5"
   }
 }
