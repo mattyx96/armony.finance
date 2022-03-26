@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="restyling from vite to vue in order to allow production build (vite incompatibility)">
-      <change afterPath="$PROJECT_DIR$/src/assets/stackable.prod.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/stackable.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/stackable.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/ModalStakingDeposit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/wallet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/wallet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/staking/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/staking/index.ts" afterDir="false" />
-    </list>
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="fixes and updates" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,7 +141,7 @@
       <workItem from="1647353819808" duration="4940000" />
       <workItem from="1647438819191" duration="8223000" />
       <workItem from="1647450140682" duration="374000" />
-      <workItem from="1648262937422" duration="5327000" />
+      <workItem from="1648262937422" duration="5481000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -322,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647450506713</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fixes and updates">
+      <created>1648275337664</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1648275337665</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +366,8 @@
     <MESSAGE value="armony finance production release 1" />
     <MESSAGE value="compilation fixes" />
     <MESSAGE value="restyling from vite to vue in order to allow production build (vite incompatibility)" />
-    <option name="LAST_COMMIT_MESSAGE" value="restyling from vite to vue in order to allow production build (vite incompatibility)" />
+    <MESSAGE value="fixes and updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes and updates" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
