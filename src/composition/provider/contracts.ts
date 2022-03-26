@@ -71,7 +71,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stacking:
 			return loadContract(
-				testing ? "0x3c4Bc1a449f7a4a54394265d77679F7526D59Bb7" : "0xBBC7f6990BD35BbB2d6970f69616998790cA5614",
+				testing ? "0x3c4Bc1a449f7a4a54394265d77679F7526D59Bb7" : "0xEe57ca5eC122F813fB676A855aeF7aCDD323316B",
 				require("../../abi/MelodityStacking.json"),
 				signer,
 				provider,
@@ -79,7 +79,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stackingReceipt:
 			return loadContract(
-				process.env.NODE ? "0x0C0CDCa22c83Dda9C7c1f1754dDa65baf9224D70" : "0x9ea087c29d489D190bd98F0F8D248d94f111dAdd",
+				process.env.NODE ? "0x0C0CDCa22c83Dda9C7c1f1754dDa65baf9224D70" : "0x8850F61B1C37de13e663D284bF54310d80e38a1C",
 				require("../../abi/StackingReceipt.json"),
 				signer,
 				provider,

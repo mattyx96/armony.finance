@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="fixes and updates" />
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="test mode deactivation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,6 +142,7 @@
       <workItem from="1647438819191" duration="8223000" />
       <workItem from="1647450140682" duration="374000" />
       <workItem from="1648262937422" duration="5481000" />
+      <workItem from="1648275365975" duration="58000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -318,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648275337665</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="test mode deactivation">
+      <created>1648275416816</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1648275416816</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +350,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
-    <MESSAGE value="update from template" />
     <MESSAGE value="layout integration" />
     <MESSAGE value="copyright and packages inclusion" />
     <MESSAGE value="urls extraction, types migration" />
@@ -367,7 +374,8 @@
     <MESSAGE value="compilation fixes" />
     <MESSAGE value="restyling from vite to vue in order to allow production build (vite incompatibility)" />
     <MESSAGE value="fixes and updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes and updates" />
+    <MESSAGE value="test mode deactivation" />
+    <option name="LAST_COMMIT_MESSAGE" value="test mode deactivation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
