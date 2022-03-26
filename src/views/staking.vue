@@ -261,7 +261,7 @@ export default defineComponent({
 				text: this.stackable.map((value, index) => {
 					return this.pending ? "Pending ..." : (
 						this.isConnected ? (
-							this.isStakeApproved[index] ? "Deposit" : "Approve"
+							this.isStakeApproved[index] ? "Deposit" : "Deposit"
 						) : "Connect wallet"
 					)
 				}),
@@ -285,7 +285,7 @@ export default defineComponent({
 				text: this.stackable.map((value, index) => {
 					return this.pending ? "Pending ..." : (
 						this.isConnected ? (
-							this.isWithdrawApproved[index] ? "Withdraw" : "Approve withdraw"
+							this.isWithdrawApproved[index] ? "Withdraw" : "Withdraw"
 						) : "Connect wallet"
 					)
 				}),
