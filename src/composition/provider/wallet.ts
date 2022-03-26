@@ -12,7 +12,7 @@ import {ethers} from "ethers";
 
 export const connectWallet =
     async (): Promise<{ signer: ethers.providers.JsonRpcSigner, provider: ethers.providers.Web3Provider }> => {
-        const testing = false;
+        const testing = true;
         const provider_options = {
             walletconnect: {
                 package: WalletConnectProvider, // required

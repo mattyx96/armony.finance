@@ -158,7 +158,7 @@ export class Staking {
 					stackable.apy = (((1 + +`0.${daily_apr.toString().padStart(18, "0")}`) ** 365 - 1) * 100).toFixed(2)
 
 					this._stackable.push(stackable)
-					this.loadStakedData().then(() => false)
+					this.loadStakedData().then(() => ({}))
 				}
 			} else {
 				this._invalidStackableFound.dispatchAsync(v)
@@ -181,7 +181,7 @@ export class Staking {
 
 		this._signerInjected.dispatchAsync()
 
-		this.loadStakedData().then(() => false)
+		this.loadStakedData().then(() => ({}))
 	}
 
 	/**
@@ -347,6 +347,7 @@ export class Staking {
 	}
 
 	public async approveStakeDeposit(id: number): Promise<void> {
+		console.log("approveStakeDeposit called")
 		const innerMethod = async () => {
 			this._transactionStarted.dispatchAsync()
 			try {

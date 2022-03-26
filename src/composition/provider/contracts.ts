@@ -27,7 +27,7 @@ export const initContractInstance = async (
 	provider: ethers.providers.JsonRpcProvider,
 	connected: boolean
 ): Promise<ethers.Contract | false> => {
-	const testing = false
+	const testing = true
 	switch (contract_type) {
 		case ContractTypes.melodity:
 			return loadContract(
@@ -39,7 +39,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.masterchef:
 			return loadContract(
-				testing ? "0xE973bdde76df7Ac163Afa2DE640F768031FD4aee" : "0x46303b92A45445F51529c6DD705FcF1A9F68E592",
+				testing ? "0x62795cB19AaD325C10F01B3Bc49986C3351ad259" : "0x46303b92A45445F51529c6DD705FcF1A9F68E592",
 				require("../../abi/Masterchef.json"),
 				signer,
 				provider,
@@ -47,7 +47,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.melodityGovernance:
 			return loadContract(
-				testing ? "0x02ddca03C12A78D8351d2f17EED53BD0218F1E16" : "0xfCFE6E40B47FE7879Cf30180df157Df9e9e8AE33",
+				testing ? "0x5FF819523D4e53693F1453Dc927c515a15Ad3556" : "0xfCFE6E40B47FE7879Cf30180df157Df9e9e8AE33",
 				require("../../abi/MelodityGovernance.json"),
 				signer,
 				provider,
@@ -55,7 +55,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stackingPanda:
 			return loadContract(
-				testing ? "0x40860E6F7DaF7463902895eE6a2392f0EB3e7CAe" : "0xf6Ab47885AAe4aA670EdF79C97ac39691ede5821",
+				testing ? "0xCdE031864977009b7335c0f0cE1b792c73cCc236" : "0xf6Ab47885AAe4aA670EdF79C97ac39691ede5821",
 				require("../../abi/StackingPanda.json"),
 				signer,
 				provider,
@@ -63,7 +63,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.marketplace:
 			return loadContract(
-				testing ? "0xa95aDe87687e43465ddBB97A35147e9b0e27987C" : "0x98De6C733F86832b3E7839367A9Ca10147b607ed",
+				testing ? "0x63AdC77DE9634D425F23735cDC68e0605831b039" : "0x98De6C733F86832b3E7839367A9Ca10147b607ed",
 				require("../../abi/Marketplace.json"),
 				signer,
 				provider,
@@ -71,7 +71,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stacking:
 			return loadContract(
-				testing ? "0x947e2CbF833DFE306816147eF1474fBbD7062d38" : "0xBBC7f6990BD35BbB2d6970f69616998790cA5614",
+				testing ? "0x3c4Bc1a449f7a4a54394265d77679F7526D59Bb7" : "0xBBC7f6990BD35BbB2d6970f69616998790cA5614",
 				require("../../abi/MelodityStacking.json"),
 				signer,
 				provider,
@@ -79,7 +79,7 @@ export const initContractInstance = async (
 			)
 		case ContractTypes.stackingReceipt:
 			return loadContract(
-				process.env.NODE ? "0xcc91966B178e29B835e4F3F32a803Fe31a40fA0a" : "0x9ea087c29d489D190bd98F0F8D248d94f111dAdd",
+				process.env.NODE ? "0x0C0CDCa22c83Dda9C7c1f1754dDa65baf9224D70" : "0x9ea087c29d489D190bd98F0F8D248d94f111dAdd",
 				require("../../abi/StackingReceipt.json"),
 				signer,
 				provider,
