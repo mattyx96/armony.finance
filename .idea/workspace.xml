@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="button naming fix">
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="locked staking">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/stackable.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/stackable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/stackable.prod.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/stackable.prod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StackableItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StackableItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/provider/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/composition/provider/wallet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/wallet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/staking.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/staking.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +31,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -147,7 +159,7 @@
       <workItem from="1648275365975" duration="58000" />
       <workItem from="1648276847801" duration="40000" />
       <workItem from="1648277766559" duration="632000" />
-      <workItem from="1648346142231" duration="397000" />
+      <workItem from="1648346142231" duration="7515000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -345,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648277797288</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="locked staking">
+      <created>1648346662403</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1648346662403</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +388,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
-    <MESSAGE value="urls extraction, types migration" />
     <MESSAGE value="gitignore update" />
     <MESSAGE value="wrapper and head updates" />
     <MESSAGE value="address and provider singleton development, routing fix" />
@@ -394,7 +412,8 @@
     <MESSAGE value="test mode deactivation" />
     <MESSAGE value="smart contract address fix" />
     <MESSAGE value="button naming fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="button naming fix" />
+    <MESSAGE value="locked staking" />
+    <option name="LAST_COMMIT_MESSAGE" value="locked staking" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

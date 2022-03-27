@@ -27,7 +27,7 @@ export const initContractInstance = async (
 	provider: ethers.providers.JsonRpcProvider,
 	connected: boolean
 ): Promise<ethers.Contract | false> => {
-	const testing = false
+	const testing = true
 	switch (contract_type) {
 		case ContractTypes.melodity:
 			return loadContract(

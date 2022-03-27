@@ -20,15 +20,21 @@
 						staking
 					</h1>
 					<h3 class="text-lg text-center md:text-left font-light mt-12 md:mt-8 text-[#696871]">
-					<span class="no">
-						Put your crypto at work.
-						<br>
-						With Armony you receive up to
-					</span>
+						<span class="no">
+							Put your crypto at work.
+							<br>
+							With Armony you receive up to
+						</span>
 						<shimmer :loading="!staking_ready" :text="`${bestAPY} %`"></shimmer>
 						<span>
-						APY on your stacked cryptocurrencies!
-					</span>
+							APY on your stacked cryptocurrencies!
+						</span>
+						<br>
+						<br>
+						<span>
+							Totally locked value
+							<shimmer :loading="!tvl_ready" :text="`${tvl} USD`"></shimmer>
+						</span>
 					</h3>
 				</div>
 				<div class="flex justify-center items-start md:items-center">
@@ -51,7 +57,7 @@
 						APY
 					</div>
 					<div class="font-semibold text-sm col-span-2 text-center">
-						Deposited
+						Earning
 					</div>
 				</div>
 				<template v-if="stackable.length === 0">
@@ -91,10 +97,6 @@
 			v-model:time="overlay.time"
 			v-model:confirmations="overlay.confirmations"
 		/>
-		<overlay :open="erroneus_overlay.open">
-			<h2 class="text-2xl font-semibold">Staking temporarily disabled</h2>
-			<h3>Team's analizing issues and reports</h3>
-		</overlay>
 	</div>
 </template>
 
@@ -109,8 +111,6 @@ import {ContractTypes} from "@/composition/provider/types";
 import {renderNumber} from "@/composition/strings";
 import {Stackable, Staked} from "@/composition/staking/types";
 import {Staking} from "@/composition/staking";
-const arrow = require("../assets/images/arrow.svg")
-const arrow_down = require("../assets/images/arrow-down.svg")
 import Shimmer from "@/components/shimmer.vue";
 import Toaster from "@/composition/toaster";
 import Modal from "@/components/Overlay/Modal.vue";
@@ -120,6 +120,9 @@ import ShimmerStackingItems from "@/components/ShimmerStackableItems.vue";
 import StackableItem from "@/components/StackableItem.vue";
 import {Tippy} from 'vue-tippy'
 import Overlay from "@/components/Overlay/Overlay.vue";
+
+const arrow = require("../assets/images/arrow.svg")
+const arrow_down = require("../assets/images/arrow-down.svg")
 
 export default defineComponent({
 	name: "index",
@@ -165,9 +168,9 @@ export default defineComponent({
 			receiptTicker: "",
 			stakeContractAddress: "",
 		},
-		erroneus_overlay: {
-			open: true
-		}
+		tvl_ready: false,
+		tvl_amount: "",
+		tvl: "",
 	}),
 	methods: {
 		insertMaxMeld() {
@@ -252,6 +255,30 @@ export default defineComponent({
 					.approveStakeWithdraw(id)
 			})
 		},
+		async computeTvl() {
+			let contract;
+			for (let elem of this.stackable) {
+				contract = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, elem.rewardCurrency.contract)
+				if(contract) {
+					console.log(contract.address)
+					let balance = await contract.balanceOf(elem.contract.address)
+					let reward_pool = (await elem.contract.poolInfo())["rewardPool"]
+
+					console.log(balance.toString(), reward_pool.toString())
+					let amount = (+renderNumber(balance).replaceAll(",", "") -
+						+renderNumber(reward_pool).replaceAll(",", "")).toFixed(6)
+					//200291433695981759344
+					//19999999996799695981759344
+
+					this.tvl_amount = (+this.tvl + +amount).toFixed(6)
+				}
+			}
+
+			if(this.gmeldPrice) {
+				this.tvl = (+this.tvl_amount * +this.gmeldPrice).toFixed(6)
+				this.tvl_ready = true
+			}
+		}
 	},
 	computed: {
 		bestAPY() {
@@ -312,12 +339,13 @@ export default defineComponent({
 					)
 				})
 			}
-		}
+		},
 	},
 	created() {
-		/*Staking.init().onStackingReady.subscribe(() => {
+		Staking.init().onStackingReady.subscribe(() => {
 			this.staking_ready = true
 			this.stackable = Staking.init().stackable
+			this.computeTvl()
 		})
 		Staking.init().onStackedDataReady.subscribe(() => {
 			this.staked_ready = true
@@ -329,6 +357,11 @@ export default defineComponent({
 			this.gmeldPrice = price.toFixed(2)
 			this.gmeldDailyVariation = dailyChange.toFixed(2)
 			this.isMeldVariationPositive = dailyChange >= 0
+
+			if(this.tvl_amount) {
+				this.tvl = (+this.tvl_amount * +this.gmeldPrice).toFixed(6)
+				this.tvl_ready = true
+			}
 		})
 		Address.init().watchAddress((v: string): void => {
 			this.connectedAs = !!v ? v : false
@@ -339,7 +372,7 @@ export default defineComponent({
 		WorkerController.init().watchState(
 			() => this.pending = true,
 			() => this.pending = false
-		)*/
+		)
 	}
 })
 </script>

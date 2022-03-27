@@ -19,7 +19,7 @@ export class Provider {
 	// properties
 	private _provider?: ethers.providers.Web3Provider
 	private _fallbackProvider?: ethers.providers.JsonRpcProvider
-	private _testing: boolean = false
+	private _testing: boolean = true
 	private _signer?: ethers.providers.JsonRpcSigner
 	private static _instance?: Provider
 

@@ -50,8 +50,10 @@
 				{{ e.apy }}%
 			</div>
 			<div class="font-semibold col-span-2 flex items-center justify-center text-gray-600">
-				<shimmer :loading="!staked_ready"
-				         :text="`${staked[i]?.receiptAmount} ${staked[i]?.ticker}`"></shimmer>
+				<shimmer class="px-0 py-1" :loading="!staked_ready">
+					<div>{{staked[i]?.receiptAmount}} {{staked[i]?.ticker}}</div>
+					<small class="text-center text-[.6em]">~ {{estimatedEarnings[i]}} {{e.rewardCurrency.name}}</small>
+				</shimmer>
 			</div>
 			<div class="font-semibold text-sm col-span-1 flex items-center flex-wrap justify-center">
 				<button v-if="isConnected" :disabled="pending" class="rounded-full w-full px-3 py-2 bg-green-400 m-1
@@ -163,8 +165,10 @@
 								Deposited
 							</div>
 							<div class="font-semibold text-gray-600 flex items-center justify-center">
-								<shimmer class="px-0 py-1" :loading="!staked_ready"
-								         :text="`${staked[i]?.receiptAmount} ${staked[i]?.ticker}`"></shimmer>
+								<shimmer class="px-0 py-1" :loading="!staked_ready">
+									<div>{{staked[i]?.receiptAmount}} {{staked[i]?.ticker}}</div>
+									<small class="mx-auto">~ {{estimatedEarnings[i]}} {{e.rewardCurrency.name}}</small>
+								</shimmer>
 							</div>
 						</div>
 					</div>
@@ -200,12 +204,15 @@
 </template>
 
 <script lang="ts">
+import {Stackable, Staked} from "@/composition/staking/types";
+
 const arrow = "/assets/images/arrow.svg"
 const arrow_down = "/assets/images/arrow-down.svg"
 import {defineComponent} from "vue";
 import Shimmer from "@/components/shimmer.vue";
 import Spinner from "@/components/spinner.vue";
 import {directive, Tippy} from 'vue-tippy'
+import {renderNumber} from "@/composition/strings";
 
 export default defineComponent({
 	name: "StackableItem",
@@ -268,9 +275,14 @@ export default defineComponent({
 		dailyPriceVariationClasses() {
 			return this.isMeldVariationPositive ? "text-green-400" : "text-red-400"
 		},
+		estimatedEarnings() {
+			return this.stackable.map((v, i) => {
+				return (+renderNumber(((v as Stackable).receiptValue)).replaceAll(",", "") *
+					+(this.staked[i] as Staked).receiptAmount.replaceAll(",", "")).toFixed(6)
+			})
+		}
 	},
 	created() {
-		//
 	}
 })
 </script>
