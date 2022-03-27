@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="eranings display">
+    <list default="true" id="02624d33-2b6d-476a-b39c-a7f2078c1a3f" name="Changes" comment="testmode disable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/contracts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/contracts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composition/provider/wallet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/composition/provider/wallet.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +154,7 @@
       <workItem from="1648277766559" duration="632000" />
       <workItem from="1648346142231" duration="8922000" />
       <workItem from="1648368785006" duration="1041000" />
+      <workItem from="1648369991702" duration="21000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
