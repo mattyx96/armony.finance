@@ -91,6 +91,10 @@
 			v-model:time="overlay.time"
 			v-model:confirmations="overlay.confirmations"
 		/>
+		<overlay :open="erroneus_overlay.open">
+			<h2 class="text-2xl font-semibold">Staking temporarily disabled</h2>
+			<h3>Team's analizing issues and reports</h3>
+		</overlay>
 	</div>
 </template>
 
@@ -115,10 +119,12 @@ import ModalStakingWithdraw from "@/components/Overlay/ModalStakingWithdraw.vue"
 import ShimmerStackingItems from "@/components/ShimmerStackableItems.vue";
 import StackableItem from "@/components/StackableItem.vue";
 import {Tippy} from 'vue-tippy'
+import Overlay from "@/components/Overlay/Overlay.vue";
 
 export default defineComponent({
 	name: "index",
 	components: {
+		Overlay,
 		StackableItem,
 		ShimmerStackingItems, ModalStakingWithdraw, ModalStakingDeposit, Modal, Shimmer, TransactionOverlay, Tippy
 	},
@@ -159,6 +165,9 @@ export default defineComponent({
 			receiptTicker: "",
 			stakeContractAddress: "",
 		},
+		erroneus_overlay: {
+			open: true
+		}
 	}),
 	methods: {
 		insertMaxMeld() {
@@ -306,7 +315,7 @@ export default defineComponent({
 		}
 	},
 	created() {
-		Staking.init().onStackingReady.subscribe(() => {
+		/*Staking.init().onStackingReady.subscribe(() => {
 			this.staking_ready = true
 			this.stackable = Staking.init().stackable
 		})
@@ -330,8 +339,7 @@ export default defineComponent({
 		WorkerController.init().watchState(
 			() => this.pending = true,
 			() => this.pending = false
-		)
-
+		)*/
 	}
 })
 </script>
