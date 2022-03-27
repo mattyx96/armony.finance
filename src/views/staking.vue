@@ -57,7 +57,7 @@
 						APY
 					</div>
 					<div class="font-semibold text-sm col-span-2 text-center">
-						Earning
+						Deposit
 					</div>
 				</div>
 				<template v-if="stackable.length === 0">
