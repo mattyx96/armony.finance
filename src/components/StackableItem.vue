@@ -38,13 +38,9 @@
 				</div>
 			</div>
 			<div class="font-semibold col-span-2 text-gray-600 flex items-center justify-center">
-				<template v-if="!staked_ready || staked[i]?.earnings !== undefined">
-					<shimmer :loading="!staked_ready"
-					         :text="`${staked[i]?.earnings} ${e.rewardCurrency.name}`"></shimmer>
-				</template>
-				<template v-else>
-					Historical data not found
-				</template>
+				<shimmer :loading="!staked_ready">
+					~ {{estimatedEarnings[i]}} {{e.rewardCurrency.name}}
+				</shimmer>
 			</div>
 			<div class="font-semibold text-lg col-span-1 flex items-center justify-center text-gray-600">
 				{{ e.apy }}%
@@ -52,7 +48,6 @@
 			<div class="font-semibold col-span-2 flex items-center justify-center text-gray-600">
 				<shimmer class="px-0 py-1" :loading="!staked_ready">
 					<div>{{staked[i]?.receiptAmount}} {{staked[i]?.ticker}}</div>
-					<small class="text-center text-[.6em]">~ {{estimatedEarnings[i]}} {{e.rewardCurrency.name}}</small>
 				</shimmer>
 			</div>
 			<div class="font-semibold text-sm col-span-1 flex items-center flex-wrap justify-center">
@@ -120,13 +115,9 @@
 								Your earnings
 							</div>
 							<div class="font-semibold text-gray-600 flex items-center justify-center">
-								<template v-if="!staked_ready || staked[i]?.earnings !== undefined">
-									<shimmer class="px-0 py-1" :loading="!staked_ready"
-									         :text="`${staked[i]?.earnings} ${e.rewardCurrency.name}`"></shimmer>
-								</template>
-								<span class="px-0 py-1 select-none" v-else>
-									Historical data not found
-								</span>
+								<shimmer class="px-0 py-1" :loading="!staked_ready">
+									~ {{estimatedEarnings[i]}} {{e.rewardCurrency.name}}
+								</shimmer>
 							</div>
 						</div>
 					</div>
@@ -162,12 +153,11 @@
 						<!--deposited-->
 						<div class="flex flex-col mt-4">
 							<div class="font-light text-sm text-center self-start">
-								Deposited
+								Deposit
 							</div>
 							<div class="font-semibold text-gray-600 flex items-center justify-center">
 								<shimmer class="px-0 py-1" :loading="!staked_ready">
 									<div>{{staked[i]?.receiptAmount}} {{staked[i]?.ticker}}</div>
-									<small class="mx-auto">~ {{estimatedEarnings[i]}} {{e.rewardCurrency.name}}</small>
 								</shimmer>
 							</div>
 						</div>

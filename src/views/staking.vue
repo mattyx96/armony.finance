@@ -260,15 +260,11 @@ export default defineComponent({
 			for (let elem of this.stackable) {
 				contract = await Provider.init().loadCustomContract(ContractTypes.stackingReceipt, elem.rewardCurrency.contract)
 				if(contract) {
-					console.log(contract.address)
 					let balance = await contract.balanceOf(elem.contract.address)
 					let reward_pool = (await elem.contract.poolInfo())["rewardPool"]
 
-					console.log(balance.toString(), reward_pool.toString())
 					let amount = (+renderNumber(balance).replaceAll(",", "") -
 						+renderNumber(reward_pool).replaceAll(",", "")).toFixed(6)
-					//200291433695981759344
-					//19999999996799695981759344
 
 					this.tvl_amount = (+this.tvl + +amount).toFixed(6)
 				}
