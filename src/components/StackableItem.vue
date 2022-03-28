@@ -176,7 +176,7 @@
 							{{ withdrawButtonState.text[i] }}
 						</template>
 					</button>
-					<button class="rounded-full px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer mr-auto
+					<!--<button class="rounded-full px-3 py-2 bg-green-400 transition-all duration-500 cursor-pointer mr-auto
 								hover:shadow-lg hover:shadow-green-800/20 select-none mx-auto text-white text-center ml-4
 								disabled:bg-gray-200"
 					        @click="stakeButtonState.method[i]">
@@ -186,7 +186,7 @@
 						<template v-else>
 							{{ stakeButtonState.text[i] }}
 						</template>
-					</button>
+					</button>-->
 				</div>
 			</div>
 		</template>
