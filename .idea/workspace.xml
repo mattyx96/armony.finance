@@ -154,6 +154,7 @@
       <workItem from="1648368785006" duration="1041000" />
       <workItem from="1648369991702" duration="21000" />
       <workItem from="1648466709276" duration="68000" />
+      <workItem from="1648467220537" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="update from template">
       <created>1642921766537</created>
@@ -379,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648466769459</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="deposit disabled">
+      <created>1648467235922</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1648467235922</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
