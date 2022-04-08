@@ -201,7 +201,12 @@ export default defineComponent({
 				this.overlay.confirmations = this.overlay.time = 0
 				this.overlay.open = true
 				try {
-					let tx: ethers.providers.TransactionResponse = await this.stake.withdraw(amount)
+					let tx: ethers.providers.TransactionResponse = await this.stake.withdraw(
+              amount,
+              {
+                value: ethers.utils.parseEther("0.0005").toString()
+              }
+          )
 					this.overlay.tx = tx.hash
 					let receipt: ethers.providers.TransactionReceipt = await tx.wait()
 
@@ -242,7 +247,13 @@ export default defineComponent({
 				this.overlay.confirmations = this.overlay.time = 0
 				this.overlay.open = true
 				try {
-					let tx: ethers.providers.TransactionResponse = await this.stake.withdrawWithNFT(amount, this.depositedNFTs[this.selectedNFT].index)
+					let tx: ethers.providers.TransactionResponse = await this.stake.withdrawWithNFT(
+              amount,
+              this.depositedNFTs[this.selectedNFT].index,
+              {
+                value: ethers.utils.parseEther("0.0005").toString()
+              }
+          )
 					this.overlay.tx = tx.hash
 					let receipt: ethers.providers.TransactionReceipt = await tx.wait(2)
 

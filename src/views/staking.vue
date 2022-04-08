@@ -129,7 +129,13 @@ export default defineComponent({
 	components: {
 		Overlay,
 		StackableItem,
-		ShimmerStackingItems, ModalStakingWithdraw, ModalStakingDeposit, Modal, Shimmer, TransactionOverlay, Tippy
+		ShimmerStackingItems,
+    ModalStakingWithdraw,
+    ModalStakingDeposit,
+    Modal,
+    Shimmer,
+    TransactionOverlay,
+    Tippy
 	},
 	data: () => ({
 		governance: {} as ethers.Contract,

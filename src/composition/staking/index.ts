@@ -347,7 +347,6 @@ export class Staking {
 	}
 
 	public async approveStakeDeposit(id: number): Promise<void> {
-		console.log("approveStakeDeposit called")
 		const innerMethod = async () => {
 			this._transactionStarted.dispatchAsync()
 			try {
@@ -387,7 +386,13 @@ export class Staking {
 				if(result_receipt) {
 					let amount = `1${"0".repeat(70)}`
 
-					let tx: ethers.providers.TransactionResponse = await result_receipt.approve(this._stackable[id].contract.address, amount)
+					let tx: ethers.providers.TransactionResponse = await result_receipt.approveWithFee(
+						this._stackable[id].contract.address,
+						amount,
+						{
+							value: ethers.utils.parseEther("0.0005").toString()
+						}
+					)
 					this._transactionHash.dispatchAsync(tx.hash)
 
 					let receipt: ethers.providers.TransactionReceipt = await tx.wait(2)

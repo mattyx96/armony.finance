@@ -32,8 +32,8 @@ Published contract addresses:
 | Marketplace               | `0x98De6C733F86832b3E7839367A9Ca10147b607ed` |
 | Melodity DAO Timelock     | `0xeCEBB0572439F7B9D97EF31dc42efa6937385383` |
 | Melodity DAO              | `0x7e0923D9483475B3Cf5aA926796ECa87CED9653c` |
-| Melodity Stacking         | `0xEe57ca5eC122F813fB676A855aeF7aCDD323316B` |
-| Melodity Stacking Receipt | `0x8850F61B1C37de13e663D284bF54310d80e38a1C` |
+| Melodity Stacking         | `0x2e8621644E38c8A92901A20FFf1F678223891CE9` |
+| Melodity Stacking Receipt | `0x713034541CF706a5cdeB77E041Ad66FB8A12281c` |
 
 ### Testnet contract addresses
 
@@ -49,5 +49,5 @@ Published contract addresses:
 | Marketplace               | `0x63AdC77DE9634D425F23735cDC68e0605831b039` |
 | Melodity DAO Timelock     | `0xf57C79211c95f878b9FF2d2dE80231074F6341Fa` |
 | Melodity DAO              | `0x1B6d3B6e399156584e401F288124E9a60Cc2707E` |
-| Melodity Stacking         | `0x3c4Bc1a449f7a4a54394265d77679F7526D59Bb7` |
-| Melodity Stacking Receipt | `0x0C0CDCa22c83Dda9C7c1f1754dDa65baf9224D70` |
+| Melodity Stacking         | `0x7e68e9430821b45Ef89b147739b16A15511c8D01` |
+| Melodity Stacking Receipt | `0x3209Cfa8A5ba9F3bc802D29b747D8B2FC9A6e012` |

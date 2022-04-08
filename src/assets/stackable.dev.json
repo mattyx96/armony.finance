@@ -6,7 +6,7 @@
 			"name": "gMELD",
 			"picture": "/assets/gmeld.png"
 		},
-		"contract": "0x3c4Bc1a449f7a4a54394265d77679F7526D59Bb7",
+		"contract": "0x7e68e9430821b45Ef89b147739b16A15511c8D01",
 		"epoch": {
 			"currentEpoch": "__RETRIEVE__",
 			"epochDuration": "__RETRIEVE__",
